@@ -13,7 +13,7 @@ import UIKit
 struct NextSMUI: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> UIViewController {
-        return StudentMentorViewController()
+        return MacroAreaStudentViewController()
     }
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
         
