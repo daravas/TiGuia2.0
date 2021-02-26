@@ -10,6 +10,7 @@ import SwiftUI
 import UIKit
 
 // apresentar a proxima tela: escolha entre estudante e mentor
+// EDIT: atualmente indo direto pra area Estudante
 struct NextSMUI: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> UIViewController {

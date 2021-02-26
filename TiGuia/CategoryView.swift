@@ -114,33 +114,33 @@ struct CategoryView: View {
                                 //
                                 //MARK: -botao de pedir ajuda
                                 //
-                                VStack {
-                                    Button(action: {
-                                        // self.presented.toggle()
-                                        self.showModal.toggle()
-                                    }, label: {
-                                        Spacer()
-                                        Image(systemName: "ellipses.bubble")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .foregroundColor(.lightColor)
-                                            .frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                        Text("Pedir ajuda")
-                                            .font(.custom("Raleway-Bold", size: 18))
-                                            .foregroundColor(.lightColor)
-                                        Spacer()
-                                        
-                                    }).padding()
-                                    .clipped()
-                                    .background(Color.btnColor)
-                                    .cornerRadius(10)
-                                    .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                                    //                            .fullScreenCover(isPresented: $showModal, content: {
-                                    //                                HelpUI(showModal: $showModal)
-                                    //                            })
-                                    //.overlay(HelpUI(showModal: $showModal).opacity(showModal ? 1 : 0).frame(width: geometry.size.width, height: geometry.size.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/))
-                                    
-                                }.padding()
+//                                VStack {
+//                                    Button(action: {
+//                                        // self.presented.toggle()
+//                                        self.showModal.toggle()
+//                                    }, label: {
+//                                        Spacer()
+//                                        Image(systemName: "ellipses.bubble")
+//                                            .resizable()
+//                                            .scaledToFit()
+//                                            .foregroundColor(.lightColor)
+//                                            .frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+//                                        Text("Pedir ajuda")
+//                                            .font(.custom("Raleway-Bold", size: 18))
+//                                            .foregroundColor(.lightColor)
+//                                        Spacer()
+//                                        
+//                                    }).padding()
+//                                    .clipped()
+//                                    .background(Color.btnColor)
+//                                    .cornerRadius(10)
+//                                    .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+//                                    //                            .fullScreenCover(isPresented: $showModal, content: {
+//                                    //                                HelpUI(showModal: $showModal)
+//                                    //                            })
+//                                    //.overlay(HelpUI(showModal: $showModal).opacity(showModal ? 1 : 0).frame(width: geometry.size.width, height: geometry.size.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/))
+//                                    
+//                                }.padding()
                                 //.edgesIgnoringSafeArea(.bottom)
                                 
                                 //  }
