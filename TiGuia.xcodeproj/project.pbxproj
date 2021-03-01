@@ -60,6 +60,7 @@
 		47F3F00325637AF80007B7B1 /* CardCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F3F00225637AF80007B7B1 /* CardCategory.swift */; };
 		47FBE9E825E972EB005E9AD1 /* MacroAreaStudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBE9E725E972EB005E9AD1 /* MacroAreaStudentViewController.swift */; };
 		47FBE9EB25EC5433005E9AD1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBE9EA25EC5433005E9AD1 /* LoginView.swift */; };
+		57B02CEA25ED85B100599284 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57B02CE925ED85B100599284 /* GoogleService-Info.plist */; };
 		65D0491140E1507108E211F7 /* Pods_TiGuia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB1C8E3F18B32085B059A10 /* Pods_TiGuia.framework */; };
 		8B2FA23125759D3D00EACCA0 /* MacroAreaMentorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FA23025759D3D00EACCA0 /* MacroAreaMentorViewController.swift */; };
 		8B2FA2352575A43D00EACCA0 /* MacroAreaMentorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FA2342575A43D00EACCA0 /* MacroAreaMentorView.swift */; };
@@ -137,6 +138,7 @@
 		47F3F00225637AF80007B7B1 /* CardCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCategory.swift; sourceTree = "<group>"; };
 		47FBE9E725E972EB005E9AD1 /* MacroAreaStudentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroAreaStudentViewController.swift; sourceTree = "<group>"; };
 		47FBE9EA25EC5433005E9AD1 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		57B02CE925ED85B100599284 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8B2FA23025759D3D00EACCA0 /* MacroAreaMentorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroAreaMentorViewController.swift; sourceTree = "<group>"; };
 		8B2FA2342575A43D00EACCA0 /* MacroAreaMentorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroAreaMentorView.swift; sourceTree = "<group>"; };
 		8B2FA2372575A91A00EACCA0 /* ConteudosMentorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConteudosMentorView.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				0831EFA22553497700D6EFFC /* Assets.xcassets */,
 				0831EFA42553497700D6EFFC /* LaunchScreen.storyboard */,
 				088320B7256DC2B5004D0C9C /* ExtensionColor.swift */,
+				57B02CE925ED85B100599284 /* GoogleService-Info.plist */,
 				0831EFA72553497700D6EFFC /* Info.plist */,
 				08A7103325543A17002CB323 /* Fonts */,
 			);
@@ -330,6 +333,7 @@
 				0831EF932553497600D6EFFC /* Frameworks */,
 				0831EF942553497600D6EFFC /* Resources */,
 				08F26C53255DBB4700DA3378 /* ShellScript */,
+				C2753143573C98A6E7A68CD3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -396,6 +400,7 @@
 				08A7105225543A17002CB323 /* Raleway-Black.ttf in Resources */,
 				08A7104625543A17002CB323 /* Raleway-BoldItalic.ttf in Resources */,
 				08A7104925543A17002CB323 /* Raleway-ExtraLight.ttf in Resources */,
+				57B02CEA25ED85B100599284 /* GoogleService-Info.plist in Resources */,
 				08A7104825543A17002CB323 /* Raleway-ThinItalic.ttf in Resources */,
 				08A7105325543A17002CB323 /* Raleway-BlackItalic.ttf in Resources */,
 			);
@@ -420,6 +425,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
+		C2753143573C98A6E7A68CD3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TiGuia/Pods-TiGuia-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TiGuia/Pods-TiGuia-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TiGuia/Pods-TiGuia-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		D95BBCAA3AE4DF4C036CE768 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

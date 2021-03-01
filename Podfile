@@ -6,6 +6,12 @@ target 'TiGuia' do
   use_frameworks!
 
   # Pods for TiGuia
-  pod ‘SwiftLint’
+  pod 'Resolver'
+  pod 'Disk', '~> 0.6.4'
+  pod 'Firebase/Auth' 
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
+  
 
 end
