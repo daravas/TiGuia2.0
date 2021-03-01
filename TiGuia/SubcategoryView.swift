@@ -212,31 +212,32 @@ public struct SubcategoryView: View {
                         } else {
                             Spacer(minLength: 30)
                         }
+                    //MARK: -Botao de pedir ajuda
                         
-                        VStack {
-                            Button(action: {
-                                self.showModal.toggle()
-                            }, label: {
-                                Spacer()
-                                Image(systemName: "ellipses.bubble")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .foregroundColor(.lightColor)
-                                    .frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                Text("Pedir ajuda")
-                                    .font(.custom("Raleway-Bold", size: 18))
-                                    .foregroundColor(.lightColor)
-                                Spacer()
-                                
-                            }).padding()
-                            .clipped()
-                            .background(Color.btnColor)
-                            .cornerRadius(10)
-                            .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                            //                        .fullScreenCover(isPresented: $presented, content: {
-                            //                            //HelpUI()
-                            //                        })
-                        }.padding()
+//                        VStack {
+//                            Button(action: {
+//                                self.showModal.toggle()
+//                            }, label: {
+//                                Spacer()
+//                                Image(systemName: "ellipses.bubble")
+//                                    .resizable()
+//                                    .scaledToFit()
+//                                    .foregroundColor(.lightColor)
+//                                    .frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+//                                Text("Pedir ajuda")
+//                                    .font(.custom("Raleway-Bold", size: 18))
+//                                    .foregroundColor(.lightColor)
+//                                Spacer()
+//
+//                            }).padding()
+//                            .clipped()
+//                            .background(Color.btnColor)
+//                            .cornerRadius(10)
+//                            .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+//                            //                        .fullScreenCover(isPresented: $presented, content: {
+//                            //                            //HelpUI()
+//                            //                        })
+//                        }.padding()
                         
                         Spacer(minLength: 20)
                         
