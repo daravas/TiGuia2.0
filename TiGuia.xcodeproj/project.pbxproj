@@ -59,6 +59,7 @@
 		47F3F00025636F160007B7B1 /* CardLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F3EFFF25636F160007B7B1 /* CardLink.swift */; };
 		47F3F00325637AF80007B7B1 /* CardCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F3F00225637AF80007B7B1 /* CardCategory.swift */; };
 		47FBE9E825E972EB005E9AD1 /* MacroAreaStudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBE9E725E972EB005E9AD1 /* MacroAreaStudentViewController.swift */; };
+		47FBE9EB25EC5433005E9AD1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBE9EA25EC5433005E9AD1 /* LoginView.swift */; };
 		65D0491140E1507108E211F7 /* Pods_TiGuia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB1C8E3F18B32085B059A10 /* Pods_TiGuia.framework */; };
 		8B2FA23125759D3D00EACCA0 /* MacroAreaMentorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FA23025759D3D00EACCA0 /* MacroAreaMentorViewController.swift */; };
 		8B2FA2352575A43D00EACCA0 /* MacroAreaMentorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FA2342575A43D00EACCA0 /* MacroAreaMentorView.swift */; };
@@ -135,6 +136,7 @@
 		47F3EFFF25636F160007B7B1 /* CardLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CardLink.swift; path = ../CardLink.swift; sourceTree = "<group>"; };
 		47F3F00225637AF80007B7B1 /* CardCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCategory.swift; sourceTree = "<group>"; };
 		47FBE9E725E972EB005E9AD1 /* MacroAreaStudentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroAreaStudentViewController.swift; sourceTree = "<group>"; };
+		47FBE9EA25EC5433005E9AD1 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8B2FA23025759D3D00EACCA0 /* MacroAreaMentorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroAreaMentorViewController.swift; sourceTree = "<group>"; };
 		8B2FA2342575A43D00EACCA0 /* MacroAreaMentorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroAreaMentorView.swift; sourceTree = "<group>"; };
 		8B2FA2372575A91A00EACCA0 /* ConteudosMentorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConteudosMentorView.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				082158DB256702F800E54196 /* OnboardingUI.swift */,
 				FE7FAE10257ACB9C0098587C /* HelpUI.swift */,
 				FEAA4400257E7F6800415E0E /* DoubtSentUI.swift */,
+				47FBE9EA25EC5433005E9AD1 /* LoginView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				082158DC256702F800E54196 /* OnboardingUI.swift in Sources */,
 				08FB145A256306DE0045919B /* StudentMentorUI.swift in Sources */,
 				47A2FC852565BBBC00A5013E /* Student.swift in Sources */,
+				47FBE9EB25EC5433005E9AD1 /* LoginView.swift in Sources */,
 				0890AF64256DCB9E00525E41 /* OnboardingViewController.swift in Sources */,
 				8BA5807925770A90007FE7B5 /* AreaMentor.swift in Sources */,
 				08A5C14F2579AF9C00180BA9 /* ConfigHostingController.swift in Sources */,
