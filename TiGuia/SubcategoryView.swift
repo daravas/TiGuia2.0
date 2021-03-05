@@ -54,7 +54,7 @@ public struct SubcategoryView: View {
             ScrollView {
                 ZStack(alignment: .center) {
                     GeometryReader { gmt in
-                        Image("tempTrilha")
+                        Image(category.imageCapa!)
                             .resizable()
                             .scaledToFill()
                             .frame(height: geometry.size.height, alignment: .center)

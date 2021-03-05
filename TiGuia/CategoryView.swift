@@ -30,7 +30,7 @@ struct CategoryView: View {
                 var category = Data.categories[categoryIndex] //nao sei se é aqui, mas acho que sim pq nos outros lugares nao pegava
                 ScrollView {
                     GeometryReader { gmt in
-                        Image("tempTrilha")
+                        Image("computacaoCapa")
                             .resizable()
                             .scaledToFill()
                             .frame(height: geometry.size.height, alignment: .center)

@@ -16,6 +16,7 @@ public class Subcategory: ObservableObject {
     var subcategories:[Subcategory]
     var favorite:Bool
     var visited:Bool
+    var imageCapa:String?
     @Published var checkMentor:Bool
     
     init() {

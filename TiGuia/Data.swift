@@ -49,6 +49,7 @@ class Data{
         self.subcategory.title = "Segurança da Informação"
         self.subcategory.content = "É a área responsável por montar uma  barreira de segurança para que dados não estejam ao alcance de golpistas e ataques digitais."
         self.subcategory.image = "seguranca da informacao"
+        self.subcategory.imageCapa = "segurancaCapa"
         
         //links
         //1
@@ -78,6 +79,7 @@ class Data{
         subcategorySI.title = "Análise de vulnerabilidade"
         subcategorySI.content = "A análise de vulnerabilidade trata do processo de identificação de brechas e de falhas presentes no ambiente e que acabam expondo-o a possíveis ameaças. Essa análise precisa identificar e acabar sistematicamente com as vulnerabilidades do sistema.\n\n Nesse processo, são considerados problemas de segurança de aplicativos de terceiros, as configurações de redes, softwares que apresentam potencial para causar futuras falhas em uma infraestrutura, entre outros. Sendo assim, faz o mapeamento de todos os sistemas que possam conter brechas e falhas e delimita esses resultados a partir de relatórios gerenciais e técnicos.\n\nDesse modo, com todos os dados mapeados, é possível atenuar as possíveis vulnerabilidades que foram encontradas."
         subcategorySI.image = "analise de vulnerabilidade 2"
+        subcategorySI.imageCapa = "segurancaCapa"
         
         //links
         //1
@@ -105,6 +107,8 @@ class Data{
         subcategorySI.title = "Testes de intrusão"
         subcategorySI.content = "Os testes de invasão, ou PenTests são um conjunto de técnicas e ferramentas utilizadas para identificar falhas de segurança em sistemas e redes corporativas. Através dessas técnicas, o profissional Pentester irá identificar as vulnerabilidades existentes na arquitetura da empresa, explorá-las e entregar um relatório à empresa, que deverá então tomar as devidas ações para corrigir as falhas de segurança.\n\n Um Pentest não é apenas um scaneamento de portas e vulnerabilidades, ele faz uso de softwares e ferramentas (pentest tools) para explorar as vulnerabilidades identificadas, buscando identificar que tipo de informação pode ser obtida através daquela falha."
         subcategorySI.image = "testes de intrusao"
+        subcategorySI.imageCapa = "segurancaCapa"
+
         
         //links
         //1
@@ -131,6 +135,8 @@ class Data{
         subcategorySI.title = "Auditoria de Segurança"
         subcategorySI.content = "A auditoria é uma avaliação sistemática da segurança do sistema de informações de uma empresa, medindo o quanto ele está em conformidade com um conjunto de critérios estabelecidos. Uma auditoria completa, normalmente, avalia a segurança da configuração da infraestrutura, do ambiente, dos sistemas, de softwares, dos processos de manipulação de informações e de práticas dos usuários.\n\n Essa medida se preocupa em como as políticas de segurança da empresa estão sendo aplicadas."
         subcategorySI.image = "auditoria de seguranca"
+        subcategorySI.imageCapa = "segurancaCapa"
+
         
         //links
         //1
@@ -159,6 +165,7 @@ class Data{
         self.subcategory.title = "Engenharia de Software"
         self.subcategory.content = "A Engenharia de Software capacita as pessoas com a utilização de teorias, técnicas e ferramentas da Ciência da Computação para a produção e desenvolvimento de sistemas de softwares.\n\n Os profissionais da engenharia de softare projetam e guiam o desenvolvimento de programas, aplicativos e sistemas, de forma que atendam aos requisitos e cumpram as funções determinadas.\n\n Entre as principais atribuições do engenheiro de software, estão:\n  - Desenvolver softwares e apps,\n  - Gerenciar projetos ligados aos softwares,\n  - Arquitetar o design estrutural dos programas, e\n  - Realizar testes nos sistemas.\n\n Além destas, estes engenheiros podem ter funções ligadas à administração de bancos de dados, manutenção dos sistemas e até algumas de documentação, relacionadas à gestão de projetos e à composição dos manuais de instruções."
         self.subcategory.image = "engenharia de software"
+        self.subcategory.imageCapa = "engdesoftwareCapa"
 
                 
         //links
@@ -190,6 +197,7 @@ class Data{
         subcategoryES.title = "Gerenciamento de projetos"
         subcategoryES.content = "Gestão de projetos é o conjunto de conhecimentos, habilidades, técnicas e ferramentas utilizadas para planejar, executar e monitorar um projeto. Está diretamente ligada a execução e controle do projeto, o gerenciamento de mudanças, alterações no escopo etc., portanto, tem o papel de garantir a finalização do projeto dentro dos recursos estimados ou o mais similar do que foi planejado inicialmente.\n\n De forma resumida: Gestão de Projetos nada mais é que o conjunto de conhecimento, técnicas, metodologias e habilidades para garantir o sucesso de um objetivo ou meta.\n\n O gerenciamento serve para que o projeto seja concluído com sucesso. Esse resultado é alcançado quando o projeto é finalizado e atende aos requisitos estabelecidos na etapa de planejamento do projeto. Isso quer dizer que, quando concluído, o resultado deve ser satisfatório em relação ao prazo e aos custos estabelecidos."
         subcategoryES.image = "gerenciamento de projetos"
+        subcategoryES.imageCapa = "engdesoftwareCapa"
         
         //links
         //1
@@ -216,6 +224,8 @@ class Data{
         subcategoryES.title = "Desenvolvimento WEB"
         subcategoryES.content = "O desenvolvimento web pode ser simplesmente definido como o conjunto de processos de criação de aplicativos e websites funcionais para a execução em navegadores web. Trata-se da criação de um software, seja ele um sistema, um app, um portal ou um site, que está conectado a uma rede, podendo ser internet ou intranet (uma rede interna).\n\n Softwares web são desenvolvidos para realizar operações em tempo real. Hoje, a maior parcela do que é desenvolvido é feito para web, permitindo conectividade, integração entre diferentes softwares e ações com resultados instantâneos.\n\n E o papel do desenvolvedor, nesse processo todo, é criar os códigos que definem tanto o que fica visível para as pessoas, quanto o que está escondido nos servidores. A parte visível para os usuários é codificada pelo desenvolvedor front-end, enquanto as regras de negócio, que são a parte lógica da aplicação que fica escondida nos servidores, são codificadas pelo desenvolvedor back-end."
         subcategoryES.image = "desenvolvimento web"
+        subcategoryES.imageCapa = "engdesoftwareCapa"
+
         
         //links
         //1
@@ -250,6 +260,8 @@ class Data{
         self.subcategory.title = "Ciência de Dados"
         self.subcategory.content = "A ciência de dados é o uso de diversas tecnologias, modelos e metodologias para capturar, armazenar e processar informações, extraindo valor dos dados e gerando valor a um negócio.\n\n Práticas da ciência de dados são aplicadas nos setores de produção, além de vendas, marketing, comunicação, financeiro, jurídico e qualquer área que você possa imaginar.Com tantos dados relevantes à disposição, um gestor tem muito mais subsídios para tomar suas decisões.Ele encontra insumos confiáveis e precisos com grande agilidade, diferente de quando os profissionais precisavam usar sobretudo da intuição ou, então, encomendar pesquisas demoradas, onerosas e nem tão precisas assim.\n\n Esses são alguns exemplos de aplicações práticas da ciência de dados.\n  - Texto: algoritmos podem ler em qualquer idioma e apresentar um resumo traduzido do conteúdo. Útil na área médica, no direito, marketing, jornalismo, segurança pública e outras áreas.\n  - Imagem: a análise automatizada de imagens acelera a detecção de doenças e reduz o tempo no hospital, auxilia na busca de pessoas perdidas e criminosos, facilita a análise do padrão de consumo dos clientes e marcação de ponto nas empresas, etc.\n  - Som: a captura e análise de informações sonoras pode ser usada por robôs de atendimento, no diagnóstico de doenças e para descobrir a opinião dos clientes"
         self.subcategory.image = "ciencia de dados"
+        self.subcategory.imageCapa = "cienciadedadosCapa"
+
         
         //links
         //1
@@ -278,6 +290,8 @@ class Data{
         self.subcategory.title = "Robótica"
         self.subcategory.content = "A robótica é uma ciência responsável por desenvolver tecnologias presentes em computadores, sistemas, softwares e robôs. Seus circuitos integrados controlam partes mecânicas e automáticas. A robótica é aplicada em indústrias há bastante tempo e isso deve ser cada vez mais frequente, afinal, em ambientes fabris, sobretudo em linhas de produção, as atividades são muito repetitivas.Quando seres humanos desempenham essas tarefas, há grandes chances de desgaste físico, acidentes e falhas.As máquinas, por sua vez, são capazes de executar as operações de maneira rápida e mais eficiente.\n\n Você já ouviu falar em cirurgia robótica? Trata-se de um procedimento cirúrgico feito por robôs.Dessa forma, pode ser conduzido por uma equipe médica a distância.A grande vantagem dessa técnica é que o risco de erro é nulo, uma vez que a máquina é programada para realizar a cirurgia com precisão.\n\n A robótica é aplicada também no contexto de tencologia espacial. As características distintas do ambiente extraterrestre não permitem que seres humanos saiam explorando por aí sem nenhum equipamento.Por essa razão, as máquinas são fundamentais para o estudo de planetas e outras áreas do Universo. Diversos robôs já saíram da superfície terrestre para investigar outros lugares.\n\n Além disso está presente também na automação residencial. Apagar e acender as lâmpadas da sua casa pelo aparelho celular são simples possibilidades da robótica quando o assunto é automação residencial.A tecnologia viabiliza uma série de tarefas, como controlar os equipamentos e sistemas dentro do lar."
         self.subcategory.image = "robotica"
+        self.subcategory.imageCapa = "roboticaCapa"
+
         
         //links
         //1
