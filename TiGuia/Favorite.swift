@@ -25,7 +25,7 @@ public class Favorites: ObservableObject {
     
     func addSubcategory(subcategory: Subcategory) {
         self.subcategories.append(subcategory)
-        print("adicionou caralho")
+        print("adicionou")
     }
     
     func removeSubcategory(subcategory: Subcategory) {
