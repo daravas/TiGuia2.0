@@ -86,6 +86,9 @@ struct DataOnboardingPage: View {
     var title: String
     
     // Conteudo do onboarding
+//    var titlesOnboarding = ["Explore seu futuro","Trilhe o seu caminho","Peça ajuda"]
+//    var descsOnboarding = ["Com TiGuia seu futuro está em suas mãos, ou melhor, no seu celular! \n Nos últimos anos, o mercado de trabalho mudou bastante e nós separamos as principais áreas em crescimento para você explorar.","Dispomos todo o conteúdo que você precisa, mas é você quem decide o que quer aprender! \n A trilha interativa registra sua evolução e te ajuda a decidir para onde deseja seguir.","Para ajudar na sua decisão, nossos mentores estarão à disposição. \n Uma conversa com profissionais e alunos da área pode sempre clarear nossa jornada, não é mesmo?"]
+//    var imagesOnboarding = ["screen1","screen2","screen3"]
     var titlesOnboarding = ["Explore seu futuro","Trilhe o seu caminho","Peça ajuda"]
     var descsOnboarding = ["Com TiGuia seu futuro está em suas mãos, ou melhor, no seu celular! \n Nos últimos anos, o mercado de trabalho mudou bastante e nós separamos as principais áreas em crescimento para você explorar.","Dispomos todo o conteúdo que você precisa, mas é você quem decide o que quer aprender! \n A trilha interativa registra sua evolução e te ajuda a decidir para onde deseja seguir.","Para ajudar na sua decisão, nossos mentores estarão à disposição. \n Uma conversa com profissionais e alunos da área pode sempre clarear nossa jornada, não é mesmo?"]
     var imagesOnboarding = ["screen1","screen2","screen3"]
