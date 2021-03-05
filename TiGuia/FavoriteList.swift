@@ -156,7 +156,7 @@ struct NothingHere: View {
                 .font(.custom("Raleway-Bold", size: 18))
                 .multilineTextAlignment(.leading)
                 .padding(.all, 2.0)
-            Text("Navegue pelo conteúdo na aba Trilha e veja se encontra algo legal :)")
+            Text("Navegue pelo conteúdo na aba Trilha e veja se encontra algo legal para salvar :)")
                 .foregroundColor(.darkColor)
                 .font(.custom("Raleway", size: 14))
                 .lineSpacing(2)

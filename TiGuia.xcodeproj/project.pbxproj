@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -69,6 +69,7 @@
 		8B3DAF4C25645094002FEE6E /* FavoriteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3DAF4B25645094002FEE6E /* FavoriteList.swift */; };
 		8B6140B625796E61009BAC19 /* PaginaConteudoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6140B525796E61009BAC19 /* PaginaConteudoView.swift */; };
 		8B69B122256F527300350705 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B69B121256F527300350705 /* StoreKit.framework */; };
+		8B6E6CF725F15F5E0079C195 /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6E6CF625F15F5E0079C195 /* ConfigView.swift */; };
 		8B8CC9562571911B00489CFB /* SubcategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8CC9552571911B00489CFB /* SubcategoryViewController.swift */; };
 		8BA5806D2576C33C007FE7B5 /* CardAreaMentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA5806C2576C33C007FE7B5 /* CardAreaMentor.swift */; };
 		8BA580702576C687007FE7B5 /* AreaMentorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA5806F2576C687007FE7B5 /* AreaMentorViewController.swift */; };
@@ -147,6 +148,7 @@
 		8B6140B525796E61009BAC19 /* PaginaConteudoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginaConteudoView.swift; sourceTree = "<group>"; };
 		8B6140BF25799024009BAC19 /* SubCardLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCardLink.swift; sourceTree = "<group>"; };
 		8B69B121256F527300350705 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		8B6E6CF625F15F5E0079C195 /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
 		8B8CC9552571911B00489CFB /* SubcategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubcategoryViewController.swift; sourceTree = "<group>"; };
 		8BA5806C2576C33C007FE7B5 /* CardAreaMentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAreaMentor.swift; sourceTree = "<group>"; };
 		8BA5806F2576C687007FE7B5 /* AreaMentorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaMentorViewController.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				FE7FAE10257ACB9C0098587C /* HelpUI.swift */,
 				FEAA4400257E7F6800415E0E /* DoubtSentUI.swift */,
 				47FBE9EA25EC5433005E9AD1 /* LoginView.swift */,
+				8B6E6CF625F15F5E0079C195 /* ConfigView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -424,7 +427,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PODS_ROOT}/SwiftLint/swiftlint\n";
+			shellScript = "
+";
 		};
 		C2753143573C98A6E7A68CD3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -517,6 +521,7 @@
 				47A2FC8B2565BBF800A5013E /* Subcategory.swift in Sources */,
 				47A2FC822565BB9E00A5013E /* Category.swift in Sources */,
 				087DCD7225784F96008C1667 /* TrailHostingController.swift in Sources */,
+				8B6E6CF725F15F5E0079C195 /* ConfigView.swift in Sources */,
 				088320B8256DC2B5004D0C9C /* ExtensionColor.swift in Sources */,
 				8B8CC9562571911B00489CFB /* SubcategoryViewController.swift in Sources */,
 				0869423A2580157E008A514C /* PaginaConteudoMentor.swift in Sources */,
