@@ -33,7 +33,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
         } else{
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "macroareaStudent")
+            let viewController = storyboard.instantiateViewController(withIdentifier: "firstVC")
             self.window?.rootViewController = viewController
             if (UserDefaults.standard.bool(forKey: "isDark") == false) {
                 self.window!.overrideUserInterfaceStyle = .light
