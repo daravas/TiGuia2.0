@@ -7,6 +7,8 @@
 
 import Foundation
 import SwiftUI
+import Firebase
+
 
 struct HelpUI: View {
     
@@ -86,6 +88,8 @@ struct HelpUI: View {
                             self.endEditing()
                             // funcao para mandar para o mentor
                             self.doubt = "Digite sua dúvida aqui."
+                            
+                            Analytics.logEvent("sent_doubt",parameters: nil)
                         }, label: {
                             Text("Enviar")
                                 .font(.custom("Raleway-Bold", size: 18.0))
@@ -117,6 +121,7 @@ struct HelpUI: View {
         }.onTapGesture {
             self.endEditing()
         }
+       
     }
     
     private func endEditing() {

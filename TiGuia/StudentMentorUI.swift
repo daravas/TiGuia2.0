@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SwiftUI
+import Firebase
 
 // Apresentar proxima tela: Macro Area NAO ESTA SENDO USADA
 //struct NextUI: UIViewControllerRepresentable {
@@ -48,9 +49,10 @@ struct StudentMentorUI: View {
             }
             
             VStack {
-                // botao 1
+                // botao 1 - Aluno
                 Button(action: {
                     self.presented.toggle()
+                    Analytics.setUserProperty(title[0], forName: "aluno_ou_mentor")
                 
                 }, label: {
                     HStack {
@@ -94,9 +96,10 @@ struct StudentMentorUI: View {
                     MacroAreaUI()
                 })
                 
-                // botao 2
+                // botao 2 - mentor
                 Button(action: {
                     self.presented2.toggle()
+                    Analytics.setUserProperty(title[1], forName: "aluno_ou_mentor")
                 
                 }, label: {
                     HStack {
