@@ -1,99 +1,111 @@
-//
+
 //  TaskRepository.swift
 //  TiGuia
 //
 //  Created by Meyrillan Silva on 02/03/21.
-//
+
 
 import Foundation
 import Firebase
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Combine
-import Resolver
 
-class FirestoreTaskRepository: BaseTaskRepository, TaskRepository, ObservableObject {
-  var db = Firestore.firestore()
-  
-  @Injected var authenticationService: AuthenticationService // (1)
-  var tasksPath: String = "tasks" // (2)
-  var userId: String = "unknown"
-  
-  private var cancellables = Set<AnyCancellable>()
-  
-  override init() {
-    super.init()
+class FavoriteTaskRepository: ObservableObject {
+    var db = Firestore.firestore()
     
-    authenticationService.$user // (3)
-      .compactMap { user in
-        user?.uid // (4)
-      }
-      .assign(to: \.userId, on: self) // (5)
-      .store(in: &cancellables)
+    @Published var tasksFavorite = [TaskFavorite]()
+    //  @Injected var authenticationService: AuthenticationService // (1)
+
+    private var cancellables = Set<AnyCancellable>()
     
-    // (re)load data if user changes
-    authenticationService.$user // (6)
-      .receive(on: DispatchQueue.main) // (7)
-      .sink { user in
-        self.loadData() // (8)
-      }
-      .store(in: &cancellables)
-  }
-  
-  private func loadData() {
-    db.collection(tasksPath)
-      .whereField("userId", isEqualTo: self.userId) // (9)
-      .order(by: "createdTime")
-      .addSnapshotListener { (querySnapshot, error) in
-        if let querySnapshot = querySnapshot {
-          self.tasks = querySnapshot.documents.compactMap { document -> Task? in
-            try? document.data(as: Task.self)
-          }
-        }
-      }
-  }
-  
-  func addTask(_ task: Task) {
+    //  override init() {
+    //    super.init()
+    
+    //    authenticationService.$user // (3)
+    //      .compactMap { user in
+    //        user?.uid // (4)
+    //      }
+    //      .assign(to: \.userId, on: self) // (5)
+    //      .store(in: &cancellables)
+    
+    //    // (re)load data if user changes
+    //    authenticationService.$user // (6)
+    //      .receive(on: DispatchQueue.main) // (7)
+    //      .sink { user in
+    //        self.loadData() // (8)
+    //      }
+    //      .store(in: &cancellables)
+    //  }
+    
+    init() {
+        loadData()
+    }
+    
+    private func loadData() {
+        let userId = Auth.auth().currentUser?.uid
+        
+        db.collection("tasksFavorite")
+            .order(by: "createdTime")
+            .whereField("userId", isEqualTo: userId)
+            .addSnapshotListener { (querySnapshot, error) in
+                if let querySnapshot = querySnapshot {
+                    self.tasksFavorite = querySnapshot.documents.compactMap { document in
+                        do {
+                            let x = try document.data(as: TaskFavorite.self)
+                            return x
+                        }
+                        catch {
+                            print(error)
+                        }
+                        return nil
+                    }
+                }
+            }
+    }
+
+  func addTask(_ task: TaskFavorite) {
     do {
-      var userTask = task
-      userTask.userId = self.userId // (10)
-      let _ = try db.collection(tasksPath).addDocument(from: userTask)
+        var addedTask = task
+        addedTask.userId = Auth.auth().currentUser?.uid
+      let _ = try db.collection("tasksFavorite").addDocument(from: addedTask)
     }
     catch {
       fatalError("Unable to encode task: \(error.localizedDescription).")
     }
   }
-  
-  func removeTask(_ task: Task) {
-    if let taskID = task.id {
-      db.collection(tasksPath).document(taskID).delete { (error) in
-        if let error = error {
-          print("Unable to remove document: \(error.localizedDescription)")
+
+    func updateTask(_ task: TaskFavorite) {
+        if let taskID = task.id {
+            do {
+                try db.collection("tasksFavorite").document(taskID).setData(from: task)
+            }
+            catch {
+                fatalError("Unable to encode task: \(error.localizedDescription).")
+            }
         }
-      }
     }
-  }
-  
-  func updateTask(_ task: Task) {
-    if let taskID = task.id {
-      do {
-        try db.collection(tasksPath).document(taskID).setData(from: task)
-      }
-      catch {
-        fatalError("Unable to encode task: \(error.localizedDescription).")
-      }
-    }
-  }
+    
+//    func removeTask(_ task: TaskFavorite) {
+//        if let taskID = task.id {
+//            db.collection("tasksFavorite").document(taskID).delete { (error) in
+//                if let error = error {
+//                    print("Unable to remove document: \(error.localizedDescription)")
+//                }
+//            }
+//        }
+//    }
 }
 
 
 
-class BaseTaskRepository {
-  @Published var tasks = [Task]()
-}
+//class BaseTaskRepository {
+//  @Published var tasksFavorite = [TaskFavorite]()
+//}
+//
+//protocol TaskRepository: BaseTaskRepository {
+//  func addTask(_ task: Task)
+//  func removeTask(_ task: Task)
+//  func updateTask(_ task: Task)
+//}
 
-protocol TaskRepository: BaseTaskRepository {
-  func addTask(_ task: Task)
-  func removeTask(_ task: Task)
-  func updateTask(_ task: Task)
-}
