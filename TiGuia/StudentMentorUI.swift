@@ -52,7 +52,7 @@ struct StudentMentorUI: View {
                 // botao 1 - Aluno
                 Button(action: {
                     self.presented.toggle()
-                    Analytics.setUserProperty(title[0], forName: "aluno_ou_mentor")
+                    Analytics.setUserProperty("Aluno", forName: "aluno_ou_mentor")
                 
                 }, label: {
                     HStack {
@@ -99,7 +99,7 @@ struct StudentMentorUI: View {
                 // botao 2 - mentor
                 Button(action: {
                     self.presented2.toggle()
-                    Analytics.setUserProperty(title[1], forName: "aluno_ou_mentor")
+                    Analytics.setUserProperty("Mentor", forName: "aluno_ou_mentor")
                 
                 }, label: {
                     HStack {
