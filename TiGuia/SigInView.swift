@@ -19,15 +19,28 @@ struct SignInView: View {
     @State var coordinator: SignInWithAppleCoordinator?
     
     var body: some View {
-        VStack {
-            Image("tiguia")
+        
+        VStack(alignment: .center) {
+            Image("logotiguia")
                 .resizable()
-                .frame(width: 200, height: 200, alignment: .center)
+                .frame(width: 96, height: 149)
+                .padding(.top, 80)
             
-            Spacer()
+            Text("Cadastre-se")
+                .font(.custom("Raleway-Bold", size: 30))
+                .foregroundColor(.titleColor)
+                .padding(.top, 25)
+            
+            Text("Ao entrar você terá acesso aos mentores que \n fazem parte da comunidade do TiGuia! \nUma conversa com profissionais e alunos da área \n pode te ajudar a entender melhor sobre o assunto\n e a tomar decisões.")
+                .font(.custom("Raleway", size: 14))
+                .foregroundColor(.darkColor)
+                .multilineTextAlignment(.center)
+                .padding([.top, .leading, .trailing])
+                .lineSpacing(2)
+            
             
             SignInWithAppleButton()
-                .frame(width: 280, height: 45)
+                .frame(width: 320, height: 45)
                 .onTapGesture { // (1)
                     
                     self.coordinator = SignInWithAppleCoordinator()
@@ -39,7 +52,10 @@ struct SignInView: View {
                     }
                     
                     //          self.signInWithAppleButtonTapped() // (2)
-                }
+                } .padding(.top, 40)
+                .cornerRadius(10)
+                .shadow(radius: 10)
+            Spacer()
         }
     }
     

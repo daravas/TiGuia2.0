@@ -70,7 +70,7 @@ struct OnboardingUI: View {
                 .clipped()
                 .background(Color.btnColor) // aqui precisou usar o Color.
                 .cornerRadius(10)
-                .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                .shadow(radius: 10)
                 .fullScreenCover(isPresented: $presented, content: {
                     NextSMUI()
                 })
