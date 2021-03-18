@@ -66,7 +66,6 @@
 		8B2DE8E825EEDD810077FB6C /* SigInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2DE8E725EEDD810077FB6C /* SigInView.swift */; };
 		8B2DE8EB25EEDF040077FB6C /* SignInWithAppleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2DE8EA25EEDF040077FB6C /* SignInWithAppleCoordinator.swift */; };
 		8B2DE8F225EEF7570077FB6C /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2DE8F125EEF7570077FB6C /* AuthenticationService.swift */; };
-		8B2DE8FA25EF203B0077FB6C /* AppDelegate+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2DE8F925EF203B0077FB6C /* AppDelegate+Injection.swift */; };
 		8B2DE90125EF2D3C0077FB6C /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2DE90025EF2D3C0077FB6C /* TaskRepository.swift */; };
 		8B2FA23125759D3D00EACCA0 /* MacroAreaMentorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FA23025759D3D00EACCA0 /* MacroAreaMentorViewController.swift */; };
 		8B2FA2352575A43D00EACCA0 /* MacroAreaMentorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FA2342575A43D00EACCA0 /* MacroAreaMentorView.swift */; };
@@ -155,7 +154,6 @@
 		8B2DE8E725EEDD810077FB6C /* SigInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigInView.swift; sourceTree = "<group>"; };
 		8B2DE8EA25EEDF040077FB6C /* SignInWithAppleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleCoordinator.swift; sourceTree = "<group>"; };
 		8B2DE8F125EEF7570077FB6C /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
-		8B2DE8F925EF203B0077FB6C /* AppDelegate+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Injection.swift"; sourceTree = "<group>"; };
 		8B2DE90025EF2D3C0077FB6C /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
 		8B2FA23025759D3D00EACCA0 /* MacroAreaMentorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroAreaMentorViewController.swift; sourceTree = "<group>"; };
 		8B2FA2342575A43D00EACCA0 /* MacroAreaMentorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroAreaMentorView.swift; sourceTree = "<group>"; };
@@ -220,6 +218,7 @@
 			children = (
 				8B2DE8E325EEDC2D0077FB6C /* TiGuia.entitlements */,
 				8B96400D25F950CB003FE8EE /* App */,
+				8B2DE8F025EEF6650077FB6C /* Services */,
 				8B2DE8FF25EF2D1E0077FB6C /* Repositories */,
 				47A2FC7E2565BB5300A5013E /* Model */,
 				8B82527625FA8ECE0060C653 /* ViewModels */,
@@ -231,7 +230,6 @@
 				088320B7256DC2B5004D0C9C /* ExtensionColor.swift */,
 				57B02CE925ED85B100599284 /* GoogleService-Info.plist */,
 				0831EFA72553497700D6EFFC /* Info.plist */,
-				8B2DE8F025EEF6650077FB6C /* Services */,
 				08A7103325543A17002CB323 /* Fonts */,
 			);
 			path = TiGuia;
@@ -272,7 +270,6 @@
 				47A2FC8D2565BC0A00A5013E /* Link.swift */,
 				47A2FC902565BC2900A5013E /* Favorite.swift */,
 				47A2FCA4256D9BF900A5013E /* Data.swift */,
-				8B2DE8EA25EEDF040077FB6C /* SignInWithAppleCoordinator.swift */,
 				8B82527F25FAB1FB0060C653 /* TaskFavorite.swift */,
 			);
 			name = Model;
@@ -357,6 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				8B2DE8F125EEF7570077FB6C /* AuthenticationService.swift */,
+				8B2DE8EA25EEDF040077FB6C /* SignInWithAppleCoordinator.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -382,7 +380,6 @@
 			isa = PBXGroup;
 			children = (
 				0831EF992553497600D6EFFC /* AppDelegate.swift */,
-				8B2DE8F925EF203B0077FB6C /* AppDelegate+Injection.swift */,
 				0831EF9B2553497600D6EFFC /* SceneDelegate.swift */,
 			);
 			path = App;
@@ -562,7 +559,6 @@
 				8B6140B625796E61009BAC19 /* PaginaConteudoView.swift in Sources */,
 				0890F06A257EB3AB009A7C90 /* ChatMentorHostingController.swift in Sources */,
 				8B82528025FAB1FB0060C653 /* TaskFavorite.swift in Sources */,
-				8B2DE8FA25EF203B0077FB6C /* AppDelegate+Injection.swift in Sources */,
 				08A5C1522579B12100180BA9 /* MacroAreaStudentHostingController.swift in Sources */,
 				8BF09B862562FB8300D881D9 /* FavoriteViewController.swift in Sources */,
 				FE7FAE11257ACB9C0098587C /* HelpUI.swift in Sources */,

@@ -13,6 +13,7 @@ struct FavoriteView: View {
     @ObservedObject var taskFavoriteListVM = FavoriteListViewModel()
     
     @State var presentAddNewItem = false
+    @State var showSignInForm = false
     
     var body: some View {
         VStack {
@@ -53,9 +54,18 @@ struct FavoriteView: View {
                             }
                             
                         }
+                        .sheet(isPresented: $showSignInForm) {
+                            SignInView()
+                        }
+                        .navigationBarItems(trailing: Button( action: {
+                            self.showSignInForm.toggle()
+                        }, label: {
+                            Image(systemName: "person.circle")
+                        }))
                     }
                     .edgesIgnoringSafeArea(.bottom)
                     .navigationBarTitle("")
+                    
                     
                 }
                 
