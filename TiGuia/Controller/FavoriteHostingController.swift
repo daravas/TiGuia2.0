@@ -9,13 +9,14 @@ import Foundation
 import UIKit
 import SwiftUI
 
-class FavoriteHostingController: UIHostingController<FavoriteView> {
+class FavoriteHostingController: UIHostingController<Favorite> {
 
     required init?(coder: NSCoder) {
-        super.init(coder: coder,rootView: FavoriteView());
+        super.init(coder: coder,rootView: Favorite());
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 }
+
