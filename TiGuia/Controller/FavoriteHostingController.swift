@@ -19,3 +19,4 @@ class FavoriteHostingController: UIHostingController<Favorite> {
         super.viewDidLoad()
     }
 }
+
