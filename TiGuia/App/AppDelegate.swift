@@ -21,9 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if Auth.auth().currentUser == nil {
         Auth.auth().signInAnonymously()
         }
-        
-//        authenticationService.signIn()
-        
+                
         return true
     }
 

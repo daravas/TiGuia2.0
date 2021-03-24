@@ -1,15 +1,15 @@
 //
-//  SigInView.swift
+//  SigInViewMentor.swift
 //  TiGuia
 //
-//  Created by Meyrillan Silva on 02/03/21.
+//  Created by Meyrillan Silva on 24/03/21.
 //
 
 import Foundation
 import SwiftUI
 
 
-struct SignInView: View {
+struct SignInMentorView: View {
     //  @Environment(\.window) var window: UIWindow?
     @Environment(\.presentationMode) var presentationMode
     //
@@ -31,7 +31,7 @@ struct SignInView: View {
                 .foregroundColor(.titleColor)
                 .padding(.top, 25)
             
-            Text("Ao entrar você terá acesso aos mentores que \n fazem parte da comunidade do TiGuia! \nUma conversa com profissionais e alunos da área \n pode te ajudar a entender melhor sobre o assunto\n e a tomar decisões.")
+            Text("Ao entrar você receberá as perguntas dos alunos que se interessam sobre a área de Computação!\n Faça parte da comunidade do TiGuia, você ajudará pessoas a encontrarem um caminho a seguir, fazendo-as compreender as áreas em que você atua.")
                 .font(.custom("Raleway", size: 14))
                 .foregroundColor(.darkColor)
                 .multilineTextAlignment(.center)
@@ -69,9 +69,9 @@ struct SignInView: View {
     //  }
 }
 
-struct SignInView_Previews: PreviewProvider {
+struct SignInViewMentor_Previews: PreviewProvider {
     static var previews: some View {
-        SignInView()
+        SignInMentorView()
     }
 }
 

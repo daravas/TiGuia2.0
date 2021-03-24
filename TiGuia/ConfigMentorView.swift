@@ -1,17 +1,16 @@
 //
-//  ConfigView.swift
+//  ConfigMentorView.swift
 //  TiGuia
 //
-//  Created by Meyrillan Silva on 04/03/21.
+//  Created by Meyrillan Silva on 24/03/21.
 //
 
+import Foundation
 import UIKit
 import SwiftUI
 import Firebase
 
-struct ConfigView: View {
-    
-    @State var condition = Auth.auth().currentUser?.isEmailVerified
+struct ConfigMentorView: View {
     
     var body: some View {
         VStack {
@@ -25,7 +24,7 @@ struct ConfigView: View {
             
             VStack{
                 
-                if (condition == false) {
+                if (Auth.auth().currentUser?.isEmailVerified == false) {
                     HStack{
                         Image(systemName: "person" )
                             .frame(width: 20, height: 20)
@@ -59,7 +58,7 @@ struct ConfigView: View {
                 ToggleDarkModeView()
                 Spacer()
                 
-                if (condition == true) {
+                if (Auth.auth().currentUser?.isEmailVerified == true) {
                     SignOutView()
                 }
                 
@@ -117,7 +116,7 @@ struct ConfigView: View {
             .foregroundColor(.darkColor)
             .padding([.top, .bottom])
             .fullScreenCover(isPresented: $showSignInForm) {
-                SignInView()
+                SignInMentorView()
             }
             
         }
@@ -135,7 +134,6 @@ struct ConfigView: View {
                     print("Error Signing Out")
                 }
                 
-                
             }, label: {
                 Text("Sair")
                     .font(.custom("Raleway-SemiBold", size: 18))
@@ -151,7 +149,7 @@ struct ConfigView: View {
 }
 
 
-struct ConfigView_Previews: PreviewProvider {
+struct ConfigMentorView_Previews: PreviewProvider {
     static var previews: some View {
         ConfigView()
     }

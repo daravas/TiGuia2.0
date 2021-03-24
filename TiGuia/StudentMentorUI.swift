@@ -29,6 +29,9 @@ struct StudentMentorUI: View {
     @State var presented2 = false
     //@State var selection: Int? = nil
     
+    @State private var showSignInForm = false
+
+    
     var image = ["person", "person.2"]
     var title = ["Aluno", "Mentor"]
     var descrip = ["Se você quer explorar a área da tecnologia e ainda tirar suas dúvidas com um mentor.", "Se você quer ajudar pessoas que têm interesse na sua área."]
@@ -98,8 +101,12 @@ struct StudentMentorUI: View {
                 
                 // botao 2 - mentor
                 Button(action: {
-                    self.presented2.toggle()
-                    Analytics.setUserProperty("Mentor", forName: "aluno_ou_mentor")
+                    if (Auth.auth().currentUser?.isEmailVerified == false) {
+                        showSignInForm.toggle()
+                    } else {
+                        Analytics.setUserProperty("Mentor", forName: "aluno_ou_mentor")
+                        self.presented2.toggle()
+                    }
                 
                 }, label: {
                     HStack {
@@ -137,11 +144,13 @@ struct StudentMentorUI: View {
                     .cornerRadius(10)
                 }).padding(.bottom, 20.0)
                 .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                .fullScreenCover(isPresented: $showSignInForm) {
+                    SignInMentorView()
+                }
                 .fullScreenCover(isPresented: $presented2, content: {
                     //choices(selection: index)
                     MacroAreaMentorUIView()
                 })
-                
                 
             }.padding()
             
