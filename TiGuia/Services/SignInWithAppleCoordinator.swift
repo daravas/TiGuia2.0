@@ -92,6 +92,7 @@ extension SignInWithAppleCoordinator: ASAuthorizationControllerDelegate {
         })
     }
   }
+    
 
   func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
     // Handle error.

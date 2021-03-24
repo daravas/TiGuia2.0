@@ -9,10 +9,10 @@ import Foundation
 import UIKit
 import SwiftUI
 
-class ConfigMentorHostingController: UIHostingController<TempUI> {
+class ConfigMentorHostingController: UIHostingController<ConfigMentorView> {
 
     required init?(coder: NSCoder) {
-        super.init(coder: coder,rootView: TempUI());
+        super.init(coder: coder,rootView: ConfigMentorView());
     }
 
     override func viewDidLoad() {

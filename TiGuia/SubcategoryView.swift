@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 import SwiftUI
 //titulo, conteúdo, links, cards subcategorias, btn favorito
@@ -16,6 +17,7 @@ public struct SubcategoryView: View {
     @State var completed: Bool = false
     @State var isExpanded: Bool = false
     @State var truncated: Bool = false
+    @State private var showSignInForm = false
     
     //var category = Data().returnCategory()
     
@@ -212,11 +214,15 @@ public struct SubcategoryView: View {
                         } else {
                             Spacer(minLength: 30)
                         }
-                    //MARK: -Botao de pedir ajuda
+                        //MARK: -Botao de pedir ajuda
                         
                         VStack {
                             Button(action: {
-                                self.showModal.toggle()
+                                if (Auth.auth().currentUser?.isEmailVerified == false) {
+                                    showSignInForm.toggle()
+                                } else {
+                                    self.showModal.toggle()
+                                }
                             }, label: {
                                 Spacer()
                                 Image(systemName: "ellipses.bubble")
@@ -228,15 +234,19 @@ public struct SubcategoryView: View {
                                     .font(.custom("Raleway-Bold", size: 18))
                                     .foregroundColor(.lightColor)
                                 Spacer()
-
+                                
                             }).padding()
                             .clipped()
                             .background(Color.btnColor)
                             .cornerRadius(10)
                             .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                                                    .fullScreenCover(isPresented: $presented, content: {
-                                                        //HelpUI()
-                                                    })
+                            .fullScreenCover(isPresented: $presented, content: {
+                                //HelpUI()
+                            })
+                            .fullScreenCover(isPresented: $showSignInForm) {
+                                SignInView()
+                            }
+                            
                         }.padding()
                         
                         Spacer(minLength: 20)
