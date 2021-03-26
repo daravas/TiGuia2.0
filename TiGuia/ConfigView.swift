@@ -66,6 +66,8 @@ struct ConfigView: View {
             }
             .padding()
         }
+        
+    
     }
     
     struct ToggleModel {
