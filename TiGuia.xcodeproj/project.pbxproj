@@ -289,6 +289,7 @@
 		47A2FC7F2565BB5E00A5013E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				08FB1459256306DE0045919B /* StudentMentorUI.swift */,
 				47F3F00225637AF80007B7B1 /* CardCategory.swift */,
 				08631441257704B00083DB37 /* SubCardLink.swift */,
 				47F3EFFF25636F160007B7B1 /* CardLink.swift */,
@@ -305,7 +306,6 @@
 				086942392580157E008A514C /* PaginaConteudoMentor.swift */,
 				8B3DAF4B25645094002FEE6E /* FavoriteList.swift */,
 				08A5C14A25799DBF00180BA9 /* TempUI.swift */,
-				08FB1459256306DE0045919B /* StudentMentorUI.swift */,
 				08DD48FF2564898E00BEF67C /* MacroAreaUI.swift */,
 				082158DB256702F800E54196 /* OnboardingUI.swift */,
 				FE7FAE10257ACB9C0098587C /* HelpUI.swift */,

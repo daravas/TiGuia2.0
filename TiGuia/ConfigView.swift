@@ -11,6 +11,7 @@ import Firebase
 
 struct ConfigView: View {
     
+    @ObservedObject var userAuth = UserAuth()
     @State var condition = Auth.auth().currentUser?.isEmailVerified
     
     var body: some View {
@@ -25,7 +26,7 @@ struct ConfigView: View {
             
             VStack{
                 
-                if (condition == false) {
+                if (userAuth.isSigned == false) {
                     HStack{
                         Image(systemName: "person" )
                             .frame(width: 20, height: 20)
@@ -40,7 +41,7 @@ struct ConfigView: View {
                     Divider().frame(height: 1).background(Color.titleColor)
                     
                     
-                    AccountView()
+                    AccountView(userAuth: userAuth)
                 }
                 
                 HStack{
@@ -59,15 +60,15 @@ struct ConfigView: View {
                 ToggleDarkModeView()
                 Spacer()
                 
-                if (condition == true) {
-                    SignOutView()
+                if (userAuth.isSigned == true) {
+                    SignOutView(userAuth: userAuth)
                 }
                 
             }
             .padding()
         }
         
-    
+        
     }
     
     struct ToggleModel {
@@ -98,6 +99,8 @@ struct ConfigView: View {
     
     struct AccountView: View {
         
+        @ObservedObject var userAuth: UserAuth
+        
         @State private var showSignInForm = false
         
         var body: some View {
@@ -119,13 +122,15 @@ struct ConfigView: View {
             .foregroundColor(.darkColor)
             .padding([.top, .bottom])
             .fullScreenCover(isPresented: $showSignInForm) {
-                SignInView()
+                SignInView(userAuth: userAuth)
             }
             
         }
     }
     
     struct SignOutView: View {
+        
+        @ObservedObject var userAuth: UserAuth
         
         var body: some View {
             
@@ -136,7 +141,7 @@ struct ConfigView: View {
                 } catch {
                     print("Error Signing Out")
                 }
-                
+                userAuth.isSigned.toggle()
                 
             }, label: {
                 Text("Sair")
@@ -144,7 +149,7 @@ struct ConfigView: View {
                     .frame(width: 90, height: 50)
                     .foregroundColor(.btnColor)
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(UIColor(.btnColor)), lineWidth: 2)
-                    .shadow(radius: 10))
+                                .shadow(radius: 10))
                     .padding(.bottom,40)
             })
         }

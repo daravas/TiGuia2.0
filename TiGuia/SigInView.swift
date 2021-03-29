@@ -16,6 +16,8 @@ struct SignInView: View {
     //  @State var signInHandler: SignInWithAppleCoordinator?
     //
     
+    @ObservedObject var userAuth: UserAuth
+    
     @State private var showNameView = false
     
     
@@ -50,8 +52,9 @@ struct SignInView: View {
                     if let coordinator = self.coordinator {
                         coordinator.startSignInWithAppleFlow {
                             print("You successfully signed in")
-                            self.presentationMode.wrappedValue.dismiss()
-                            showNameView.toggle()
+                            presentationMode.wrappedValue.dismiss()
+                            userAuth.isSigned.toggle()
+//                            showNameView.toggle()
                         }
                     }
                     
@@ -60,9 +63,9 @@ struct SignInView: View {
                 .cornerRadius(10)
                 .shadow(radius: 10)
             Spacer()
-                .fullScreenCover(isPresented: $showNameView) {
-                    RequestNameView()
-                }
+//                .fullScreenCover(isPresented: $showNameView) {
+//                    RequestNameView()
+//                }
         }
 
     }
@@ -79,7 +82,7 @@ struct SignInView: View {
 
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
-        SignInView()
+        SignInView(userAuth: UserAuth())
     }
 }
 
