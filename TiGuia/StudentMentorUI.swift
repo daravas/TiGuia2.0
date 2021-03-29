@@ -21,6 +21,13 @@ import Firebase
 //    }
 //}
 
+// verifica se o usuario ta logado
+class UserAuth: ObservableObject {
+    
+    @Published var isSigned = Auth.auth().currentUser?.isEmailVerified ?? false
+    
+}
+
 // MARK: - Tela de estudante e mentor
 struct StudentMentorUI: View {
     
