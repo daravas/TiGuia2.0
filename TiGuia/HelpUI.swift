@@ -15,7 +15,7 @@ struct HelpUI: View {
     @Binding var showModal: Bool
     @State var doubt: String = "Digite sua dúvida aqui."
     @Binding var completed: Bool
-    
+    @ObservedObject var chatroomViewModel = ChatroomViewModel()
     
     var body: some View {
         
@@ -83,6 +83,10 @@ struct HelpUI: View {
                         
                         
                         Button(action: {
+                            print(doubt)
+                            chatroomViewModel.createChatroom(studentId: Auth.auth().currentUser!.uid, studentName: "Victor", chatArea: "Robótica",message: doubt, handler: {
+                                
+                            })
                             self.completed.toggle()
                             self.showModal.toggle()
                             self.endEditing()

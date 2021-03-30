@@ -220,11 +220,11 @@ public struct SubcategoryView: View {
                         
                         VStack {
                             Button(action: {
-                                if (Auth.auth().currentUser?.isEmailVerified == false) {
-                                    showSignInForm.toggle()
-                                } else {
+//                                if (Auth.auth().currentUser?.isEmailVerified == false) {
+//                                    showSignInForm.toggle()
+//                                } else {
                                     self.showModal.toggle()
-                                }
+//                                }
                             }, label: {
                                 Spacer()
                                 Image(systemName: "ellipses.bubble")

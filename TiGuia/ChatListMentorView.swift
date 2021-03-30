@@ -62,13 +62,13 @@ struct ChatListMentorView: View {
                 
                 
                 
-                
-                Text("Alunos aguardando por mentor")
-                    .font(.custom("Raleway-Regular", size: 18))
-                    .foregroundColor(blackColor)
-                    .padding(.horizontal)
-                List(chatViewModel.newChatrooms){ chatroom in
-//                    NavigationLink(destination: ChatMentorUI(chatroom: chatroom, handler:{}).navigationBarHidden(true)){
+                if(chatViewModel.newChatrooms.count>0){
+                    Text("Alunos aguardando por mentor")
+                        .font(.custom("Raleway-Regular", size: 18))
+                        .foregroundColor(blackColor)
+                        .padding(.horizontal)
+                    List(chatViewModel.newChatrooms){ chatroom in
+                        //                    NavigationLink(destination: ChatMentorUI(chatroom: chatroom, handler:{}).navigationBarHidden(true)){
                         VStack{
                             HStack{
                                 Text(chatroom.studentName)
@@ -85,7 +85,9 @@ struct ChatListMentorView: View {
                         }
                         
                         
-                    //}
+                        //}
+                        
+                    }
                     
                 }
                 

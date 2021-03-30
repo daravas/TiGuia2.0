@@ -66,13 +66,14 @@ class ChatroomViewModel: ObservableObject{
     
     
         
-        func createChatroom(studentId: String, studentName:String, chatArea: String, handler: @escaping () -> Void?){
+    func createChatroom(studentId: String, studentName:String, chatArea: String, message: String, handler: @escaping () -> Void?){
             if(user != nil){
-                db.collection("mentoria").addDocument(data: [
+                var collection = db.collection("mentoria").addDocument(data: [
                     "studentId": studentId,
                     "studentName": studentName,
                     "chatArea": chatArea,
-                    "users": [user!.uid]
+                    "users": [user!.uid],
+                    "mentorId": ""
                     
                 ]){err in
                     if let err = err {
@@ -81,7 +82,11 @@ class ChatroomViewModel: ObservableObject{
                     else{
                         handler()
                     }
+                    
                 }
+                var messagesViewModel = MessagesViewModel()
+                messagesViewModel.sendMessage(messageContent: message, docId: collection.documentID)
+                
             }
             
         }

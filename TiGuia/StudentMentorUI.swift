@@ -109,12 +109,12 @@ struct StudentMentorUI: View {
                 
                 // botao 2 - mentor
                 Button(action: {
-                    if (Auth.auth().currentUser?.isEmailVerified == false) {
-                        showSignInForm.toggle()
-                    } else {
+                    //if (Auth.auth().currentUser?.isEmailVerified == false) {
+                    //    showSignInForm.toggle()
+                    //} else {
                         Analytics.setUserProperty("Mentor", forName: "aluno_ou_mentor")
                         self.presented2.toggle()
-                    }
+                    //}
                 
                 }, label: {
                     HStack {
