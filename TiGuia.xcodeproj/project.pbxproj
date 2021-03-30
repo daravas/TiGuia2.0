@@ -47,6 +47,8 @@
 		08FB145A256306DE0045919B /* StudentMentorUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FB1459256306DE0045919B /* StudentMentorUI.swift */; };
 		08FB145D25630E720045919B /* StudentMentorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FB145C25630E720045919B /* StudentMentorViewController.swift */; };
 		4741B04925702A90008B0873 /* CardCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4741B04825702A90008B0873 /* CardCategoryViewController.swift */; };
+		477E4A1B2612A72300D1F58E /* MentorCategoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477E4A1A2612A72300D1F58E /* MentorCategoryRepository.swift */; };
+		477E4A1E2612C97100D1F58E /* MentorCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477E4A1D2612C97100D1F58E /* MentorCategoryViewModel.swift */; };
 		4780500325630A4F0004919D /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4780500225630A4F0004919D /* CategoryView.swift */; };
 		47A2FC822565BB9E00A5013E /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A2FC812565BB9E00A5013E /* Category.swift */; };
 		47A2FC852565BBBC00A5013E /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A2FC842565BBBC00A5013E /* Student.swift */; };
@@ -135,6 +137,8 @@
 		08FB145C25630E720045919B /* StudentMentorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMentorViewController.swift; sourceTree = "<group>"; };
 		34EEFAA7AAED50B9A86EC451 /* Pods-TiGuia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TiGuia.release.xcconfig"; path = "Target Support Files/Pods-TiGuia/Pods-TiGuia.release.xcconfig"; sourceTree = "<group>"; };
 		4741B04825702A90008B0873 /* CardCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCategoryViewController.swift; sourceTree = "<group>"; };
+		477E4A1A2612A72300D1F58E /* MentorCategoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorCategoryRepository.swift; sourceTree = "<group>"; };
+		477E4A1D2612C97100D1F58E /* MentorCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorCategoryViewModel.swift; sourceTree = "<group>"; };
 		4780500225630A4F0004919D /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		47A2FC812565BB9E00A5013E /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		47A2FC842565BBBC00A5013E /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
@@ -363,6 +367,7 @@
 			isa = PBXGroup;
 			children = (
 				8B2DE90025EF2D3C0077FB6C /* TaskRepository.swift */,
+				477E4A1A2612A72300D1F58E /* MentorCategoryRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -372,6 +377,7 @@
 			children = (
 				8B82528225FAB5720060C653 /* TaskFavoriteViewModel.swift */,
 				8B82528525FAB5980060C653 /* TaskFavoriteListViewModel.swift */,
+				477E4A1D2612C97100D1F58E /* MentorCategoryViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -558,6 +564,7 @@
 				8B2FA2352575A43D00EACCA0 /* MacroAreaMentorView.swift in Sources */,
 				8B6140B625796E61009BAC19 /* PaginaConteudoView.swift in Sources */,
 				0890F06A257EB3AB009A7C90 /* ChatMentorHostingController.swift in Sources */,
+				477E4A1B2612A72300D1F58E /* MentorCategoryRepository.swift in Sources */,
 				8B82528025FAB1FB0060C653 /* TaskFavorite.swift in Sources */,
 				08A5C1522579B12100180BA9 /* MacroAreaStudentHostingController.swift in Sources */,
 				8BF09B862562FB8300D881D9 /* FavoriteViewController.swift in Sources */,
@@ -595,6 +602,7 @@
 				8B2DE8EB25EEDF040077FB6C /* SignInWithAppleCoordinator.swift in Sources */,
 				8B8CC9562571911B00489CFB /* SubcategoryViewController.swift in Sources */,
 				0869423A2580157E008A514C /* PaginaConteudoMentor.swift in Sources */,
+				477E4A1E2612C97100D1F58E /* MentorCategoryViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

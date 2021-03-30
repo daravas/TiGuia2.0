@@ -11,6 +11,8 @@ import SwiftUI
 struct SubAreaMentorView: View {
     @State private var favorito: Bool = false
     @State private var presented: Bool = false
+    @ObservedObject var mentorCategoryVM = MentorCategoryViewModel()
+
     
     var category = Data().returnCategory()
     var subAreasEscolhidas: [Subcategory]
@@ -61,6 +63,7 @@ struct SubAreaMentorView: View {
                 }
                 
                 Button(action: {
+                    self.mentorCategoryVM.addSubcategory(subcategories: AreaMentorView.mentor.subAreas)
                     self.presented.toggle()
                     
                 }, label: {
