@@ -63,7 +63,7 @@
 		57B02CEA25ED85B100599284 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57B02CE925ED85B100599284 /* GoogleService-Info.plist */; };
 		65D0491140E1507108E211F7 /* Pods_TiGuia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB1C8E3F18B32085B059A10 /* Pods_TiGuia.framework */; };
 		8B2DE8E525EEDCC80077FB6C /* SignInWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2DE8E425EEDCC80077FB6C /* SignInWithAppleButton.swift */; };
-		8B2DE8E825EEDD810077FB6C /* SigInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2DE8E725EEDD810077FB6C /* SigInView.swift */; };
+		8B2DE8E825EEDD810077FB6C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2DE8E725EEDD810077FB6C /* SignInView.swift */; };
 		8B2DE8EB25EEDF040077FB6C /* SignInWithAppleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2DE8EA25EEDF040077FB6C /* SignInWithAppleCoordinator.swift */; };
 		8B2DE90125EF2D3C0077FB6C /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2DE90025EF2D3C0077FB6C /* TaskRepository.swift */; };
 		8B2FA23125759D3D00EACCA0 /* MacroAreaMentorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FA23025759D3D00EACCA0 /* MacroAreaMentorViewController.swift */; };
@@ -72,6 +72,8 @@
 		8B2FA23B2575A94F00EACCA0 /* ConteudosMentorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2FA23A2575A94F00EACCA0 /* ConteudosMentorViewController.swift */; };
 		8B3DAF4C25645094002FEE6E /* FavoriteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3DAF4B25645094002FEE6E /* FavoriteList.swift */; };
 		8B6140B625796E61009BAC19 /* PaginaConteudoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6140B525796E61009BAC19 /* PaginaConteudoView.swift */; };
+		8B640D90261678DC00B4B35A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B640D8F261678DC00B4B35A /* User.swift */; };
+		8B640D93261679D400B4B35A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B640D92261679D400B4B35A /* UserViewModel.swift */; };
 		8B69B122256F527300350705 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B69B121256F527300350705 /* StoreKit.framework */; };
 		8B6E6CF725F15F5E0079C195 /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6E6CF625F15F5E0079C195 /* ConfigView.swift */; };
 		8B73A110260BE4A500E00420 /* RequestNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B73A10F260BE4A500E00420 /* RequestNameView.swift */; };
@@ -86,7 +88,7 @@
 		8BB67236257814A600CF22DB /* SubAreaMentorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB67235257814A600CF22DB /* SubAreaMentorViewController.swift */; };
 		8BB672392578264100CF22DB /* SubAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB672382578264100CF22DB /* SubAreaView.swift */; };
 		8BB6723D25783B6200CF22DB /* CardSubAreaMentorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB6723C25783B6200CF22DB /* CardSubAreaMentorView.swift */; };
-		8BC2CB0B260BB6B400B7E9C1 /* SigInMentorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC2CB0A260BB6B400B7E9C1 /* SigInMentorView.swift */; };
+		8BC2CB0B260BB6B400B7E9C1 /* SignInMentorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC2CB0A260BB6B400B7E9C1 /* SignInMentorView.swift */; };
 		8BC2CB0E260BD15C00B7E9C1 /* ConfigMentorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC2CB0D260BD15C00B7E9C1 /* ConfigMentorView.swift */; };
 		8BF09B862562FB8300D881D9 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF09B852562FB8300D881D9 /* FavoriteViewController.swift */; };
 		FE7FAE11257ACB9C0098587C /* HelpUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7FAE10257ACB9C0098587C /* HelpUI.swift */; };
@@ -153,7 +155,7 @@
 		57B02CE925ED85B100599284 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8B2DE8E325EEDC2D0077FB6C /* TiGuia.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TiGuia.entitlements; sourceTree = "<group>"; };
 		8B2DE8E425EEDCC80077FB6C /* SignInWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButton.swift; sourceTree = "<group>"; };
-		8B2DE8E725EEDD810077FB6C /* SigInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigInView.swift; sourceTree = "<group>"; };
+		8B2DE8E725EEDD810077FB6C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		8B2DE8EA25EEDF040077FB6C /* SignInWithAppleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleCoordinator.swift; sourceTree = "<group>"; };
 		8B2DE90025EF2D3C0077FB6C /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
 		8B2FA23025759D3D00EACCA0 /* MacroAreaMentorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroAreaMentorViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +165,8 @@
 		8B3DAF4B25645094002FEE6E /* FavoriteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteList.swift; sourceTree = "<group>"; };
 		8B6140B525796E61009BAC19 /* PaginaConteudoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginaConteudoView.swift; sourceTree = "<group>"; };
 		8B6140BF25799024009BAC19 /* SubCardLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCardLink.swift; sourceTree = "<group>"; };
+		8B640D8F261678DC00B4B35A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8B640D92261679D400B4B35A /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		8B69B121256F527300350705 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		8B6E6CF625F15F5E0079C195 /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
 		8B73A10F260BE4A500E00420 /* RequestNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestNameView.swift; sourceTree = "<group>"; };
@@ -177,7 +181,7 @@
 		8BB67235257814A600CF22DB /* SubAreaMentorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubAreaMentorViewController.swift; sourceTree = "<group>"; };
 		8BB672382578264100CF22DB /* SubAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubAreaView.swift; sourceTree = "<group>"; };
 		8BB6723C25783B6200CF22DB /* CardSubAreaMentorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSubAreaMentorView.swift; sourceTree = "<group>"; };
-		8BC2CB0A260BB6B400B7E9C1 /* SigInMentorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigInMentorView.swift; sourceTree = "<group>"; };
+		8BC2CB0A260BB6B400B7E9C1 /* SignInMentorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInMentorView.swift; sourceTree = "<group>"; };
 		8BC2CB0D260BD15C00B7E9C1 /* ConfigMentorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigMentorView.swift; sourceTree = "<group>"; };
 		8BF09B852562FB8300D881D9 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		ADB1C8E3F18B32085B059A10 /* Pods_TiGuia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TiGuia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -275,6 +279,7 @@
 				47A2FC902565BC2900A5013E /* Favorite.swift */,
 				47A2FCA4256D9BF900A5013E /* Data.swift */,
 				8B82527F25FAB1FB0060C653 /* TaskFavorite.swift */,
+				8B640D8F261678DC00B4B35A /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 		47A2FC7F2565BB5E00A5013E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				082158DB256702F800E54196 /* OnboardingUI.swift */,
 				08FB1459256306DE0045919B /* StudentMentorUI.swift */,
 				47F3F00225637AF80007B7B1 /* CardCategory.swift */,
 				08631441257704B00083DB37 /* SubCardLink.swift */,
@@ -300,14 +306,13 @@
 				8B3DAF4B25645094002FEE6E /* FavoriteList.swift */,
 				08A5C14A25799DBF00180BA9 /* TempUI.swift */,
 				08DD48FF2564898E00BEF67C /* MacroAreaUI.swift */,
-				082158DB256702F800E54196 /* OnboardingUI.swift */,
 				FE7FAE10257ACB9C0098587C /* HelpUI.swift */,
 				FEAA4400257E7F6800415E0E /* DoubtSentUI.swift */,
 				47FBE9EA25EC5433005E9AD1 /* LoginView.swift */,
 				8B82528825FAB68C0060C653 /* FavoriteView.swift */,
 				8B2DE8E425EEDCC80077FB6C /* SignInWithAppleButton.swift */,
-				8B2DE8E725EEDD810077FB6C /* SigInView.swift */,
-				8BC2CB0A260BB6B400B7E9C1 /* SigInMentorView.swift */,
+				8B2DE8E725EEDD810077FB6C /* SignInView.swift */,
+				8BC2CB0A260BB6B400B7E9C1 /* SignInMentorView.swift */,
 				8B6E6CF625F15F5E0079C195 /* ConfigView.swift */,
 				8BC2CB0D260BD15C00B7E9C1 /* ConfigMentorView.swift */,
 				8B73A10F260BE4A500E00420 /* RequestNameView.swift */,
@@ -378,6 +383,7 @@
 			children = (
 				8B82528225FAB5720060C653 /* TaskFavoriteViewModel.swift */,
 				8B82528525FAB5980060C653 /* TaskFavoriteListViewModel.swift */,
+				8B640D92261679D400B4B35A /* UserViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -549,13 +555,13 @@
 				FEAA4401257E7F6800415E0E /* DoubtSentUI.swift in Sources */,
 				8B2DE90125EF2D3C0077FB6C /* TaskRepository.swift in Sources */,
 				47F3F00025636F160007B7B1 /* CardLink.swift in Sources */,
-				8B2DE8E825EEDD810077FB6C /* SigInView.swift in Sources */,
+				8B2DE8E825EEDD810077FB6C /* SignInView.swift in Sources */,
 				8B2FA23B2575A94F00EACCA0 /* ConteudosMentorViewController.swift in Sources */,
 				4780500325630A4F0004919D /* CategoryView.swift in Sources */,
 				47F3F00325637AF80007B7B1 /* CardCategory.swift in Sources */,
 				47A2FC8E2565BC0A00A5013E /* Link.swift in Sources */,
 				08A5C143257999C000180BA9 /* FavoriteHostingController.swift in Sources */,
-				8BC2CB0B260BB6B400B7E9C1 /* SigInMentorView.swift in Sources */,
+				8BC2CB0B260BB6B400B7E9C1 /* SignInMentorView.swift in Sources */,
 				8B82528625FAB5980060C653 /* TaskFavoriteListViewModel.swift in Sources */,
 				4741B04925702A90008B0873 /* CardCategoryViewController.swift in Sources */,
 				8B3DAF4C25645094002FEE6E /* FavoriteList.swift in Sources */,
@@ -590,6 +596,7 @@
 				8B2FA2382575A91A00EACCA0 /* ConteudosMentorView.swift in Sources */,
 				47A2FCA1256D9A8000A5013E /* SubcategoryView.swift in Sources */,
 				8BB672392578264100CF22DB /* SubAreaView.swift in Sources */,
+				8B640D90261678DC00B4B35A /* User.swift in Sources */,
 				8BA5806D2576C33C007FE7B5 /* CardAreaMentor.swift in Sources */,
 				8B82528925FAB68C0060C653 /* FavoriteView.swift in Sources */,
 				08A5C14725799CAA00180BA9 /* ChatHostingController.swift in Sources */,
@@ -599,6 +606,7 @@
 				47A2FC822565BB9E00A5013E /* Category.swift in Sources */,
 				087DCD7225784F96008C1667 /* TrailHostingController.swift in Sources */,
 				8B6E6CF725F15F5E0079C195 /* ConfigView.swift in Sources */,
+				8B640D93261679D400B4B35A /* UserViewModel.swift in Sources */,
 				088320B8256DC2B5004D0C9C /* ExtensionColor.swift in Sources */,
 				8B2DE8EB25EEDF040077FB6C /* SignInWithAppleCoordinator.swift in Sources */,
 				8B8CC9562571911B00489CFB /* SubcategoryViewController.swift in Sources */,

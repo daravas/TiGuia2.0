@@ -19,7 +19,7 @@ public struct SubcategoryView: View {
     @State var truncated: Bool = false
     @State private var showSignInForm = false
     
-    @ObservedObject var userAuth = UserAuth()
+    @StateObject var userAuth = UserAuth()
     
     //var category = Data().returnCategory()
     
@@ -247,7 +247,7 @@ public struct SubcategoryView: View {
                             })
                             .fullScreenCover(isPresented: $showSignInForm) {
                                 //Pode dar bugs, falta verificar!
-                                SignInView(userAuth: userAuth)
+                                SignInView().environmentObject(userAuth)
                             }
                             
                         }.padding()

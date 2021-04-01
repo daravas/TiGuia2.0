@@ -11,8 +11,9 @@ import Firebase
 
 struct ConfigView: View {
     
-    @ObservedObject var userAuth = UserAuth()
-    @State var condition = Auth.auth().currentUser?.isEmailVerified
+    @StateObject var userAuth = UserAuth()
+    
+//    @State var condition = Auth.auth().currentUser?.isEmailVerified
     
     var body: some View {
         VStack {
@@ -68,7 +69,7 @@ struct ConfigView: View {
             .padding()
         }
         
-        
+        .environmentObject(userAuth)
     }
     
     struct ToggleModel {
@@ -99,7 +100,7 @@ struct ConfigView: View {
     
     struct AccountView: View {
         
-        @ObservedObject var userAuth: UserAuth
+        @StateObject var userAuth: UserAuth
         
         @State private var showSignInForm = false
         
@@ -122,7 +123,7 @@ struct ConfigView: View {
             .foregroundColor(.darkColor)
             .padding([.top, .bottom])
             .fullScreenCover(isPresented: $showSignInForm) {
-                SignInView(userAuth: userAuth)
+                SignInView()
             }
             
         }
@@ -130,7 +131,7 @@ struct ConfigView: View {
     
     struct SignOutView: View {
         
-        @ObservedObject var userAuth: UserAuth
+        @StateObject var userAuth: UserAuth
         
         var body: some View {
             
@@ -138,10 +139,10 @@ struct ConfigView: View {
                 
                 do {
                     try Auth.auth().signOut()
+                    userAuth.isSigned = false
                 } catch {
                     print("Error Signing Out")
                 }
-                userAuth.isSigned.toggle()
                 
             }, label: {
                 Text("Sair")

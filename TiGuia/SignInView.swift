@@ -10,16 +10,12 @@ import SwiftUI
 
 
 struct SignInView: View {
-    //  @Environment(\.window) var window: UIWindow?
-    @Environment(\.presentationMode) var presentationMode
-    //
-    //  @State var signInHandler: SignInWithAppleCoordinator?
-    //
     
-    @ObservedObject var userAuth: UserAuth
+    @Environment(\.presentationMode) var presentationMode
+
+    @StateObject var userAuth = UserAuth()
     
     @State private var showNameView = false
-    
     
     @State var coordinator: SignInWithAppleCoordinator?
     
@@ -52,13 +48,12 @@ struct SignInView: View {
                     if let coordinator = self.coordinator {
                         coordinator.startSignInWithAppleFlow {
                             print("You successfully signed in")
+                            userAuth.isSigned = true
                             presentationMode.wrappedValue.dismiss()
-                            userAuth.isSigned.toggle()
 //                            showNameView.toggle()
                         }
                     }
                     
-                    //          self.signInWithAppleButtonTapped() // (2)
                 } .padding(.top, 40)
                 .cornerRadius(10)
                 .shadow(radius: 10)
@@ -70,19 +65,11 @@ struct SignInView: View {
 
     }
     
-    //  func signInWithAppleButtonTapped() {
-    //    signInHandler = SignInWithAppleCoordinator(window: self.window)
-    //    signInHandler?.link { (user) in
-    //      print("User signed in \(user.uid)")
-    
-    //      self.presentationMode.wrappedValue.dismiss() // (3)
-    //    }
-    //  }
 }
 
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
-        SignInView(userAuth: UserAuth())
+        SignInView()
     }
 }
 

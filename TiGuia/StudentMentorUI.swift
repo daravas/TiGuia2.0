@@ -31,6 +31,8 @@ class UserAuth: ObservableObject {
 // MARK: - Tela de estudante e mentor
 struct StudentMentorUI: View {
     
+    @EnvironmentObject var userAuth: UserAuth
+        
     // @State var didTap = false
     @State var presented = false
     @State var presented2 = false
@@ -108,8 +110,8 @@ struct StudentMentorUI: View {
                 
                 // botao 2 - mentor
                 Button(action: {
-                    if (Auth.auth().currentUser?.isEmailVerified == false) {
-                        showSignInForm.toggle()
+                    if (userAuth.isSigned == false) {
+                        showSignInForm = true
                     } else {
                         Analytics.setUserProperty("Mentor", forName: "aluno_ou_mentor")
                         self.presented2.toggle()
