@@ -12,8 +12,13 @@ import Firebase
 struct ConfigView: View {
     
     @StateObject var userAuth = UserAuth()
+    @ObservedObject var userViewModel = UserViewModel()
     
 //    @State var condition = Auth.auth().currentUser?.isEmailVerified
+    
+    init(){
+        userViewModel.fetchData(isSigned: Auth.auth().currentUser!.isEmailVerified)
+    }
     
     var body: some View {
         VStack {
@@ -26,8 +31,27 @@ struct ConfigView: View {
             .padding(.top, 40)
             
             VStack{
-                
-                if (userAuth.isSigned == false) {
+                if(userViewModel.user.count > 0){
+                    if (!userViewModel.user[0].isSigned) {
+                        HStack{
+                            Image(systemName: "person" )
+                                .frame(width: 20, height: 20)
+                                .font(.system(size: 20))
+                                .foregroundColor(.titleColor)
+                            
+                            Text("Conta")
+                                .font(.custom("Raleway-Bold", size: 20))
+                                .foregroundColor(.titleColor)
+                            Spacer()
+                        }
+                        Divider().frame(height: 1).background(Color.titleColor)
+                        
+                        
+                        AccountView(userAuth: userAuth,userVM: userViewModel)
+                    }
+                    
+                }
+                else{
                     HStack{
                         Image(systemName: "person" )
                             .frame(width: 20, height: 20)
@@ -42,7 +66,7 @@ struct ConfigView: View {
                     Divider().frame(height: 1).background(Color.titleColor)
                     
                     
-                    AccountView(userAuth: userAuth)
+                    AccountView(userAuth: userAuth, userVM: userViewModel)
                 }
                 
                 HStack{
@@ -60,11 +84,14 @@ struct ConfigView: View {
                 Divider().frame(height: 1).background(Color.titleColor)
                 ToggleDarkModeView()
                 Spacer()
-                
-                if (userAuth.isSigned == true) {
-                    SignOutView(userAuth: userAuth)
+                if(userViewModel.user.count > 0){
+                    if (userViewModel.user[0].isSigned) {
+                        SignOutView(userAuth: userAuth, userVM: userViewModel)
+                    }
                 }
-                
+                else{
+                    
+                }
             }
             .padding()
         }
@@ -101,7 +128,7 @@ struct ConfigView: View {
     struct AccountView: View {
         
         @StateObject var userAuth: UserAuth
-        
+        @ObservedObject var userVM: UserViewModel
         @State private var showSignInForm = false
         
         var body: some View {
@@ -123,7 +150,7 @@ struct ConfigView: View {
             .foregroundColor(.darkColor)
             .padding([.top, .bottom])
             .fullScreenCover(isPresented: $showSignInForm) {
-                SignInView()
+                SignInView(userViewModel: userVM)
             }
             
         }
@@ -132,6 +159,7 @@ struct ConfigView: View {
     struct SignOutView: View {
         
         @StateObject var userAuth: UserAuth
+        @ObservedObject var userVM: UserViewModel
         
         var body: some View {
             
@@ -140,6 +168,7 @@ struct ConfigView: View {
                 do {
                     try Auth.auth().signOut()
                     userAuth.isSigned = false
+                    userVM.sendData(isSigned: false)
                 } catch {
                     print("Error Signing Out")
                 }

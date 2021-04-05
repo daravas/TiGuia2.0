@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Firebase
 
 
 struct SignInView: View {
@@ -18,6 +19,10 @@ struct SignInView: View {
     @State private var showNameView = false
     
     @State var coordinator: SignInWithAppleCoordinator?
+    
+    @ObservedObject var userViewModel: UserViewModel
+    
+    
     
     var body: some View {
         
@@ -49,6 +54,7 @@ struct SignInView: View {
                         coordinator.startSignInWithAppleFlow {
                             print("You successfully signed in")
                             userAuth.isSigned = true
+                            userViewModel.sendData(isSigned: true)
                             presentationMode.wrappedValue.dismiss()
 //                            showNameView.toggle()
                         }
