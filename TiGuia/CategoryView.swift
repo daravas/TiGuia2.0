@@ -7,6 +7,7 @@
 
 //import Foundation
 import SwiftUI
+import Firebase
 //titulo, conteúdo, links, cards subcategorias, btn favorito
 struct CategoryView: View {
     @State private var favorito: Bool = false
@@ -21,8 +22,11 @@ struct CategoryView: View {
     // VARIAVEL QUE INICIALIZA TODOS OS DADOS - MOVER E APAGAR DEPOIS
     // ta sendo inicalizada na macroarea ate agora
     var socorro = Data()
-    
-    
+    @ObservedObject var userVM = UserViewModel()
+    init(categoryIndex: Int){
+        self.categoryIndex = categoryIndex
+        userVM.fetchData(isSigned: Auth.auth().currentUser!.isEmailVerified)
+    }
     
     var body: some View {
         NavigationView {
@@ -104,7 +108,7 @@ struct CategoryView: View {
                                 VStack {
                                     LazyVStack {
                                         ForEach(0..<category.subcategories.count, id: \.self) { count in
-                                            CardsCategory(category: category, count: count)
+                                            CardsCategory(userVM: userVM, category: category, count: count)
                                         }
                                     }
                                 }.padding()
@@ -196,11 +200,11 @@ struct CategoryView: View {
 //        }
 //    }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        CategoryView(categoryIndex: 0)
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CategoryView(categoryIndex: 0)
+//    }
+//}
 
 // MARK: - arrendondar bordas especificas
 extension View {

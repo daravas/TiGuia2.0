@@ -18,8 +18,8 @@ public struct SubcategoryView: View {
     @State var isExpanded: Bool = false
     @State var truncated: Bool = false
     @State private var showSignInForm = false
-    
-    @StateObject var userAuth = UserAuth()
+    @ObservedObject var userVM: UserViewModel
+//    @StateObject var userAuth = UserAuth()
     
     //var category = Data().returnCategory()
     
@@ -209,7 +209,7 @@ public struct SubcategoryView: View {
                             VStack {
                                 LazyVStack {
                                     ForEach(0..<category.subcategories.count, id: \.self) { count in
-                                        SubCardsCategory(category: category, count: count)
+                                        SubCardsCategory(category: category, count: count, userVM: userVM)
                                     }
                                 }
                             }.padding()
@@ -220,7 +220,7 @@ public struct SubcategoryView: View {
                         
                         VStack {
                             Button(action: {
-                                if (Auth.auth().currentUser?.isEmailVerified == false) {
+                                if (userVM.user[0].isSigned == false) {
                                     showSignInForm.toggle()
                                 } else {
                                     self.showModal.toggle()
@@ -247,7 +247,7 @@ public struct SubcategoryView: View {
                             })
                             .fullScreenCover(isPresented: $showSignInForm) {
                                 //Pode dar bugs, falta verificar!
-                                SignInView().environmentObject(userAuth)
+                              SignInView(userViewModel: userVM)
                             }
                             
                         }.padding()
