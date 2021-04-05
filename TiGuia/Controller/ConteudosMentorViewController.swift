@@ -39,7 +39,7 @@ import SwiftUI
 class ConteudoHostingController: UIHostingController<ConteudoMentorView> {
 
     required init?(coder: NSCoder) {
-        super.init(coder: coder,rootView: ConteudoMentorView( subAreasEscolhidas: AreaMentorView.mentor.subAreas));
+        super.init(coder: coder,rootView: ConteudoMentorView());
     }
 
     override func viewDidLoad() {

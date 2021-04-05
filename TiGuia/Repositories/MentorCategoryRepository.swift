@@ -13,8 +13,10 @@ import Combine
 
 class MentorCategoryRepository: ObservableObject {
     var db = Firestore.firestore()
-    
+    let userId = Auth.auth().currentUser?.uid
+
     @Published var categories = [Subcategory]()
+    var links = [Link]()
     //  @Injected var authenticationService: AuthenticationService // (1)
     
     private var cancellables = Set<AnyCancellable>()
@@ -39,48 +41,97 @@ class MentorCategoryRepository: ObservableObject {
     //  }
     
     init() {
-        loadData()
+        //fetchCategories(userId: userId!)
     }
     
-    private func loadData() {
-//                let userId = Auth.auth().currentUser?.uid
-//        
-//                db.collection("categoria")
-//                    .whereField("userId", isEqualTo: userId)
-//                    .addSnapshotListener { (querySnapshot, error) in
-//                        if let querySnapshot = querySnapshot {
-//                            self.tasksFavorite = querySnapshot.documents.compactMap { document in
-//                                do {
-//                                    let x = try document.data(as: TaskFavorite.self)
-//                                    return x
-//                                }
-//                                catch {
-//                                    print(error)
-//                                }
-//                                return nil
-//                            }
-//                        }
-//                    }
+    func fetchCategories(userId:String){
+            db.collection("categoria").whereField("mentores", arrayContains: userId).addSnapshotListener({(snapshot, error) in
+                  guard let documents = snapshot?.documents else {
+                      print("No docs returnd")
+                      return
+                  }
+                  self.categories = documents.map({docSnapshot -> Subcategory in
+                      let data = docSnapshot.data()
+                      let docId = docSnapshot.documentID
+                      let title = data["title"] as? String ?? ""
+                      let content = data["content"] as? String ?? ""
+                      let image = data["image"] as? String ?? ""
+                    let links = self.fetchLinks(docId: docId)
+
+                      return Subcategory(title: title, content: content, links: links,image: image)
+                  })
+                  
+              })
+          
     }
+    
+    func fetchLinks(docId:String) -> [Link]{
+        /*db.collection("cities").whereField("capital", isEqualTo: true)
+         .getDocuments() { (querySnapshot, err) in
+             if let err = err {
+                 print("Error getting documents: \(err)")
+             } else {
+                 for document in querySnapshot!.documents {
+                     print("\(document.documentID) => \(document.data())")
+                 }
+             }
+     }*/
+        
+        db.collection("categoria").document(docId).collection("link").addSnapshotListener({(snapshot, error) in
+              guard let documents = snapshot?.documents else {
+                  print("No docs returnd")
+                  return
+              }
+              self.links = documents.map({docSnapshot -> Link in
+                  let data = docSnapshot.data()
+                  let docId = docSnapshot.documentID
+                  let title = data["title"] as? String ?? ""
+                  let url = data["url"] as? String ?? ""
+                  let image = data["image"] as? String ?? ""
+                  return Link(titulo: title, url: url, image: image)
+              })
+              
+          })
+        
+        return self.links
+    }
+        
+
     
     func addSubcategory(_ subcategory: Subcategory, userId:String) {
-        //var userId = Auth.auth().currentUser?.uid ?? "default user"
-        //adiciona categoria -> adiciona links -> adiciona mentor
+       
         let docData: [String: Any] = [
             "content": subcategory.content,
             "image": subcategory.image,
-            "title": subcategory.title
+            "title": subcategory.title,
+            "mentores": [userId]
         ]
-        let mentorData: [String:Any]=[
-            "nome": "nome provisorio"
-        ]
+        
         var linkData: [String: Any]=[:]
         
-        db.collection("categoria").document(subcategory.title).setData(docData) { err in
-            if let err = err {
-                print("Error writing document: \(err)")
-            } else {
-                print("Document successfully written!")
+       
+        db.collection("categoria").document(subcategory.title).getDocument(){(snapshot, error) in
+            if let error = error {
+                print("error getting documents: \(error)")
+            }
+            else {
+                if snapshot?.exists ?? false{
+                    self.db.collection("categoria").document(snapshot!.documentID).updateData([
+                        "mentores": FieldValue.arrayUnion([userId]),
+                        "content": subcategory.content,
+                        "image": subcategory.image,
+                        "title": subcategory.title
+                    ])
+                }else{
+                    self.db.collection("categoria").document(subcategory.title).setData(docData) { err in
+                        if let err = err {
+                            print("Error writing document: \(err)")
+                        } else {
+                            print("Document successfully written!")
+                        }
+                    }
+                }
+                
             }
         }
         
@@ -94,13 +145,11 @@ class MentorCategoryRepository: ObservableObject {
                 if let err = err {
                     print("Error writing document: \(err)")
                 } else {
-                    print("Document successfully written!")
+                    print("Document Link successfully written!")
                 }
             }
         }
-        
-        db.collection("categoria/\(subcategory.title)/mentor").document(userId).setData(mentorData)
-        
+
     }
     
     func updateTask(_ task: TaskFavorite) {

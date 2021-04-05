@@ -46,10 +46,15 @@ class MentorCategoryViewModel: ObservableObject, Identifiable {
 //            .store(in: &cancellables)
     }
     func addSubcategory(subcategories: [Subcategory]) {
-        var userId = Auth.auth().currentUser?.uid ?? "default user"
+        let userId = Auth.auth().currentUser?.uid ?? "default user"
         for subcategory in subcategories{
             mentorCategoryRepository.addSubcategory(subcategory,userId: userId)
         }
+    }
+    func loadData(){
+        let userId = Auth.auth().currentUser?.uid ?? "default user"
+
+        mentorCategoryRepository.fetchCategories(userId: userId)
     }
     
 }
