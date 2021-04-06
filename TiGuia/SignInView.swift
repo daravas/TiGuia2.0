@@ -27,6 +27,14 @@ struct SignInView: View {
     var body: some View {
         
         VStack(alignment: .center) {
+            Button(action: {
+    //
+                self.presentationMode.wrappedValue.dismiss()
+            }) {
+                Image(systemName: "chevron.backward")
+                    .foregroundColor(buttonColor)
+                    .padding(.trailing, 370.0)
+            }
             Image("logotiguia")
                 .resizable()
                 .frame(width: 96, height: 149)
