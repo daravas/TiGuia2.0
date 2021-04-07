@@ -11,7 +11,10 @@ import SwiftUI
 import Firebase
 
 struct ConfigMentorView: View {
-    
+    @ObservedObject var userViewModel = UserViewModel()
+    init(){
+        userViewModel.fetchData(isSigned: Auth.auth().currentUser!.isEmailVerified)
+    }
     var body: some View {
         VStack {
             HStack {
@@ -23,8 +26,27 @@ struct ConfigMentorView: View {
             .padding(.top, 40)
             
             VStack{
-                
-                if (Auth.auth().currentUser?.isEmailVerified == false) {
+                if(userViewModel.user.count > 0){
+                    if (!userViewModel.user[0].isSigned) {
+                        HStack{
+                            Image(systemName: "person" )
+                                .frame(width: 20, height: 20)
+                                .font(.system(size: 20))
+                                .foregroundColor(.titleColor)
+                            
+                            Text("Conta")
+                                .font(.custom("Raleway-Bold", size: 20))
+                                .foregroundColor(.titleColor)
+                            Spacer()
+                        }
+                        Divider().frame(height: 1).background(Color.titleColor)
+                        
+                        
+                        AccountView(userVM: userViewModel)
+                    }
+                    
+                }
+                else{
                     HStack{
                         Image(systemName: "person" )
                             .frame(width: 20, height: 20)
@@ -39,7 +61,7 @@ struct ConfigMentorView: View {
                     Divider().frame(height: 1).background(Color.titleColor)
                     
                     
-                    AccountView()
+                    AccountView(userVM: userViewModel)
                 }
                 
                 HStack{
@@ -47,7 +69,6 @@ struct ConfigMentorView: View {
                         .frame(width: 20, height: 20)
                         .font(.system(size: 20))
                         .foregroundColor(.titleColor)
-                    
                     Text("Aparência")
                         .font(.custom("Raleway-Bold", size: 20))
                         .foregroundColor(.titleColor)
@@ -58,8 +79,10 @@ struct ConfigMentorView: View {
                 ToggleDarkModeView()
                 Spacer()
                 
-                if (Auth.auth().currentUser?.isEmailVerified == true) {
-                    SignOutView()
+                if(userViewModel.user.count > 0){
+                    if (userViewModel.user[0].isSigned) {
+                        SignOutView(userVM: userViewModel)
+                    }
                 }
                 
             }
@@ -96,6 +119,7 @@ struct ConfigMentorView: View {
     struct AccountView: View {
         
         @State private var showSignInForm = false
+        @ObservedObject var userVM: UserViewModel
         
         var body: some View {
             
@@ -116,20 +140,21 @@ struct ConfigMentorView: View {
             .foregroundColor(.darkColor)
             .padding([.top, .bottom])
             .fullScreenCover(isPresented: $showSignInForm) {
-                SignInMentorView()
+                SignInMentorView(userVM: userVM)
             }
             
         }
     }
     
     struct SignOutView: View {
-        
+        @ObservedObject var userVM: UserViewModel
         var body: some View {
             
             Button(action: {
                 
                 do {
                     try Auth.auth().signOut()
+                    userVM.sendData(isSigned: false)
                 } catch {
                     print("Error Signing Out")
                 }

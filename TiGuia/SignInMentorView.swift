@@ -13,12 +13,20 @@ struct SignInMentorView: View {
     
     @Environment(\.presentationMode) var presentationMode
 
-    
+    @ObservedObject var userVM: UserViewModel
     @State var coordinator: SignInWithAppleCoordinator?
     
     var body: some View {
-        
+        let buttonColor = Color(red: 28/255, green: 118/255, blue: 144/255, opacity: 1.0)
         VStack(alignment: .center) {
+            Button(action: {
+    //
+                self.presentationMode.wrappedValue.dismiss()
+            }) {
+                Image(systemName: "chevron.backward")
+                    .foregroundColor(buttonColor)
+                    .padding(.trailing, 370.0)
+            }
             Image("logotiguia")
                 .resizable()
                 .frame(width: 96, height: 149)
@@ -45,6 +53,7 @@ struct SignInMentorView: View {
                     if let coordinator = self.coordinator {
                         coordinator.startSignInWithAppleFlow {
                             print("You successfully signed in")
+                            userVM.sendData(isSigned: true)
                             self.presentationMode.wrappedValue.dismiss()
                             
                         }
@@ -59,9 +68,9 @@ struct SignInMentorView: View {
     }
 }
 
-struct SignInViewMentor_Previews: PreviewProvider {
-    static var previews: some View {
-        SignInMentorView()
-    }
-}
+//struct SignInViewMentor_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SignInMentorView()
+//    }
+//}
 
