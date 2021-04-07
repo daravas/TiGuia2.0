@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct MentorSubcategory {
+    var title:String
+    var content:String
+    var image:String?
+    var docId:String
+}

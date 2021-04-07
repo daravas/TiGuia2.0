@@ -15,8 +15,8 @@ class MentorCategoryRepository: ObservableObject {
     var db = Firestore.firestore()
     let userId = Auth.auth().currentUser?.uid
 
-    @Published var categories = [Subcategory]()
-    var links = [Link]()
+    @Published var categories = [MentorSubcategory]()
+    @Published var links = [Link]()
     //  @Injected var authenticationService: AuthenticationService // (1)
     
     private var cancellables = Set<AnyCancellable>()
@@ -50,22 +50,22 @@ class MentorCategoryRepository: ObservableObject {
                       print("No docs returnd")
                       return
                   }
-                  self.categories = documents.map({docSnapshot -> Subcategory in
+                  self.categories = documents.map({docSnapshot -> MentorSubcategory in
                       let data = docSnapshot.data()
                       let docId = docSnapshot.documentID
                       let title = data["title"] as? String ?? ""
                       let content = data["content"] as? String ?? ""
                       let image = data["image"] as? String ?? ""
-                    let links = self.fetchLinks(docId: docId)
+                    //let links = self.fetchLinks(docId: docId)
 
-                      return Subcategory(title: title, content: content, links: links,image: image)
+                    return MentorSubcategory(title: title, content: content,image: image, docId: docId)
                   })
                   
               })
           
     }
     
-    func fetchLinks(docId:String) -> [Link]{
+    func fetchLinks(docId:String){
         /*db.collection("cities").whereField("capital", isEqualTo: true)
          .getDocuments() { (querySnapshot, err) in
              if let err = err {
@@ -88,12 +88,12 @@ class MentorCategoryRepository: ObservableObject {
                   let title = data["title"] as? String ?? ""
                   let url = data["url"] as? String ?? ""
                   let image = data["image"] as? String ?? ""
+                print(title)
                   return Link(titulo: title, url: url, image: image)
               })
               
           })
         
-        return self.links
     }
         
 
