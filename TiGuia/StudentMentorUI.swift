@@ -53,7 +53,7 @@ struct StudentMentorUI: View {
                 Button(action: {
                     self.presented.toggle()
                     Analytics.setUserProperty("Aluno", forName: "aluno_ou_mentor")
-                    UserDefaults.standard.set("aluno", forKey: "perfil")
+                    UserDefaults.standard.set("true", forKey: "eAluno")
 
                 }, label: {
                     HStack {
@@ -101,7 +101,7 @@ struct StudentMentorUI: View {
                 Button(action: {
                     self.presented2.toggle()
                     Analytics.setUserProperty("Mentor", forName: "aluno_ou_mentor")
-                    UserDefaults.standard.set("mentor", forKey: "perfil")
+                    UserDefaults.standard.set(true, forKey: "eMentor")
                 
                 }, label: {
                     HStack {

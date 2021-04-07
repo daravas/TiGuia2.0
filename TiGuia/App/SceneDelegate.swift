@@ -17,30 +17,49 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        //verifica se o modo correto é o light ou dark
+        if (UserDefaults.standard.bool(forKey: "isDark") == false) {
+            self.window!.overrideUserInterfaceStyle = .light
+        } else {
+            self.window!.overrideUserInterfaceStyle = .dark
+        }
+        //verifica se é a primeira vez do usuário no app para mostrar ou nao o onboarding
         if (UserDefaults.standard.bool(forKey: "notFirstInApp") == false) {
             UserDefaults.standard.set(true, forKey: "notFirstInApp")
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "onboarding")
             self.window?.rootViewController = viewController
-            
-            if (UserDefaults.standard.bool(forKey: "isDark") == false) {
-                self.window!.overrideUserInterfaceStyle = .light
-            } else {
-                self.window!.overrideUserInterfaceStyle = .dark
-            }
             
             self.window?.makeKeyAndVisible()
             
         } else{
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "firstVC")
-            self.window?.rootViewController = viewController
-            if (UserDefaults.standard.bool(forKey: "isDark") == false) {
-                self.window!.overrideUserInterfaceStyle = .light
-            } else {
-                self.window!.overrideUserInterfaceStyle = .dark
+            if(UserDefaults.standard.bool(forKey: "eAluno")){
+                if(UserDefaults.standard.bool(forKey: "macroAreaSelected")){
+                    //direcionar para a tela de conteudo
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "tabBar_vc")
+                    self.window?.rootViewController = viewController
+                }else{
+                    //direcionar pra tela de categoria
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "macroareaStudent")
+                    self.window?.rootViewController = viewController
+                }
+            }else if (UserDefaults.standard.bool(forKey: "eMentor")){
+                if(UserDefaults.standard.bool(forKey: "mentorAreaSelected")){
+                    //direcionar para a tela principal do mentor
+                }else{
+                    //direcionar pra tela das escolhas de area
+                    
+                }
+            }else{
+                // let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                 let viewController = storyboard.instantiateViewController(withIdentifier: "firstVC")
+                 self.window?.rootViewController = viewController
+                
+                 self.window?.makeKeyAndVisible()
             }
-            self.window?.makeKeyAndVisible()
+            
+       
         }
         
         guard let _ = (scene as? UIWindowScene) else { return }

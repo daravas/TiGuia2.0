@@ -65,6 +65,7 @@ struct SubAreaMentorView: View {
                 Button(action: {
                     self.mentorCategoryVM.addSubcategory(subcategories: AreaMentorView.mentor.subAreas)
                     self.presented.toggle()
+                    UserDefaults.standard.set(true, forKey: "mentorAreaSelected")
                     
                 }, label: {
                     Spacer()
