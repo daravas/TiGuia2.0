@@ -29,7 +29,7 @@ struct ChatListMentorView: View {
     var body: some View {
         NavigationView{
             VStack(alignment: .leading){
-                Text("Mentodandos")
+                Text("Mentorandos")
                     .font(.custom("Raleway-Bold", size: 30))
                     .foregroundColor(lightBlueColor)
                     .padding(.horizontal)

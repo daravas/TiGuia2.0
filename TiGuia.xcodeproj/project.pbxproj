@@ -338,7 +338,6 @@
 				FE7FAE10257ACB9C0098587C /* HelpUI.swift */,
 				FEAA4400257E7F6800415E0E /* DoubtSentUI.swift */,
 				47FBE9EA25EC5433005E9AD1 /* LoginView.swift */,
-				8B82528825FAB68C0060C653 /* FavoriteView.swift */,
 				8B2DE8E425EEDCC80077FB6C /* SignInWithAppleButton.swift */,
 				8B2DE8E725EEDD810077FB6C /* SigInView.swift */,
 				8BC2CB0A260BB6B400B7E9C1 /* SigInMentorView.swift */,
@@ -390,9 +389,9 @@
 			children = (
 				57CA1B60260D23B000EBD60E /* ChatUIApp.swift */,
 				57CA1B61260D23B000EBD60E /* KeyboardResponder.swift */,
-				57CA1B62260D23B000EBD60E /* ChatUI.swift */,
 				57CA1B63260D23B000EBD60E /* ChatBubble.swift */,
 				57CA1B64260D23B000EBD60E /* PhotoPicker.swift */,
+				57CA1B62260D23B000EBD60E /* ChatUI.swift */,
 				5798955726126FA4008350B4 /* ChatMentorUI.swift */,
 			);
 			path = ChatUI;
@@ -608,7 +607,6 @@
 				4780500325630A4F0004919D /* CategoryView.swift in Sources */,
 				47F3F00325637AF80007B7B1 /* CardCategory.swift in Sources */,
 				47A2FC8E2565BC0A00A5013E /* Link.swift in Sources */,
-				8B2DE8F225EEF7570077FB6C /* AuthenticationService.swift in Sources */,
 				57CA1B69260D23B000EBD60E /* PhotoPicker.swift in Sources */,
 				08A5C143257999C000180BA9 /* FavoriteHostingController.swift in Sources */,
 				8BC2CB0B260BB6B400B7E9C1 /* SigInMentorView.swift in Sources */,
