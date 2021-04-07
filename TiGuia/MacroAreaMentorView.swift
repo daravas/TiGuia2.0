@@ -78,6 +78,7 @@ struct MacroAreaMentorUIView: View {
                         })
                         
                     }
+                    EmBreveUiMentor()
                 }
                 .padding(.all)
                 Spacer()
@@ -86,6 +87,48 @@ struct MacroAreaMentorUIView: View {
     }
 }
 
+struct EmBreveUiMentor: View{
+    var body: some View{
+        Button(action: {
+            //self.presented.toggle()
+        }, label: {
+            HStack {
+                Image("cadeado")
+                    .resizable()
+                    .padding(.all, 25.0)
+                    .scaledToFit()
+                    .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .clipShape(Rectangle(), style: /*@START_MENU_TOKEN@*/FillStyle()/*@END_MENU_TOKEN@*/)
+                    .background(Color.lightColor)
+                    .cornerRadius(10)
+                    .foregroundColor(.orangeColor)
+                  //  .shadow(radius: 8)
+                VStack(alignment: .leading) {
+                    Text("Em breve...")
+                        .font(.custom("Raleway-Bold", size: 24))
+                        .padding([.leading, .bottom, .trailing], 5.0)
+                        .foregroundColor(.lightColor)
+                    
+                    Text("Fica ligado que já já tem mais áreas para ajudar.")
+                        .font(.custom("Raleway", size: 14))
+                        .lineLimit(3)
+                        .padding([.leading, .bottom, .trailing], 5.0)
+                        .foregroundColor(.lightColor)
+                        .lineSpacing(1)
+
+                    
+                }
+                Spacer()
+            }
+            .padding()
+            .clipped()
+            .background(Color.disabledBtnColor)
+            .cornerRadius(10)
+        }).padding(.bottom, 20.0)
+        .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+        //.shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+    }
+}
 //struct NextMentorUI: UIViewControllerRepresentable {
 //
 //    func makeUIViewController(context: Context) -> UIViewController {
