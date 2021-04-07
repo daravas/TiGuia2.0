@@ -37,7 +37,6 @@ struct ChatListMentorView: View {
                     .font(.custom("Raleway-Regular", size: 18))
                     .foregroundColor(blackColor)
                     .padding(.horizontal)
-                Text(Auth.auth().currentUser!.uid)
                 
                 List(chatViewModel.chatrooms){ chatroom in
                     NavigationLink(destination: ChatMentorUI(chatroom: chatroom, handler: {}).navigationBarHidden(true)){
@@ -68,24 +67,24 @@ struct ChatListMentorView: View {
                         .foregroundColor(blackColor)
                         .padding(.horizontal)
                     List(chatViewModel.newChatrooms){ chatroom in
-                        //                    NavigationLink(destination: ChatMentorUI(chatroom: chatroom, handler:{}).navigationBarHidden(true)){
-                        VStack{
-                            HStack{
-                                Text(chatroom.studentName)
-                                Spacer()
-                                Button(action: {
-                                    chatViewModel.joinChatroom(id: chatroom.id, mentorId: Auth.auth().currentUser!.uid, mentorName: "Meyri", mentorArea: "Robótica", handler: {
-                                        chatViewModel.fetchStudents()
-                                    })
-                                }){
-                                    Text("Join")
+//                        NavigationLink(destination: ChatMentorUI(chatroom: chatroom, handler:{}).navigationBarHidden(true)){
+                            VStack{
+                                HStack{
+                                    Text(chatroom.studentName)
+                                    Spacer()
+                                    Button(action: {
+                                        chatViewModel.joinChatroom(id: chatroom.id, mentorId: Auth.auth().currentUser!.uid, mentorName: "Meyri", mentorArea: "Robótica", handler: {
+                                            chatViewModel.fetchStudents()
+                                        })
+                                        
+                                    }){
+                                        Text("ajudar")
+                                    }
                                 }
+                                
                             }
                             
-                        }
-                        
-                        
-                        //}
+//                        }
                         
                     }
                     

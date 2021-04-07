@@ -33,7 +33,6 @@ struct ChatList: View {
                     .font(.custom("Raleway-Regular", size: 18))
                     .foregroundColor(blackColor)
                     .padding(.horizontal)
-                Text(Auth.auth().currentUser!.uid)
 
             List(chatVireModel.chatrooms){ chatroom in
                 NavigationLink(destination: ChatUI(chatroom: chatroom).navigationBarHidden(true)){

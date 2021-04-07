@@ -62,11 +62,11 @@
 		47F3F00325637AF80007B7B1 /* CardCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F3F00225637AF80007B7B1 /* CardCategory.swift */; };
 		47FBE9E825E972EB005E9AD1 /* MacroAreaStudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBE9E725E972EB005E9AD1 /* MacroAreaStudentViewController.swift */; };
 		47FBE9EB25EC5433005E9AD1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBE9EA25EC5433005E9AD1 /* LoginView.swift */; };
+		570DBE2B261E277A00E4E713 /* MentorSubcategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570DBE2A261E277A00E4E713 /* MentorSubcategory.swift */; };
 		577018FE26124CE200792067 /* ChatListMentorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577018FD26124CE200792067 /* ChatListMentorView.swift */; };
 		57714738260BBFDA002AEB42 /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57714737260BBFDA002AEB42 /* Chatroom.swift */; };
 		5771473B260BC328002AEB42 /* ChatroomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771473A260BC328002AEB42 /* ChatroomViewModel.swift */; };
 		5798955826126FA4008350B4 /* ChatMentorUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5798955726126FA4008350B4 /* ChatMentorUI.swift */; };
-		570DBE2B261E277A00E4E713 /* MentorSubcategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570DBE2A261E277A00E4E713 /* MentorSubcategory.swift */; };
 		57B02CEA25ED85B100599284 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57B02CE925ED85B100599284 /* GoogleService-Info.plist */; };
 		57CA1B57260D0B1400EBD60E /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA1B56260D0B1400EBD60E /* ChatList.swift */; };
 		57CA1B5A260D1EE200EBD60E /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA1B59260D1EE200EBD60E /* MessagesViewModel.swift */; };
@@ -167,11 +167,11 @@
 		47F3F00225637AF80007B7B1 /* CardCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCategory.swift; sourceTree = "<group>"; };
 		47FBE9E725E972EB005E9AD1 /* MacroAreaStudentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroAreaStudentViewController.swift; sourceTree = "<group>"; };
 		47FBE9EA25EC5433005E9AD1 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		570DBE2A261E277A00E4E713 /* MentorSubcategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorSubcategory.swift; sourceTree = "<group>"; };
 		577018FD26124CE200792067 /* ChatListMentorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListMentorView.swift; sourceTree = "<group>"; };
 		57714737260BBFDA002AEB42 /* Chatroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatroom.swift; sourceTree = "<group>"; };
 		5771473A260BC328002AEB42 /* ChatroomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomViewModel.swift; sourceTree = "<group>"; };
 		5798955726126FA4008350B4 /* ChatMentorUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMentorUI.swift; sourceTree = "<group>"; };
-		570DBE2A261E277A00E4E713 /* MentorSubcategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorSubcategory.swift; sourceTree = "<group>"; };
 		57B02CE925ED85B100599284 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		57CA1B56260D0B1400EBD60E /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
 		57CA1B59260D1EE200EBD60E /* MessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
@@ -820,7 +820,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TiGuia/TiGuia.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R9YW8SQC7S;
+				DEVELOPMENT_TEAM = VZ9BWS84AA;
 				INFOPLIST_FILE = TiGuia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -842,7 +842,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TiGuia/TiGuia.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R9YW8SQC7S;
+				DEVELOPMENT_TEAM = VZ9BWS84AA;
 				INFOPLIST_FILE = TiGuia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
