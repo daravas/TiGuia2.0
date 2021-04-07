@@ -36,6 +36,7 @@ struct MacroAreaMentorUIView: View {
                         var category: Category = Data.categories[index]
                         Button(action: {
                             self.presented.toggle()
+                            UserDefaults.standard.set(true, forKey: "macroAreaSelected")
                         }, label: {
                             HStack {
                                 Image(systemName: category.image!)

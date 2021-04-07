@@ -45,12 +45,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     self.window?.rootViewController = viewController
                 }
             }else if (UserDefaults.standard.bool(forKey: "eMentor")){
-                if(UserDefaults.standard.bool(forKey: "mentorAreaSelected")){
-                    //direcionar para a tela principal do mentor
+                if(UserDefaults.standard.bool(forKey: "macroAreaSelected")){
+                    //direcionar para tela de areas
+                    if(UserDefaults.standard.bool(forKey: "mentorAreaSelected")){
+                        //direcionar para a tela principal do mentor
+                        let viewController = storyboard.instantiateViewController(withIdentifier: "tabBarMentor_vc")
+                        self.window?.rootViewController = viewController
+                    }else{
+                        //direcionar pra tela das escolhas de area
+                        let viewController = storyboard.instantiateViewController(withIdentifier: "macroAreaMentor_vc")
+                        self.window?.rootViewController = viewController
+                    }
                 }else{
-                    //direcionar pra tela das escolhas de area
-                    
+                    //direcionar para tela de macroarea
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "macroAreaMentor_vc")
+                    self.window?.rootViewController = viewController
                 }
+               
             }else{
                 // let storyboard = UIStoryboard(name: "Main", bundle: nil)
                  let viewController = storyboard.instantiateViewController(withIdentifier: "firstVC")
