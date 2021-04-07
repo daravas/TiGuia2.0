@@ -7,6 +7,10 @@
 
 import Foundation
 import SwiftUI
+import Firebase
+//import FirebaseFirestore
+//import FirebaseFirestoreSwift
+//import Combine
 
 struct ImageOverlayConteudo: View {
     
@@ -41,9 +45,12 @@ struct ConteudoMentorView: View {
     
     @State var presented = false
     @State var selection: Int? = nil
-    
+    let userId = Auth.auth().currentUser?.uid
+
     var category = Data().returnCategory()
-    var subAreasEscolhidas: [Subcategory]
+    //var subAreasEscolhidas: [Subcategory]
+    @ObservedObject var mentorCategoryVM = MentorCategoryViewModel()
+    @ObservedObject var mentorCategoryRep = MentorCategoryRepository()
     
     var collums = [
         // define number of caullum here
@@ -72,17 +79,17 @@ struct ConteudoMentorView: View {
                     
                     ScrollView(.vertical) {
                         LazyVGrid(columns: collums) {
-                            ForEach(0..<subAreasEscolhidas.count, id: \.self) { count in
-                                NavigationLink(destination: PaginaConteudoMentor(category: subAreasEscolhidas[count]), tag: count, selection: $selection) {
+                            ForEach(0..<mentorCategoryRep.categories.count, id: \.self) { count in
+                                NavigationLink(destination: PaginaConteudoMentor(category: mentorCategoryRep.categories[count]), tag: count, selection: $selection) {
                                     Button(action: {
                                         //self.presented.toggle()
                                         self.selection = count
                                     }, label: {
-                                        Image(subAreasEscolhidas[count].image ?? "")
+                                        Image(mentorCategoryRep.categories[count].image ?? "")
                                             .resizable()
                                             .frame(width: (geometry.size.width/2) - 25, height: 170)
                                             .cornerRadius(10)
-                                            .overlay(ImageOverlayConteudo(title: subAreasEscolhidas[count].title), alignment: .bottomLeading)
+                                            .overlay(ImageOverlayConteudo(title: mentorCategoryRep.categories[count].title), alignment: .bottomLeading)
                                     })
                                     
                                 }
@@ -106,6 +113,7 @@ struct ConteudoMentorView: View {
         .onAppear(perform: {
             UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
             UINavigationBar.appearance().shadowImage = UIImage()
+            mentorCategoryRep.fetchCategories(userId: userId!)
         })
         
     }

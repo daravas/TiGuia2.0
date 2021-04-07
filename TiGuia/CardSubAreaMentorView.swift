@@ -34,6 +34,9 @@ struct CardsSubAreaMentorView: View {
                         
                         if(self.checkSelected) {
                             AreaMentorView.mentor.addSubArea(subcategory: category.subcategories[count])
+                            print("cardsubareamentorview")
+                            print(category.subcategories[count].title)
+                            print(count)
                             
                         } else {
                             AreaMentorView.mentor.removeSubArea(subcategory: category.subcategories[count])

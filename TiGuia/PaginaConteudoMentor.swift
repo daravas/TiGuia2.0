@@ -13,13 +13,17 @@ public struct PaginaConteudoMentor: View {
     @State private var presented: Bool = false
     @State var isExpanded: Bool = false
     @State var truncated: Bool = false
-    
+    @ObservedObject var mentorRep = MentorCategoryRepository()
     //var category = Data().returnCategory()
     
     //var index:Int
     
-    var category:Subcategory
-    
+    var category:MentorSubcategory
+    //var links = [Link]()
+    init(category: MentorSubcategory){
+        self.category = category
+        mentorRep.fetchLinks(docId: category.docId)
+    }
     static var favorite = Favorites()
     //var index:Int
     
@@ -154,17 +158,17 @@ public struct PaginaConteudoMentor: View {
                     
                     VStack{
                         LazyVGrid(columns: collums, alignment: .center, spacing: 0) {
-                            ForEach(0..<category.links.count, id: \.self) { count in
+                            ForEach(0..<self.mentorRep.links.count, id: \.self) { count in
                                 Button(action: {
-                                    let stringUrl = (category.links[count].url).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                                    let stringUrl = (self.mentorRep.links[count].url).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
                                     openURL(URL(string: stringUrl!)!)
                                 }, label: {
-                                    Image(category.links[count].image!)
+                                    Image(self.mentorRep.links[count].image!)
                                         .resizable()
                                         .frame(width: (geometry.size.width/2) - 25, height: 170)
                                         .cornerRadius(10)
                                         //.shadow(color: .init(.sRGB, red: 0, green: 0, blue: 0, opacity: 0.4), radius: 10, x: 0.0, y: 4.0)
-                                        .overlay(ImageOverlayCardLink(title: category.links[count].titulo), alignment: .bottomLeading)
+                                        .overlay(ImageOverlayCardLink(title: self.mentorRep.links[count].titulo), alignment: .bottomLeading)
                                 })
                                 
                             }.padding(.bottom)
