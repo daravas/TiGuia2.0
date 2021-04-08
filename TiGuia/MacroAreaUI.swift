@@ -11,15 +11,29 @@ import SwiftUI
 
 // MARK: - Macro Area
 struct MacroAreaUI: View {
+    @Environment(\.presentationMode) var presentationMode
+
     
     // @State var didTap = false
     @State private var presented = false
-    var teste = Data() //acho que vai precisar apagar essa linha aqui. é que precisa iniciar a classe Data pra poder pegar o arrey de categorias
+    var teste = Data().returnCategory() //acho que vai precisar apagar essa linha aqui. é que precisa iniciar a classe Data pra poder pegar o arrey de categorias
     
     var body: some View {
         VStack(alignment: .leading) {
+            HStack{
+                Button(action: {
+        
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: "chevron.backward")
+                        .resizable()
+                        .foregroundColor(.btnColor)
+                        .frame(width: 15, height: 25)
+                }.padding()
+            }
+           
             Spacer()
-                .frame(height: 75.0)
+               // .frame(height: 75.0)
             HStack {
                 Text("O que você deseja explorar?")
                     .font(.custom("Raleway-Bold", size: 30))
@@ -32,8 +46,9 @@ struct MacroAreaUI: View {
             // scrollview com as macroareas
             ScrollView{
                 LazyVStack {
-                    ForEach((0..<Data.categories.count)){ index in
-                        var category = Data.categories[index]
+                //gambiarra. verificar depois
+                    //ForEach((0..<Data.categories.count)){ index in
+                        var category = Data.categories[0]
                         Button(action: {
                             self.presented.toggle()
                             UserDefaults.standard.set(true, forKey: "macroAreaSelected")
@@ -77,7 +92,7 @@ struct MacroAreaUI: View {
                             NextTrailUI().ignoresSafeArea(.all)
                         })
                         
-                    }
+                    //}
                     EmBreveUi()
                 }
                 .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)

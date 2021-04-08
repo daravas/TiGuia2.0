@@ -18,7 +18,6 @@ struct CategoryView: View {
     
     var categoryIndex: Int = 0 //tirar o =0 depois 
     //let category = Data.categories[categoryIndex]
-    
     // VARIAVEL QUE INICIALIZA TODOS OS DADOS - MOVER E APAGAR DEPOIS
     // ta sendo inicalizada na macroarea ate agora
     var socorro = Data()
@@ -53,7 +52,7 @@ struct CategoryView: View {
                         //MARK: -Header - titulo + botao de favoritos
                         //
                         HStack {
-                            //título
+                         //título
                             Text(category.title)
                                 .foregroundColor(.titleColor)
                                 .font(.custom("Raleway-Bold", size: 30))
