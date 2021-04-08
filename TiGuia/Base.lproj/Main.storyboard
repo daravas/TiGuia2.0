@@ -239,7 +239,7 @@
         <!--Area Mentor View Controller-->
         <scene sceneID="ZFM-Ox-Qne">
             <objects>
-                <hostingController id="pJy-mw-RKL" customClass="AreaMentorViewController" customModule="TiGuia" customModuleProvider="target" sceneMemberID="viewController"/>
+                <hostingController storyboardIdentifier="areaMentor_vc" id="pJy-mw-RKL" customClass="AreaMentorViewController" customModule="TiGuia" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TDL-l5-oky" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2100" y="3609"/>
@@ -247,7 +247,7 @@
         <!--Macro Area Mentor View Controller-->
         <scene sceneID="c08-7Q-ZoK">
             <objects>
-                <hostingController id="voc-2n-jVH" customClass="MacroAreaMentorViewController" customModule="TiGuia" customModuleProvider="target" sceneMemberID="viewController"/>
+                <hostingController storyboardIdentifier="macroAreaMentor_vc" id="voc-2n-jVH" customClass="MacroAreaMentorViewController" customModule="TiGuia" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mdK-B2-UnQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1080" y="3609"/>

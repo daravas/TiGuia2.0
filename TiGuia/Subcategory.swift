@@ -39,6 +39,17 @@ public class Subcategory: ObservableObject {
         self.subcategories = []
     }
     
+    init(title:String, content:String, links:[Link], image:String) {
+        self.title = title
+        self.content = content
+        self.links = links
+        self.image = image
+        self.favorite = false
+        self.visited = false
+        self.checkMentor = false
+        self.subcategories = []
+    }
+    
     func visite() {
         self.visited = true
     }

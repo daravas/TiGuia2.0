@@ -11,7 +11,8 @@ import SwiftUI
 struct AreaMentorView: View {
     @State private var presented: Bool = false
     @State private var showAlert: Bool = false
-    
+    @ObservedObject var mentorCategoryVM = MentorCategoryViewModel()
+
     var category: Category
     //    static var areasEscolhidas: [Subcategory] = []
     static var mentor = Mentor()
@@ -51,6 +52,7 @@ struct AreaMentorView: View {
                 
                 Button(action: {
                     if !AreaMentorView.mentor.subAreas.isEmpty {
+                       // self.mentorCategoryVM.addSubcategory(subcategories: AreaMentorView.mentor.subAreas)
                         self.presented.toggle()
                     } else {
                         self.showAlert.toggle()
