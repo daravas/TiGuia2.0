@@ -17,6 +17,7 @@ class MentorCategoryRepository: ObservableObject {
 
     @Published var categories = [MentorSubcategory]()
     @Published var links = [Link]()
+    @Published var titles: [String] = []
     //  @Injected var authenticationService: AuthenticationService // (1)
     
     private var cancellables = Set<AnyCancellable>()
@@ -45,6 +46,7 @@ class MentorCategoryRepository: ObservableObject {
     }
     
     func fetchCategories(userId:String){
+        var list: [String] = []
             db.collection("categoria").whereField("mentores", arrayContains: userId).addSnapshotListener({(snapshot, error) in
                   guard let documents = snapshot?.documents else {
                       print("No docs returnd")
@@ -57,10 +59,10 @@ class MentorCategoryRepository: ObservableObject {
                       let content = data["content"] as? String ?? ""
                       let image = data["image"] as? String ?? ""
                     //let links = self.fetchLinks(docId: docId)
-
+                    list.append(title)
                     return MentorSubcategory(title: title, content: content,image: image, docId: docId)
                   })
-                  
+                self.titles = list
               })
           
     }

@@ -16,7 +16,7 @@ struct HelpUI: View {
     @State var doubt: String = "Digite sua dúvida aqui."
     @Binding var completed: Bool
     @ObservedObject var chatroomViewModel = ChatroomViewModel()
-    
+    var category: String
     var body: some View {
         
         GeometryReader { geometry in
@@ -84,7 +84,7 @@ struct HelpUI: View {
                         
                         Button(action: {
                             print(doubt)
-                            chatroomViewModel.createChatroom(studentId: Auth.auth().currentUser!.uid, studentName: "Victor", chatArea: "Robótica",message: doubt, handler: {
+                            chatroomViewModel.createChatroom(studentId: Auth.auth().currentUser!.uid, studentName: "Victor", chatArea: category,message: doubt, handler: {
                                 
                             })
                             self.completed.toggle()

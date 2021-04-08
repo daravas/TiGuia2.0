@@ -72,6 +72,7 @@ class ChatroomViewModel: ObservableObject{
                     "studentId": studentId,
                     "studentName": studentName,
                     "chatArea": chatArea,
+                    "mentorArea": chatArea,
                     "users": [user!.uid],
                     "mentorId": ""
                     
@@ -101,8 +102,7 @@ class ChatroomViewModel: ObservableObject{
                         self.db.collection("mentoria").document(snapshot!.documentID).updateData([
                             "users": FieldValue.arrayUnion([self.user!.uid]),
                             "mentorId": mentorId,
-                            "mentorName": mentorName,
-                            "mentorArea": mentorArea
+                            "mentorName": mentorName
                             
                         ])
                         handler()

@@ -19,9 +19,11 @@ struct ChatListMentorView: View {
     let greyColor = Color(red: 224/255, green: 230/255, blue: 236/255, opacity: 1.0)
     let lightGreyColor = Color(red: 247/255, green: 249/255, blue: 250/255, opacity: 1.0)
     @State var bool = true
+    @ObservedObject var mentorRep = MentorCategoryRepository()
     init(){
         chatViewModel.fetchData()
         chatViewModel.fetchStudents()
+        mentorRep.fetchCategories(userId: Auth.auth().currentUser!.uid)
     }
     func doNothing(){
         
@@ -39,21 +41,21 @@ struct ChatListMentorView: View {
                     .padding(.horizontal)
                 
                 List(chatViewModel.chatrooms){ chatroom in
-                    NavigationLink(destination: ChatMentorUI(chatroom: chatroom, handler: {}).navigationBarHidden(true)){
-                        VStack{
-                            HStack{
-                                Text(chatroom.studentName)
-                                Spacer()
+                            NavigationLink(destination: ChatMentorUI(chatroom: chatroom, handler: {}).navigationBarHidden(true)){
+                                VStack{
+                                    HStack{
+                                        Text(chatroom.studentName)
+                                        Spacer()
+                                    }
+                                    
+                                    
+                                }
+                                
+                                
                             }
                             
-                            
-                        }
-                        
-                        
-                    }
-                    
-                    
-                    
+//                        }
+//                    }
                 }
                 .onAppear {
                  UITableView.appearance().separatorStyle = .singleLine
@@ -66,28 +68,29 @@ struct ChatListMentorView: View {
                         .font(.custom("Raleway-Regular", size: 18))
                         .foregroundColor(blackColor)
                         .padding(.horizontal)
-                    List(chatViewModel.newChatrooms){ chatroom in
-//                        NavigationLink(destination: ChatMentorUI(chatroom: chatroom, handler:{}).navigationBarHidden(true)){
-                            VStack{
-                                HStack{
-                                    Text(chatroom.studentName)
-                                    Spacer()
-                                    Button(action: {
-                                        chatViewModel.joinChatroom(id: chatroom.id, mentorId: Auth.auth().currentUser!.uid, mentorName: "Meyri", mentorArea: "Robótica", handler: {
-                                            chatViewModel.fetchStudents()
-                                        })
-                                        
-                                    }){
-                                        Text("ajudar")
+                    List{
+                    ForEach(chatViewModel.newChatrooms){ chatroom in
+                        if(mentorRep.titles.contains(chatroom.chatArea)){
+                                VStack{
+                                    HStack{
+                                        Text(chatroom.studentName)
+                                        Spacer()
+                                        Button(action: {
+                                            chatViewModel.joinChatroom(id: chatroom.id, mentorId: Auth.auth().currentUser!.uid, mentorName: "Meyri", mentorArea: "Robótica", handler: {
+                                                chatViewModel.fetchStudents()
+                                            })
+                                            
+                                        }){
+                                            Text("ajudar")
+                                        }
                                     }
+                                    
                                 }
                                 
                             }
                             
-//                        }
-                        
                     }
-                    
+                }
                 }
                 
             }
@@ -96,4 +99,8 @@ struct ChatListMentorView: View {
         }
     }
 }
-
+struct ChatListMentorView_Previews: PreviewProvider {
+    static var previews: some View {
+        ChatListMentorView()
+    }
+}
