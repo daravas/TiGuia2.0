@@ -115,7 +115,7 @@ struct StudentMentorUI: View {
                 
                 // botao 2 - mentor
                 Button(action: {
-                    if (userAuth.isSigned == false) {
+                    if (userViewModel.user[0].isSigned == false) {
                         showSignInForm = true
                     } else {
                         Analytics.setUserProperty("Mentor", forName: "aluno_ou_mentor")
@@ -158,7 +158,7 @@ struct StudentMentorUI: View {
                     .background(Color.btnColor)
                     .cornerRadius(10)
                 }).padding(.bottom, 20.0)
-                .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                .shadow(radius: 10)
                 .fullScreenCover(isPresented: $showSignInForm) {
                     SignInMentorView(userVM: userViewModel)
                 }
