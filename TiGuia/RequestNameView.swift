@@ -11,11 +11,11 @@ import Firebase
 
 struct RequestNameView: View {
     
-    @State var userName = ""
     @State private var showConfigView = false
     @Environment(\.presentationMode) var presentationMode
     @Binding var showThisView: Bool
     @Binding var showSignIn: Bool
+    @Binding var userName: String
     var body: some View {
         
         

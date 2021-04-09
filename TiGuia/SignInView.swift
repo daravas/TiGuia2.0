@@ -24,6 +24,8 @@ struct SignInView: View {
     
     @Binding var showThisView: Bool
     
+    @Binding var userName: String
+    
     //@Binding var completed: Bool
     
     var body: some View {
@@ -65,6 +67,7 @@ struct SignInView: View {
                             print("You successfully signed in")
                             userAuth.isSigned = true
                             userViewModel.sendData(isSigned: true)
+                            SignInWithAppleCoordinator().changeName(displayName: userName)
                             //completed.toggle()
                             showThisView.toggle()
                             //presentationMode.wrappedValue.dismiss()

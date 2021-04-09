@@ -22,7 +22,7 @@ public struct SubcategoryView: View {
 //    @StateObject var userAuth = UserAuth()
     @State var showRequestName: Bool = false
     //var category = Data().returnCategory()
-    
+    @State var userName = Auth.auth().currentUser!.displayName ?? ""
     //var index:Int
     
     var category:Subcategory
@@ -247,7 +247,7 @@ public struct SubcategoryView: View {
                             })
                             .fullScreenCover(isPresented: $showSignInForm) {
                                 //Pode dar bugs, falta verificar!
-                              SignInView(userViewModel: userVM, showThisView: $showSignInForm)//, completed: $showRequestName)
+                                SignInView(userViewModel: userVM, showThisView: $showSignInForm, userName: $userName)//, completed: $showRequestName)
                             }
                             
                         }.padding()

@@ -131,7 +131,7 @@ struct ConfigView: View {
         @ObservedObject var userVM: UserViewModel
         @State var showSignInForm = false
         @State var showResquestName = false
-        
+        @State var userName = Auth.auth().currentUser!.displayName ?? ""
         var body: some View {
             
             Button(action: {
@@ -152,10 +152,10 @@ struct ConfigView: View {
             .padding([.top, .bottom])
             if(showSignInForm || showResquestName){
             EmptyView().fullScreenCover(isPresented: $showSignInForm) {
-                SignInView(userViewModel: userVM, showThisView: $showSignInForm)
+                SignInView(userViewModel: userVM, showThisView: $showSignInForm, userName: $userName)
             }
                 EmptyView().fullScreenCover(isPresented: $showResquestName) {
-                    RequestNameView(showThisView: $showResquestName, showSignIn: $showSignInForm)
+                    RequestNameView(showThisView: $showResquestName, showSignIn: $showSignInForm, userName: $userName)
             }
         }
             
