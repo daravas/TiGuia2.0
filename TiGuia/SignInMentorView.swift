@@ -74,7 +74,9 @@ struct SignInMentorView: View {
             if (showNameView || showMacroMentorView) {
 
                   EmptyView().fullScreenCover(isPresented: $showNameView)
-                  { RequestNameView() }
+                  { //RequestNameView()
+                    
+                  }
 
                   EmptyView().fullScreenCover(isPresented: $showMacroMentorView)
                   { MacroAreaMentorUIView() }

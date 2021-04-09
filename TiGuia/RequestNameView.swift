@@ -14,6 +14,7 @@ struct RequestNameView: View {
     @State var userName = ""
     @State private var showConfigView = false
     @Environment(\.presentationMode) var presentationMode
+    @Binding var showThisView: Bool
     
     var body: some View {
         
@@ -75,8 +76,8 @@ struct RequestNameView: View {
 
 
 
-struct RequestNameView_Previews: PreviewProvider {
-    static var previews: some View {
-        RequestNameView()
-    }
-}
+//struct RequestNameView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RequestNameView()
+//    }
+//}

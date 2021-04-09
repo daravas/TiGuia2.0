@@ -24,7 +24,11 @@ struct CategoryView: View {
     @ObservedObject var userVM = UserViewModel()
     init(categoryIndex: Int){
         self.categoryIndex = categoryIndex
-        userVM.fetchData(isSigned: Auth.auth().currentUser!.isEmailVerified)
+        if(Auth.auth().currentUser != nil){
+            userVM.fetchData(isSigned: Auth.auth().currentUser!.isEmailVerified)}
+        else{
+            userVM.fetchData(isSigned: false)
+        }
     }
     
     var body: some View {

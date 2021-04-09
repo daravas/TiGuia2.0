@@ -129,7 +129,8 @@ struct ConfigView: View {
         
         @StateObject var userAuth: UserAuth
         @ObservedObject var userVM: UserViewModel
-        @State private var showSignInForm = false
+        @State var showSignInForm = false
+        @State var showResquestName = false
         
         var body: some View {
             
@@ -150,7 +151,7 @@ struct ConfigView: View {
             .foregroundColor(.darkColor)
             .padding([.top, .bottom])
             .fullScreenCover(isPresented: $showSignInForm) {
-                SignInView(userViewModel: userVM)
+                SignInView(userViewModel: userVM, showThisView: $showSignInForm, completed: $showResquestName)
             }
             
         }

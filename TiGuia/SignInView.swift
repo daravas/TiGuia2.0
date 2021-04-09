@@ -22,7 +22,9 @@ struct SignInView: View {
     
     @ObservedObject var userViewModel: UserViewModel
     
+    @Binding var showThisView: Bool
     
+    @Binding var completed: Bool
     
     var body: some View {
         let buttonColor = Color(red: 28/255, green: 118/255, blue: 144/255, opacity: 1.0)
@@ -63,8 +65,10 @@ struct SignInView: View {
                             print("You successfully signed in")
                             userAuth.isSigned = true
                             userViewModel.sendData(isSigned: true)
-                            presentationMode.wrappedValue.dismiss()
-                            showNameView.toggle()
+                            showThisView.toggle()
+                            completed.toggle()
+                            //presentationMode.wrappedValue.dismiss()
+                            //showNameView.toggle()
                         }
                     }
                     
@@ -73,11 +77,11 @@ struct SignInView: View {
                 .shadow(radius: 10)
             Spacer()
                 .fullScreenCover(isPresented: $showNameView) {
-                    RequestNameView()
+                    RequestNameView(showThisView: $completed)
                 }
         }
-
     }
+    
     
 }
 
