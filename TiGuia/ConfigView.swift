@@ -153,6 +153,9 @@ struct ConfigView: View {
             .fullScreenCover(isPresented: $showSignInForm) {
                 SignInView(userViewModel: userVM, showThisView: $showSignInForm, completed: $showResquestName)
             }
+            .fullScreenCover(isPresented: $showResquestName) {
+                RequestNameView(showThisView: $showResquestName)
+            }
             
         }
     }
