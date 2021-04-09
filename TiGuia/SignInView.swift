@@ -65,8 +65,8 @@ struct SignInView: View {
                             print("You successfully signed in")
                             userAuth.isSigned = true
                             userViewModel.sendData(isSigned: true)
-                            showThisView.toggle()
                             completed.toggle()
+                            showThisView.toggle()
                             //presentationMode.wrappedValue.dismiss()
                             //showNameView.toggle()
                         }
