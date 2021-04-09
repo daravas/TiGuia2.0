@@ -87,11 +87,11 @@ struct DataOnboardingPage: View {
     
     // Conteudo do onboarding
 //    var titlesOnboarding = ["Explore seu futuro","Trilhe o seu caminho","Peça ajuda"]
-//    var descsOnboarding = ["Com TiGuia seu futuro está em suas mãos, ou melhor, no seu celular! \n Nos últimos anos, o mercado de trabalho mudou bastante e nós separamos as principais áreas em crescimento para você explorar.","Dispomos todo o conteúdo que você precisa, mas é você quem decide o que quer aprender! \n A trilha interativa registra sua evolução e te ajuda a decidir para onde deseja seguir.","Para ajudar na sua decisão, nossos mentores estarão à disposição. \n Uma conversa com profissionais e alunos da área pode sempre clarear nossa jornada, não é mesmo?"]
+//    var descsOnboarding = ["Com TiGuia seu futuro está em suas mãos, ou melhor, no seu celular! \n Nos últimos anos, o mercado de trabalho mudou bastante e nós separamos as principais áreas em crescimento para você explorar.","Para ajudar na sua decisão, nossos mentores estarão à disposição. \n Uma conversa com profissionais e alunos da área pode sempre clarear nossa jornada, não é mesmo?","Dispomos todo o conteúdo que você precisa, mas é você quem decide o que quer aprender! \n A trilha interativa registra sua evolução e te ajuda a decidir para onde deseja seguir."]
 //    var imagesOnboarding = ["screen1","screen2","screen3"]
-    var titlesOnboarding = ["Explore seu futuro","Trilhe o seu caminho","Encontre seu lugar"]
-    var descsOnboarding = ["Com o TiGuia seu futuro está em suas mãos,\n ou melhor, no seu celular! \n Nos últimos anos, o mercado de trabalho mudou bastante, principalmente na área de tecnologia, é por isso que nós separamos os principais caminhos que você pode explorar em computação.","Dispomos todo o conteúdo que você precisa, mas é você quem decide o que quer aprender! \n A divisão da área de computação em áreas menores te ajuda a decidir para onde você deseja seguir.","Para ajudar na sua decisão, nossa equipe seleciona cuidadosamente todo o conteúdo. \n Nada melhor do uns links úteis separados por quem entende do assunto para clarear sua jornada, \n não é mesmo?"]
-    var imagesOnboarding = ["screen1","screen2","screen3"]
+    var titlesOnboarding = ["Explore seu futuro","Peça ajuda","Trilhe o seu caminho"]
+    var descsOnboarding = ["Com o TiGuia seu futuro está em suas mãos,\n ou melhor, no seu celular! Nos últimos anos, o mercado de trabalho mudou bastante na área de tecnologia, \n é por isso que nós separamos os principais caminhos \n que você pode explorar em computação.","Para ajudar na sua decisão, nossos mentores estarão \n à disposição. Uma conversa com profissionais e alunos da área pode sempre clarear nossa jornada, não é mesmo?","Selecionamos links úteis com o conteúdo que você precisa, mas é você quem decide o que quer aprender! \n A divisão da área de computação em áreas menores te ajuda a decidir para onde você deseja seguir."]
+    var imagesOnboarding = ["screen1","screen3","screen2"]
     
     // Construcao visual do conteudo do onboarding
     var body: some View {
