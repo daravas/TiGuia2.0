@@ -247,7 +247,7 @@ public struct SubcategoryView: View {
                             })
                             .fullScreenCover(isPresented: $showSignInForm) {
                                 //Pode dar bugs, falta verificar!
-                              SignInView(userViewModel: userVM, showThisView: $showSignInForm, completed: $showRequestName)
+                              SignInView(userViewModel: userVM, showThisView: $showSignInForm)//, completed: $showRequestName)
                             }
                             
                         }.padding()

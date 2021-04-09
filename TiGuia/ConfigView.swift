@@ -136,7 +136,7 @@ struct ConfigView: View {
             
             Button(action: {
                 
-                showSignInForm.toggle()
+                showResquestName.toggle()
                 
                 
             }, label: {
@@ -152,10 +152,10 @@ struct ConfigView: View {
             .padding([.top, .bottom])
             if(showSignInForm || showResquestName){
             EmptyView().fullScreenCover(isPresented: $showSignInForm) {
-                SignInView(userViewModel: userVM, showThisView: $showSignInForm, completed: $showResquestName)
+                SignInView(userViewModel: userVM, showThisView: $showSignInForm)
             }
                 EmptyView().fullScreenCover(isPresented: $showResquestName) {
-                RequestNameView(showThisView: $showResquestName)
+                    RequestNameView(showThisView: $showResquestName, showSignIn: $showSignInForm)
             }
         }
             
