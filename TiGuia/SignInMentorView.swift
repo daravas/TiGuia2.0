@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Firebase
 
 
 struct SignInMentorView: View {
@@ -15,7 +16,8 @@ struct SignInMentorView: View {
 
     @ObservedObject var userVM: UserViewModel
     @State var coordinator: SignInWithAppleCoordinator?
-    
+    @State private var showNameView = false
+    @State private var showMacroMentorView = false
     var body: some View {
         let buttonColor = Color(red: 28/255, green: 118/255, blue: 144/255, opacity: 1.0)
         VStack(alignment: .center) {
@@ -55,7 +57,12 @@ struct SignInMentorView: View {
                             print("You successfully signed in")
                             userVM.sendData(isSigned: true)
                             self.presentationMode.wrappedValue.dismiss()
-                            
+                            if(Auth.auth().currentUser!.displayName == nil){
+                                showNameView.toggle()
+                            }
+                            else{
+                                showMacroMentorView.toggle()
+                            }
                         }
                     }
                     
@@ -64,6 +71,14 @@ struct SignInMentorView: View {
                 .shadow(radius: 10)
                 
             Spacer()
+            if (showNameView || showMacroMentorView) {
+
+                  EmptyView().fullScreenCover(isPresented: $showNameView)
+                  { RequestNameView() }
+
+                  EmptyView().fullScreenCover(isPresented: $showMacroMentorView)
+                  { MacroAreaMentorUIView() }
+                }
         }
     }
 }

@@ -64,7 +64,7 @@ struct SignInView: View {
                             userAuth.isSigned = true
                             userViewModel.sendData(isSigned: true)
                             presentationMode.wrappedValue.dismiss()
-//                            showNameView.toggle()
+                            showNameView.toggle()
                         }
                     }
                     
@@ -72,9 +72,9 @@ struct SignInView: View {
                 .cornerRadius(10)
                 .shadow(radius: 10)
             Spacer()
-//                .fullScreenCover(isPresented: $showNameView) {
-//                    RequestNameView()
-//                }
+                .fullScreenCover(isPresented: $showNameView) {
+                    RequestNameView()
+                }
         }
 
     }

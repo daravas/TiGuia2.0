@@ -122,7 +122,7 @@ struct StudentMentorUI: View {
                         UserDefaults.standard.set(true, forKey: "eMentor")
                         self.presented2.toggle()
                     }
-                    
+                    print("Name: \(Auth.auth().currentUser!.displayName)")
                 }, label: {
                     HStack {
                         Image(systemName: "\(image[1])")
@@ -159,14 +159,22 @@ struct StudentMentorUI: View {
                     .cornerRadius(10)
                 }).padding(.bottom, 20.0)
                 .shadow(radius: 10)
-                .fullScreenCover(isPresented: $showSignInForm) {
-                    SignInMentorView(userVM: userViewModel)
-                }
-                .fullScreenCover(isPresented: $presented2, content: {
-                    //choices(selection: index)
-                    MacroAreaMentorUIView()
-                })
+//                .fullScreenCover(isPresented: $showSignInForm) {
+//                    SignInMentorView(userVM: userViewModel)
+//                }
+//                .fullScreenCover(isPresented: $presented2, content: {
+//                    //choices(selection: index)
+//                    MacroAreaMentorUIView()
+//                })
                 
+                if (showSignInForm || presented2) {
+
+                      EmptyView().fullScreenCover(isPresented: $showSignInForm)
+                      { SignInMentorView(userVM: userViewModel) }
+
+                      EmptyView().fullScreenCover(isPresented: $presented2)
+                      { MacroAreaMentorUIView() }
+                    }
             }.padding()
             
             // botoes de escolha entre aluno ou mentor
