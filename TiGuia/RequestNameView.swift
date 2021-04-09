@@ -13,6 +13,7 @@ struct RequestNameView: View {
     
     @State var userName = ""
     @State private var showConfigView = false
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         
@@ -40,7 +41,8 @@ struct RequestNameView: View {
                 Button(action: {
                     
                     SignInWithAppleCoordinator().changeName(displayName: userName)
-                    showConfigView.toggle()
+                    presentationMode.wrappedValue.dismiss()
+                    //showConfigView.toggle()
                     
                     
                 }, label: {
