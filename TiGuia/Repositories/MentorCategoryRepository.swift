@@ -21,6 +21,8 @@ class MentorCategoryRepository: ObservableObject {
     
     private var cancellables = Set<AnyCancellable>()
     
+    @Published var noInternet = false
+    
     //  override init() {
     //    super.init()
     
@@ -48,6 +50,7 @@ class MentorCategoryRepository: ObservableObject {
             db.collection("categoria").whereField("mentores", arrayContains: userId).addSnapshotListener({(snapshot, error) in
                   guard let documents = snapshot?.documents else {
                       print("No docs returnd")
+                    self.noInternet = true
                       return
                   }
                   self.categories = documents.map({docSnapshot -> MentorSubcategory in
