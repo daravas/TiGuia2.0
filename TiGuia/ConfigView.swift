@@ -150,12 +150,14 @@ struct ConfigView: View {
             .font(.custom("Raleway-SemiBold", size: 16))
             .foregroundColor(.darkColor)
             .padding([.top, .bottom])
-            .fullScreenCover(isPresented: $showSignInForm) {
+            if(showSignInForm || showResquestName){
+            EmptyView().fullScreenCover(isPresented: $showSignInForm) {
                 SignInView(userViewModel: userVM, showThisView: $showSignInForm, completed: $showResquestName)
             }
-            .fullScreenCover(isPresented: $showResquestName) {
+                EmptyView().fullScreenCover(isPresented: $showResquestName) {
                 RequestNameView(showThisView: $showResquestName)
             }
+        }
             
         }
     }
