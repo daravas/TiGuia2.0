@@ -118,14 +118,18 @@ struct ConfigMentorView: View {
     
     struct AccountView: View {
         
-        @State private var showSignInForm = false
+        
         @ObservedObject var userVM: UserViewModel
         
+        @State var showSignIn = false
+        @State var showResquestName = false
+        @State var showMentorArea = false
+        @State var userName = Auth.auth().currentUser!.displayName ?? ""
         var body: some View {
             
             Button(action: {
                 
-                showSignInForm.toggle()
+                showResquestName.toggle()
                 
                 
             }, label: {
@@ -139,8 +143,16 @@ struct ConfigMentorView: View {
             .font(.custom("Raleway-SemiBold", size: 16))
             .foregroundColor(.darkColor)
             .padding([.top, .bottom])
-            .fullScreenCover(isPresented: $showSignInForm) {
-                SignInMentorView(userVM: userVM)
+            if(showSignIn || showResquestName || showMentorArea){
+                EmptyView().fullScreenCover(isPresented: $showSignIn) {
+                    SignInMentorView(userVM: userVM, showThisView: $showSignIn, userName: $userName, showMentorArea: $showMentorArea)
+                }
+                EmptyView().fullScreenCover(isPresented: $showResquestName) {
+                    RequestNameView(showThisView: $showResquestName, showSignIn: $showSignIn, userName: $userName)
+                }
+                EmptyView().fullScreenCover(isPresented: $showMentorArea) {
+                    MacroAreaMentorUIView()
+                }
             }
             
         }

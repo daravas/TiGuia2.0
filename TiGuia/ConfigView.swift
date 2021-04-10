@@ -151,13 +151,13 @@ struct ConfigView: View {
             .foregroundColor(.darkColor)
             .padding([.top, .bottom])
             if(showSignInForm || showResquestName){
-            EmptyView().fullScreenCover(isPresented: $showSignInForm) {
-                SignInView(userViewModel: userVM, showThisView: $showSignInForm, userName: $userName)
-            }
+                EmptyView().fullScreenCover(isPresented: $showSignInForm) {
+                    SignInView(userViewModel: userVM, showThisView: $showSignInForm, userName: $userName)
+                }
                 EmptyView().fullScreenCover(isPresented: $showResquestName) {
                     RequestNameView(showThisView: $showResquestName, showSignIn: $showSignInForm, userName: $userName)
+                }
             }
-        }
             
         }
     }

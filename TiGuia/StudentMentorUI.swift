@@ -41,6 +41,11 @@ struct StudentMentorUI: View {
     @State private var showSignInForm = false
     @ObservedObject var userViewModel = UserViewModel()
     
+    @State var showSignIn = false
+    @State var showResquestName = false
+    @State var showMentorArea = false
+    @State var userName = Auth.auth().currentUser!.displayName ?? ""
+    
     var image = ["person", "person.2"]
     var title = ["Aluno", "Mentor"]
     var descrip = ["Se você quer explorar a área da tecnologia e ainda tirar suas dúvidas com um mentor.", "Se você quer ajudar pessoas que têm interesse na sua área."]
@@ -116,11 +121,11 @@ struct StudentMentorUI: View {
                 // botao 2 - mentor
                 Button(action: {
                     if (userViewModel.user[0].isSigned == false) {
-                        showSignInForm = true
+                        showResquestName.toggle()
                     } else {
                         Analytics.setUserProperty("Mentor", forName: "aluno_ou_mentor")
                         UserDefaults.standard.set(true, forKey: "eMentor")
-                        self.presented2.toggle()
+                        showMentorArea.toggle()
                     }
                     print("Name: \(Auth.auth().currentUser!.displayName)")
                 }, label: {
@@ -167,14 +172,17 @@ struct StudentMentorUI: View {
 //                    MacroAreaMentorUIView()
 //                })
                 
-                if (showSignInForm || presented2) {
-
-                      EmptyView().fullScreenCover(isPresented: $showSignInForm)
-                      { SignInMentorView(userVM: userViewModel) }
-
-                      EmptyView().fullScreenCover(isPresented: $presented2)
-                      { MacroAreaMentorUIView() }
+                if(showSignIn || showResquestName || showMentorArea){
+                    EmptyView().fullScreenCover(isPresented: $showSignIn) {
+                        SignInMentorView(userVM: userViewModel, showThisView: $showSignIn, userName: $userName, showMentorArea: $showMentorArea)
                     }
+                    EmptyView().fullScreenCover(isPresented: $showResquestName) {
+                        RequestNameView(showThisView: $showResquestName, showSignIn: $showSignIn, userName: $userName)
+                    }
+                    EmptyView().fullScreenCover(isPresented: $showMentorArea) {
+                        MacroAreaMentorUIView()
+                    }
+                }
             }.padding()
             
             // botoes de escolha entre aluno ou mentor
