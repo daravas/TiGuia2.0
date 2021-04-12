@@ -12,6 +12,9 @@ import UIKit
 extension Color {
     static let btnColor = Color(UIColor(named:"btnColor")!)
     static let darkColor = Color(UIColor(named:"darkColor")!)
+    static let blackColor = Color(UIColor(named:"blackColor")!)
+    static let messageBlueColor = Color(UIColor(named:"messageBlueColor")!)
+    static let grayColor = Color(UIColor(named:"grayColor")!)
     static let lightColor = Color(UIColor(named:"lightColor")!)
     static let orangeColor = Color(UIColor(named:"orangeColor")!)
     static let disabledOrangeColor = Color(UIColor(named:"disabledOrangeColor")!)
