@@ -93,6 +93,8 @@ struct ChatListMentorView: View {
                 }
                 }
                 
+            }.onAppear(){
+                chatViewModel.fetchData()
             }
             //.navigationTitle("Mentoria")
             
