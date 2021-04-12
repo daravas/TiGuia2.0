@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct MentorSubcategory {
+struct MentorSubcategory: Identifiable {
+    var id: String?
     var title:String
     var content:String
     var image:String?
