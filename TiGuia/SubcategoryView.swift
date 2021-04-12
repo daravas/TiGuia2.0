@@ -220,8 +220,13 @@ public struct SubcategoryView: View {
                         
                         VStack {
                             Button(action: {
-                                if (userVM.user[0].isSigned == false) {
-                                    showSignInForm.toggle()
+                                if (userVM.user[0].isSigned == false || userName == "") {
+                                    if (userName == ""){
+                                        showRequestName.toggle()
+                                    }
+                                    else{
+                                        showSignInForm.toggle()
+                                    }
                                 } else {
                                     self.showModal.toggle()
                                 }
@@ -242,12 +247,13 @@ public struct SubcategoryView: View {
                             .background(Color.btnColor)
                             .cornerRadius(10)
                             .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                            .fullScreenCover(isPresented: $presented, content: {
-                                //HelpUI()
-                            })
-                            .fullScreenCover(isPresented: $showSignInForm) {
-                                //Pode dar bugs, falta verificar!
-                                SignInView(userViewModel: userVM, showThisView: $showSignInForm, userName: $userName)//, completed: $showRequestName)
+                            if(showSignInForm || showRequestName){
+                                EmptyView().fullScreenCover(isPresented: $showSignInForm) {
+                                    SignInView(userViewModel: userVM, showThisView: $showSignInForm, userName: $userName)
+                                }
+                                EmptyView().fullScreenCover(isPresented: $showRequestName) {
+                                    RequestNameView(showThisView: $showRequestName, showSignIn: $showSignInForm, userName: $userName)
+                                }
                             }
                             
                         }.padding()
