@@ -18,7 +18,7 @@ class MessagesViewModel: ObservableObject{
             db.collection("mentoria").document(docId).collection("messages").addDocument(data: [
                 "sentAt": Date(),
                 "content": messageContent,
-                "sender": user?.uid
+                "sender": user?.email
             ])
         }
     }

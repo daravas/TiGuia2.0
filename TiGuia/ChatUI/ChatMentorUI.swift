@@ -101,12 +101,12 @@ struct ChatMentorUI : View {
                         ScrollViewReader { reader in
                             LazyVStack(spacing: 0.5) {
                                 ForEach(viewModel.messages) {  message in
-                                    ChatBubble(direction: message.sender == Auth.auth().currentUser?.uid ? .right : .left) {
+                                    ChatBubble(direction: message.sender == Auth.auth().currentUser?.email ? .right : .left) {
                                         Text(message.content)
                                             .padding(.all, 15)
-                                            .foregroundColor(message.sender == Auth.auth().currentUser?.uid ? Color.lightColor :  Color.blackColor)
+                                            .foregroundColor(message.sender == Auth.auth().currentUser?.email ? Color.lightColor :  Color.blackColor)
                                             .font(.custom("Raleway-Regular", size: 17))
-                                            .background(message.sender == Auth.auth().currentUser?.uid ? Color.messageBlueColor : Color.grayColor)
+                                            .background(message.sender == Auth.auth().currentUser?.email ? Color.messageBlueColor : Color.grayColor)
                                         
                                         //                                    switch message.dataType {
                                         //                                    case

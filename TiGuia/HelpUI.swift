@@ -84,7 +84,7 @@ struct HelpUI: View {
                         
                         Button(action: {
                             print(doubt)
-                            chatroomViewModel.createChatroom(studentId: Auth.auth().currentUser!.uid, studentName: "Victor", chatArea: category,message: doubt, handler: {
+                            chatroomViewModel.createChatroom(studentId: Auth.auth().currentUser!.email!, studentName: Auth.auth().currentUser!.displayName!, chatArea: category,message: doubt, handler: {
                                 
                             })
                             self.completed.toggle()

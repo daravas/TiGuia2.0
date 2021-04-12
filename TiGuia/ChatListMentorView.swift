@@ -76,7 +76,7 @@ struct ChatListMentorView: View {
                                         Text(chatroom.studentName)
                                         Spacer()
                                         Button(action: {
-                                            chatViewModel.joinChatroom(id: chatroom.id, mentorId: Auth.auth().currentUser!.uid, mentorName: "Meyri", mentorArea: "Robótica", handler: {
+                                            chatViewModel.joinChatroom(id: chatroom.id, mentorId: Auth.auth().currentUser!.email!, mentorName: Auth.auth().currentUser!.displayName!, mentorArea: chatroom.chatArea, handler: {
                                                 chatViewModel.fetchStudents()
                                             })
                                             
