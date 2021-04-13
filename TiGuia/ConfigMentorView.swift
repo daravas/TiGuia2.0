@@ -81,7 +81,7 @@ struct ConfigMentorView: View {
                 
                 if(userViewModel.user.count > 0){
                     if (userViewModel.user[0].isSigned) {
-                        SignOutView(userVM: userViewModel)
+                        SignOutView()
                     }
                 }
                 
@@ -159,7 +159,10 @@ struct ConfigMentorView: View {
     }
     
     struct SignOutView: View {
-        @ObservedObject var userVM: UserViewModel
+        @ObservedObject var userVM = UserViewModel()
+        init(){
+            userVM.fetchData(isSigned: Auth.auth().currentUser!.isEmailVerified)
+        }
         var body: some View {
             
             Button(action: {
