@@ -18,10 +18,6 @@ struct SignInView: View {
     
     @State private var showNameView = false
     
-    @ObservedObject var userAuth: UserAuth
-    
-    @State private var showNameView = false
-    
     
     @State var coordinator: SignInWithAppleCoordinator?
     

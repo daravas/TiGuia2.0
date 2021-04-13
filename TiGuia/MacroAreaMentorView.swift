@@ -96,7 +96,7 @@ struct MacroAreaMentorUIView: View {
             }
         }
     }
-}
+//}
 
 struct EmBreveUiMentor: View{
     var body: some View{
