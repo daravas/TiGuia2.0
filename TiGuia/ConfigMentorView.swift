@@ -166,7 +166,7 @@ struct ConfigMentorView: View {
                 
                 do {
                     try Auth.auth().signOut()
-                    userVM.sendData(isSigned: false)
+                    //userVM.sendData(isSigned: false)
                 } catch {
                     print("Error Signing Out")
                 }

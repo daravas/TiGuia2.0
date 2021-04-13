@@ -100,7 +100,7 @@ class ChatroomViewModel: ObservableObject{
                     }
                     else {
                         self.db.collection("mentoria").document(snapshot!.documentID).updateData([
-                            "users": FieldValue.arrayUnion([self.user!.uid]),
+                            "users": FieldValue.arrayUnion([self.user!.email]),
                             "mentorId": mentorId,
                             "mentorName": mentorName
                             
