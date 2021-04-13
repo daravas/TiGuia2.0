@@ -175,6 +175,7 @@ struct ConfigView: View {
                     try Auth.auth().signOut()
                     userAuth.isSigned = false
                     userVM.sendData(isSigned: false)
+                    userVM.fetchData(isSigned: false)
                 } catch {
                     print("Error Signing Out")
                 }
