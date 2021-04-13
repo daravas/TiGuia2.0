@@ -66,7 +66,7 @@ struct ConfigView: View {
                     Divider().frame(height: 1).background(Color.titleColor)
                     
                     
-                    //AccountView(userAuth: userAuth, userVM: userViewModel)
+                    AccountView(userAuth: userAuth, userVM: userViewModel)
                 }
                 
                 HStack{

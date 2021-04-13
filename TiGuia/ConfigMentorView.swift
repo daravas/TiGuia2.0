@@ -61,7 +61,7 @@ struct ConfigMentorView: View {
                     Divider().frame(height: 1).background(Color.titleColor)
                     
                     
-                    //AccountView(userVM: userViewModel)
+                    AccountView(userVM: userViewModel)
                 }
                 
                 HStack{

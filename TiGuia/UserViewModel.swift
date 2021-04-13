@@ -11,7 +11,7 @@ import Firebase
 class UserViewModel: ObservableObject, Identifiable {
     
     @Published var user = [User]()
-    
+    private let authUser = Auth.auth().currentUser
     private var db = Firestore.firestore()
     private var userAuth = Auth.auth().currentUser
     
@@ -21,7 +21,7 @@ class UserViewModel: ObservableObject, Identifiable {
     func sendData(isSigned: Bool){
         //if(db.collection("user").whereField("userID", isEqualTo: userAuth!.uid).getDocuments())
         
-        if (user != nil){
+        if (authUser != nil){
             db.collection("user").whereField("userID", isEqualTo: userAuth!.uid).getDocuments(){ (snapshot, error) in
                 if let error = error {
                     print("error getting documents: \(error)")
@@ -53,7 +53,7 @@ class UserViewModel: ObservableObject, Identifiable {
     
     
     func createData(isSigned: Bool) {
-        if (user != nil) {
+        if (authUser != nil) {
             db.collection("user").addDocument(data: [
                 "userID": self.userAuth!.uid,
                 "isSigned": isSigned
@@ -61,9 +61,27 @@ class UserViewModel: ObservableObject, Identifiable {
         }
     }
     
+    
+    func fetchfetch(){
+        if (authUser != nil) {
+            db.collection("users").document(Auth.auth().currentUser!.uid)
+                .addSnapshotListener { documentSnapshot, error in
+                    guard let document = documentSnapshot else {
+                        print("Error fetching document: \(error!)")
+                        return
+                    }
+                    guard let data = document.data() else {
+                        print("Document data was empty.")
+                        return
+                    }
+                    print("Current data: \(data)")
+                }
+        }
+    }
+    
     func fetchData(isSigned: Bool) {
         
-        if user != nil {
+        if authUser != nil {
             db.collection("user").whereField("userID", isEqualTo: userAuth?.uid).addSnapshotListener({(snapshot,error) in
                 guard let documents = snapshot?.documents
                 else {
@@ -77,7 +95,7 @@ class UserViewModel: ObservableObject, Identifiable {
                     let userID = data["userID"] as? String ?? ""
                     let isSigned = data["isSigned"] as! Bool
                     
-                    return User(id: docId, userID: self.userAuth!.uid, isSigned: isSigned)
+                    return User(id: docId, userID: userID, isSigned: isSigned)
                 })
                 if (documents.count == 0){
                     self.createData(isSigned: isSigned)
