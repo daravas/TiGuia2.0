@@ -61,7 +61,7 @@ struct ConfigMentorView: View {
                     Divider().frame(height: 1).background(Color.titleColor)
                     
                     
-                    AccountView(userVM: userViewModel)
+                    //AccountView(userVM: userViewModel)
                 }
                 
                 HStack{
@@ -81,7 +81,7 @@ struct ConfigMentorView: View {
                 
                 if(userViewModel.user.count > 0){
                     if (userViewModel.user[0].isSigned) {
-                        SignOutView()
+                        SignOutView(userVM: userViewModel)
                     }
                 }
                 
@@ -159,17 +159,14 @@ struct ConfigMentorView: View {
     }
     
     struct SignOutView: View {
-        @ObservedObject var userVM = UserViewModel()
-        init(){
-            userVM.fetchData(isSigned: Auth.auth().currentUser!.isEmailVerified)
-        }
+        @ObservedObject var userVM: UserViewModel
         var body: some View {
             
             Button(action: {
                 
                 do {
                     try Auth.auth().signOut()
-                    //userVM.sendData(isSigned: false)
+                    userVM.sendData(isSigned: false)
                 } catch {
                     print("Error Signing Out")
                 }
