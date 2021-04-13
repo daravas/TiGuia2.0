@@ -150,9 +150,9 @@ struct ConfigMentorView: View {
                 EmptyView().fullScreenCover(isPresented: $showResquestName) {
                     RequestNameView(showThisView: $showResquestName, showSignIn: $showSignIn, userName: $userName)
                 }
-                EmptyView().fullScreenCover(isPresented: $showMentorArea) {
-                    MacroAreaMentorUIView()
-                }
+//                EmptyView().fullScreenCover(isPresented: $showMentorArea) {
+//                    MacroAreaMentorUIView()
+//                }
             }
             
         }
