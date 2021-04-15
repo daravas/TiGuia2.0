@@ -52,6 +52,7 @@ struct StudentMentorUI: View {
     
     init(){
         userViewModel.fetchData(isSigned: Auth.auth().currentUser!.isEmailVerified)
+        userViewModel.fetchfetch()
     }
     
     var body: some View {

@@ -11,7 +11,8 @@ import Firebase
 class UserViewModel: ObservableObject, Identifiable {
     
     @Published var user = [User]()
-    private let authUser = Auth.auth().currentUser
+    @Published var userSign: UserSign?
+    private var authUser = Auth.auth().currentUser
     private var db = Firestore.firestore()
     private var userAuth = Auth.auth().currentUser
     
@@ -60,7 +61,14 @@ class UserViewModel: ObservableObject, Identifiable {
             ])
         }
     }
-    
+    func changeData(isSigned: Bool){
+        if (authUser != nil) {
+            db.collection("users").document(authUser!.uid).updateData([
+                "userID": self.userAuth!.uid,
+                "isSigned": isSigned
+            ])
+        }
+    }
     
     func fetchfetch(){
         if (authUser != nil) {
@@ -72,8 +80,20 @@ class UserViewModel: ObservableObject, Identifiable {
                     }
                     guard let data = document.data() else {
                         print("Document data was empty.")
+                        self.db.collection("users").document(self.authUser!.uid).setData([
+                            "userID": self.userAuth!.uid,
+                            "isSigned": false
+                        ]) { err in
+                            if let err = err {
+                                print("Error writing document: \(err)")
+                            } else {
+                                print("Document successfully written!")
+                            }
+                        }
                         return
                     }
+                    self.userSign?.isSigned = data["isSigned"] as? Bool ?? false
+                    self.userSign?.userID = data["userId"] as? String ?? ""
                     print("Current data: \(data)")
                 }
         }
@@ -82,6 +102,7 @@ class UserViewModel: ObservableObject, Identifiable {
     func fetchData(isSigned: Bool) {
         
         if authUser != nil {
+            authUser = Auth.auth().currentUser
             db.collection("user").whereField("userID", isEqualTo: userAuth?.uid).addSnapshotListener({(snapshot,error) in
                 guard let documents = snapshot?.documents
                 else {

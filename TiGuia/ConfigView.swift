@@ -17,7 +17,13 @@ struct ConfigView: View {
 //    @State var condition = Auth.auth().currentUser?.isEmailVerified
     
     init(){
-        userViewModel.fetchData(isSigned: Auth.auth().currentUser!.isEmailVerified)
+        //userViewModel.fetchData(isSigned: Auth.auth().currentUser!.isEmailVerified)
+        if(Auth.auth().currentUser != nil){
+            userViewModel.userSign = UserSign(userID: Auth.auth().currentUser!.uid, isSigned: Auth.auth().currentUser!.isEmailVerified ?? false)}
+        else{
+            userViewModel.userSign = UserSign(userID: "", isSigned: false)
+        }
+        userViewModel.fetchfetch()
     }
     
     var body: some View {
@@ -31,8 +37,8 @@ struct ConfigView: View {
             .padding(.top, 40)
             
             VStack{
-                if(userViewModel.user.count > 0){
-                    if (!userViewModel.user[0].isSigned) {
+                if(userViewModel.userSign != nil){
+                if (!userViewModel.userSign!.isSigned) {
                         HStack{
                             Image(systemName: "person" )
                                 .frame(width: 20, height: 20)
@@ -57,15 +63,15 @@ struct ConfigView: View {
                             .frame(width: 20, height: 20)
                             .font(.system(size: 20))
                             .foregroundColor(.titleColor)
-                        
+
                         Text("Conta")
                             .font(.custom("Raleway-Bold", size: 20))
                             .foregroundColor(.titleColor)
                         Spacer()
                     }
                     Divider().frame(height: 1).background(Color.titleColor)
-                    
-                    
+
+
                     AccountView(userAuth: userAuth, userVM: userViewModel)
                 }
                 
@@ -84,14 +90,14 @@ struct ConfigView: View {
                 Divider().frame(height: 1).background(Color.titleColor)
                 ToggleDarkModeView()
                 Spacer()
-                if(userViewModel.user.count > 0){
-                    if (userViewModel.user[0].isSigned) {
+                if(userViewModel.userSign != nil){
+                if (userViewModel.userSign!.isSigned) {
                         SignOutView(userAuth: userAuth, userVM: userViewModel)
                     }
                 }
-                else{
-                    
-                }
+//                else{
+//
+//                }
             }
             .padding()
         }
@@ -174,8 +180,8 @@ struct ConfigView: View {
                 do {
                     try Auth.auth().signOut()
                     userAuth.isSigned = false
-                    userVM.sendData(isSigned: false)
-                    userVM.fetchData(isSigned: false)
+                    userVM.changeData(isSigned: false)
+                    //userVM.fetchfetch()
                 } catch {
                     print("Error Signing Out")
                 }

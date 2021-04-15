@@ -16,3 +16,11 @@ struct User: Identifiable, Codable {
     var userID: String
     var isSigned: Bool
 }
+
+struct UserSign: Identifiable{
+    
+    @DocumentID var id: String?
+    
+    var userID: String
+    var isSigned: Bool
+}

@@ -67,7 +67,7 @@ struct SignInView: View {
                         coordinator.startSignInWithAppleFlow {
                             print("You successfully signed in")
                             userAuth.isSigned = true
-                            userViewModel.sendData(isSigned: true)
+                            userViewModel.changeData(isSigned: true)
                             SignInWithAppleCoordinator().changeName(displayName: userName)
                             //completed.toggle()
                             showThisView.toggle()
