@@ -70,7 +70,7 @@ struct ChatListMentorView: View {
                         .padding(.horizontal)
                     List{
                     ForEach(chatViewModel.newChatrooms){ chatroom in
-                        if(mentorRep.titles.contains(chatroom.chatArea)){
+                        if(mentorRep.titles.contains(chatroom.chatArea) || chatroom.chatArea == "Computação"){
                                 VStack{
                                     HStack{
                                         Text(chatroom.studentName)
@@ -90,6 +90,7 @@ struct ChatListMentorView: View {
                             }
                             
                     }
+                        
                 }
                 }
                 
