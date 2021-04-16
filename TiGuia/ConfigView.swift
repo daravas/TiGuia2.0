@@ -173,9 +173,13 @@ struct ConfigView: View {
                 
                 do {
                     try Auth.auth().signOut()
-                    userAuth.isSigned = false
-                    userVM.sendData(isSigned: false)
-                    userVM.fetchData(isSigned: false)
+                    Auth.auth().signInAnonymously(completion: {_,_ in
+                        userVM.sendData(isSigned: false)
+                        userVM.fetchData(isSigned: false)
+                    })
+//                    userAuth.isSigned = false
+//                    userVM.sendData(isSigned: false)
+//                    userVM.fetchData(isSigned: false)
                 } catch {
                     print("Error Signing Out")
                 }
