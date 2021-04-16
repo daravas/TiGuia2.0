@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CardsCategory: View {
-    
+    @ObservedObject var userVM: UserViewModel
     var category:Category
     //@State private var presented = false
     @State private var selection: Int? = nil
@@ -16,7 +16,7 @@ struct CardsCategory: View {
     
     var body: some View {
         
-        NavigationLink(destination: SubcategoryView(favorito: category.subcategories[count].favorite, category: category.subcategories[count]), tag: count, selection: $selection) {
+        NavigationLink(destination: SubcategoryView(favorito: category.subcategories[count].favorite, userVM: userVM, category: category.subcategories[count]), tag: count, selection: $selection) {
             
             Button(action: {
                 //self.presented.toggle()

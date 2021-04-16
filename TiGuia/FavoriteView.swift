@@ -55,7 +55,7 @@ struct FavoriteView: View {
                             
                         }
                         .sheet(isPresented: $showSignInForm) {
-                            SignInView()
+//                            SignInView(userAuth: UserAuth())
                         }
                         .navigationBarItems(trailing: Button( action: {
                             self.showSignInForm.toggle()

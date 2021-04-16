@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 import SwiftUI
 //titulo, conteúdo, links, cards subcategorias, btn favorito
@@ -16,9 +17,12 @@ public struct SubcategoryView: View {
     @State var completed: Bool = false
     @State var isExpanded: Bool = false
     @State var truncated: Bool = false
-    
+    @State private var showSignInForm = false
+    @ObservedObject var userVM: UserViewModel
+//    @StateObject var userAuth = UserAuth()
+    @State var showRequestName: Bool = false
     //var category = Data().returnCategory()
-    
+    @State var userName = Auth.auth().currentUser!.displayName ?? ""
     //var index:Int
     
     var category:Subcategory
@@ -205,18 +209,27 @@ public struct SubcategoryView: View {
                             VStack {
                                 LazyVStack {
                                     ForEach(0..<category.subcategories.count, id: \.self) { count in
-                                        SubCardsCategory(category: category, count: count)
+                                        SubCardsCategory(category: category, count: count, userVM: userVM)
                                     }
                                 }
                             }.padding()
                         } else {
                             Spacer(minLength: 30)
                         }
-                    //MARK: -Botao de pedir ajuda
+                        //MARK: -Botao de pedir ajuda
                         
                         VStack {
                             Button(action: {
-                                self.showModal.toggle()
+                                if (userVM.user[0].isSigned == false || userName == "") {
+                                    if (userName == ""){
+                                        showRequestName.toggle()
+                                    }
+                                    else{
+                                        showSignInForm.toggle()
+                                    }
+                                } else {
+                                    self.showModal.toggle()
+                                }
                             }, label: {
                                 Spacer()
                                 Image(systemName: "ellipses.bubble")
@@ -228,15 +241,21 @@ public struct SubcategoryView: View {
                                     .font(.custom("Raleway-Bold", size: 18))
                                     .foregroundColor(.lightColor)
                                 Spacer()
-
+                                
                             }).padding()
                             .clipped()
                             .background(Color.btnColor)
                             .cornerRadius(10)
                             .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                                                    .fullScreenCover(isPresented: $presented, content: {
-                                                        //HelpUI()
-                                                    })
+                            if(showSignInForm || showRequestName){
+                                EmptyView().fullScreenCover(isPresented: $showSignInForm) {
+                                    SignInView(userViewModel: userVM, showThisView: $showSignInForm, userName: $userName)
+                                }
+                                EmptyView().fullScreenCover(isPresented: $showRequestName) {
+                                    RequestNameView(showThisView: $showRequestName, showSignIn: $showSignInForm, userName: $userName)
+                                }
+                            }
+                            
                         }.padding()
                         
                         Spacer(minLength: 20)
@@ -257,7 +276,7 @@ public struct SubcategoryView: View {
                 .shadow(color: .init(.sRGB, red: 0, green: 0, blue: 0, opacity: 0.4), radius: 15, x: 0.0, y: -5.0)
                 
             }.edgesIgnoringSafeArea(.top)
-            .overlay(HelpUI(showModal: $showModal, completed: $completed).opacity(showModal ? 1 : 0).frame(width: geometry.size.width, height: geometry.size.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).animation(.easeInOut(duration: 0.3)))
+            .overlay(HelpUI(showModal: $showModal, completed: $completed, category: category.title).opacity(showModal ? 1 : 0).frame(width: geometry.size.width, height: geometry.size.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).animation(.easeInOut(duration: 0.3)))
             .overlay(DoubtSentUI(completed: $completed).opacity(completed ? 1 : 0).frame(width: geometry.size.width, height: geometry.size.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).animation(.easeInOut(duration: 0.3)))
             
         }

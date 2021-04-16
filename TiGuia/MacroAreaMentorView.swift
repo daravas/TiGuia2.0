@@ -11,6 +11,7 @@ import SwiftUI
 
 // MARK: - Area Mentor
 struct MacroAreaMentorUIView: View {
+//    @Environment(\.presentationMode) var presentationMode
     
     // @State var didTap = false
     @State private var presented = false
@@ -18,6 +19,17 @@ struct MacroAreaMentorUIView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
+//            HStack{
+//                Button(action: {
+//
+//                    self.presentationMode.wrappedValue.dismiss()
+//                }) {
+//                    Image(systemName: "chevron.backward")
+//                        .resizable()
+//                        .foregroundColor(.btnColor)
+//                        .frame(width: 15, height: 25)
+//                }.padding()
+//            }
             Spacer()
                 .frame(height: 75.0)
             HStack {
@@ -32,12 +44,11 @@ struct MacroAreaMentorUIView: View {
             // scrollview com as macroareas
             ScrollView {
                 LazyVStack {
-                    ForEach((0..<Data.categories.count)){ index in
-                        var category: Category = Data.categories[index]
+                   // ForEach((0..<Data.categories.count)){ index in
+                        var category: Category = Data.categories[0]
                         Button(action: {
                             self.presented.toggle()
                             UserDefaults.standard.set(true, forKey: "macroAreaSelected")
-
                         }, label: {
                             HStack {
                                 Image(systemName: category.image!)
@@ -74,7 +85,7 @@ struct MacroAreaMentorUIView: View {
                         }).padding(.bottom, 20.0)
                         .shadow(radius: 10)
                         .fullScreenCover(isPresented: $presented, content: {
-                            AreaMentorView(category: Data.categories[index])
+                            AreaMentorView(category: Data.categories[0])
                         })
                         
                     }
@@ -85,7 +96,7 @@ struct MacroAreaMentorUIView: View {
             }
         }
     }
-}
+//}
 
 struct EmBreveUiMentor: View{
     var body: some View{

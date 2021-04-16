@@ -46,10 +46,10 @@ struct SubCardsCategory: View {
     //@State var presented = false
     @State private var selection: Int? = nil
     var count: Int
-    
+    @ObservedObject var userVM: UserViewModel
     var body: some View {
         
-        NavigationLink(destination: SubcategoryView(favorito: category.subcategories[count].favorite, category: category.subcategories[count]), tag: count, selection: $selection) {
+        NavigationLink(destination: SubcategoryView(favorito: category.subcategories[count].favorite, userVM: userVM, category: category.subcategories[count]), tag: count, selection: $selection) {
             Button(action: {
                 //self.presented.toggle()
                 self.selection = count

@@ -7,26 +7,45 @@
 
 import Foundation
 import SwiftUI
+import Firebase
 
 
 struct SignInView: View {
-    //  @Environment(\.window) var window: UIWindow?
+    
     @Environment(\.presentationMode) var presentationMode
-    //
-    //  @State var signInHandler: SignInWithAppleCoordinator?
-    //
+
+    @StateObject var userAuth = UserAuth()
+    
+    @State private var showNameView = false
+    
     
     @State var coordinator: SignInWithAppleCoordinator?
     
+    @ObservedObject var userViewModel: UserViewModel
+    
+    @Binding var showThisView: Bool
+    
+    @Binding var userName: String
+    
+    //@Binding var completed: Bool
+    
     var body: some View {
-        
+        let buttonColor = Color(red: 28/255, green: 118/255, blue: 144/255, opacity: 1.0)
         VStack(alignment: .center) {
+            Button(action: {
+    //
+                self.presentationMode.wrappedValue.dismiss()
+            }) {
+                Image(systemName: "chevron.backward")
+                    .foregroundColor(buttonColor)
+                    .padding(.trailing, 370.0)
+            }
             Image("logotiguia")
                 .resizable()
                 .frame(width: 96, height: 149)
                 .padding(.top, 80)
             
-            Text("Cadastre-se")
+            Text("Faça login")
                 .font(.custom("Raleway-Bold", size: 30))
                 .foregroundColor(.titleColor)
                 .padding(.top, 25)
@@ -47,30 +66,33 @@ struct SignInView: View {
                     if let coordinator = self.coordinator {
                         coordinator.startSignInWithAppleFlow {
                             print("You successfully signed in")
-                            self.presentationMode.wrappedValue.dismiss()
+                            userAuth.isSigned = true
+                            userViewModel.sendData(isSigned: true)
+                            SignInWithAppleCoordinator().changeName(displayName: userName)
+                            //completed.toggle()
+                            showThisView.toggle()
+                            //presentationMode.wrappedValue.dismiss()
+                            //showNameView.toggle()
                         }
                     }
                     
-                    //          self.signInWithAppleButtonTapped() // (2)
                 } .padding(.top, 40)
                 .cornerRadius(10)
                 .shadow(radius: 10)
             Spacer()
+//                .fullScreenCover(isPresented: $showNameView) {
+//                    RequestNameView(showThisView: $completed)
+//                }
         }
+
     }
     
-    //  func signInWithAppleButtonTapped() {
-    //    signInHandler = SignInWithAppleCoordinator(window: self.window)
-    //    signInHandler?.link { (user) in
-    //      print("User signed in \(user.uid)")
-    //      self.presentationMode.wrappedValue.dismiss() // (3)
-    //    }
-    //  }
+    
 }
 
-struct SignInView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignInView()
-    }
-}
+//struct SignInView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SignInView()
+//    }
+//}
 

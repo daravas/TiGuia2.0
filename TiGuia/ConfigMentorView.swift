@@ -1,25 +1,20 @@
 //
-//  ConfigView.swift
+//  ConfigMentorView.swift
 //  TiGuia
 //
-//  Created by Meyrillan Silva on 04/03/21.
+//  Created by Meyrillan Silva on 24/03/21.
 //
 
+import Foundation
 import UIKit
 import SwiftUI
 import Firebase
 
-struct ConfigView: View {
-    
-    @StateObject var userAuth = UserAuth()
+struct ConfigMentorView: View {
     @ObservedObject var userViewModel = UserViewModel()
-    
-//    @State var condition = Auth.auth().currentUser?.isEmailVerified
-    
     init(){
         userViewModel.fetchData(isSigned: Auth.auth().currentUser!.isEmailVerified)
     }
-    
     var body: some View {
         VStack {
             HStack {
@@ -47,7 +42,7 @@ struct ConfigView: View {
                         Divider().frame(height: 1).background(Color.titleColor)
                         
                         
-                        AccountView(userAuth: userAuth,userVM: userViewModel)
+                        AccountView(userVM: userViewModel)
                     }
                     
                 }
@@ -66,7 +61,7 @@ struct ConfigView: View {
                     Divider().frame(height: 1).background(Color.titleColor)
                     
                     
-                    AccountView(userAuth: userAuth, userVM: userViewModel)
+                    AccountView(userVM: userViewModel)
                 }
                 
                 HStack{
@@ -74,7 +69,6 @@ struct ConfigView: View {
                         .frame(width: 20, height: 20)
                         .font(.system(size: 20))
                         .foregroundColor(.titleColor)
-                    
                     Text("Aparência")
                         .font(.custom("Raleway-Bold", size: 20))
                         .foregroundColor(.titleColor)
@@ -84,19 +78,16 @@ struct ConfigView: View {
                 Divider().frame(height: 1).background(Color.titleColor)
                 ToggleDarkModeView()
                 Spacer()
+                
                 if(userViewModel.user.count > 0){
                     if (userViewModel.user[0].isSigned) {
-                        SignOutView(userAuth: userAuth, userVM: userViewModel)
+                        SignOutView(userVM: userViewModel)
                     }
                 }
-                else{
-                    
-                }
+                
             }
             .padding()
         }
-        
-        .environmentObject(userAuth)
     }
     
     struct ToggleModel {
@@ -127,10 +118,12 @@ struct ConfigView: View {
     
     struct AccountView: View {
         
-        @StateObject var userAuth: UserAuth
+        
         @ObservedObject var userVM: UserViewModel
-        @State var showSignInForm = false
+        
+        @State var showSignIn = false
         @State var showResquestName = false
+        @State var showMentorArea = false
         @State var userName = Auth.auth().currentUser!.displayName ?? ""
         var body: some View {
             
@@ -150,23 +143,23 @@ struct ConfigView: View {
             .font(.custom("Raleway-SemiBold", size: 16))
             .foregroundColor(.darkColor)
             .padding([.top, .bottom])
-            if(showSignInForm || showResquestName){
-                EmptyView().fullScreenCover(isPresented: $showSignInForm) {
-                    SignInView(userViewModel: userVM, showThisView: $showSignInForm, userName: $userName)
+            if(showSignIn || showResquestName || showMentorArea){
+                EmptyView().fullScreenCover(isPresented: $showSignIn) {
+                    SignInMentorView(userVM: userVM, showThisView: $showSignIn, userName: $userName, showMentorArea: $showMentorArea)
                 }
                 EmptyView().fullScreenCover(isPresented: $showResquestName) {
-                    RequestNameView(showThisView: $showResquestName, showSignIn: $showSignInForm, userName: $userName)
+                    RequestNameView(showThisView: $showResquestName, showSignIn: $showSignIn, userName: $userName)
                 }
+//                EmptyView().fullScreenCover(isPresented: $showMentorArea) {
+//                    MacroAreaMentorUIView()
+//                }
             }
             
         }
     }
     
     struct SignOutView: View {
-        
-        @StateObject var userAuth: UserAuth
         @ObservedObject var userVM: UserViewModel
-        
         var body: some View {
             
             Button(action: {
@@ -177,9 +170,7 @@ struct ConfigView: View {
                         userVM.sendData(isSigned: false)
                         userVM.fetchData(isSigned: false)
                     })
-//                    userAuth.isSigned = false
 //                    userVM.sendData(isSigned: false)
-//                    userVM.fetchData(isSigned: false)
                 } catch {
                     print("Error Signing Out")
                 }
@@ -190,7 +181,7 @@ struct ConfigView: View {
                     .frame(width: 90, height: 50)
                     .foregroundColor(.btnColor)
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(UIColor(.btnColor)), lineWidth: 2)
-                                .shadow(radius: 10))
+                    .shadow(radius: 10))
                     .padding(.bottom,40)
             })
         }
@@ -199,7 +190,7 @@ struct ConfigView: View {
 }
 
 
-struct ConfigView_Previews: PreviewProvider {
+struct ConfigMentorView_Previews: PreviewProvider {
     static var previews: some View {
         ConfigView()
     }

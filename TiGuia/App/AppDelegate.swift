@@ -19,11 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         if Auth.auth().currentUser == nil {
-        Auth.auth().signInAnonymously()
+            try Auth.auth().signInAnonymously(){_,_ in
+                let userVM = UserViewModel()
+                userVM.fetchData(isSigned: false)
+            }
         }
-        
-//        authenticationService.signIn()
-        
+                
         return true
     }
 

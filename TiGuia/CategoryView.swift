@@ -7,6 +7,7 @@
 
 //import Foundation
 import SwiftUI
+import Firebase
 //titulo, conteúdo, links, cards subcategorias, btn favorito
 struct CategoryView: View {
     @State private var favorito: Bool = false
@@ -14,15 +15,23 @@ struct CategoryView: View {
     @State var showModal: Bool = false
     @State var completed: Bool = false
     @State var limit: Int = 10
-    
+    @State var showRequestName: Bool = false
+    @State private var showSignInForm = false
+    @State var userName = Auth.auth().currentUser!.displayName ?? ""
     var categoryIndex: Int = 0 //tirar o =0 depois 
     //let category = Data.categories[categoryIndex]
-    
     // VARIAVEL QUE INICIALIZA TODOS OS DADOS - MOVER E APAGAR DEPOIS
     // ta sendo inicalizada na macroarea ate agora
     var socorro = Data()
-    
-    
+    @ObservedObject var userVM = UserViewModel()
+    init(categoryIndex: Int){
+        self.categoryIndex = categoryIndex
+        if(Auth.auth().currentUser != nil){
+            userVM.fetchData(isSigned: Auth.auth().currentUser!.isEmailVerified)}
+        else{
+            userVM.fetchData(isSigned: false)
+        }
+    }
     
     var body: some View {
         NavigationView {
@@ -49,7 +58,7 @@ struct CategoryView: View {
                         //MARK: -Header - titulo + botao de favoritos
                         //
                         HStack {
-                            //título
+                         //título
                             Text(category.title)
                                 .foregroundColor(.titleColor)
                                 .font(.custom("Raleway-Bold", size: 30))
@@ -104,7 +113,7 @@ struct CategoryView: View {
                                 VStack {
                                     LazyVStack {
                                         ForEach(0..<category.subcategories.count, id: \.self) { count in
-                                            CardsCategory(category: category, count: count)
+                                            CardsCategory(userVM: userVM, category: category, count: count)
                                         }
                                     }
                                 }.padding()
@@ -116,8 +125,16 @@ struct CategoryView: View {
                                 //
                                 VStack {
                                     Button(action: {
-                                        // self.presented.toggle()
-                                        self.showModal.toggle()
+                                        if (userVM.user[0].isSigned == false || userName == "") {
+                                            if (userName == ""){
+                                                showRequestName.toggle()
+                                            }
+                                            else{
+                                                showSignInForm.toggle()
+                                            }
+                                        } else {
+                                            self.showModal.toggle()
+                                        }
                                     }, label: {
                                         Spacer()
                                         Image(systemName: "ellipses.bubble")
@@ -135,6 +152,14 @@ struct CategoryView: View {
                                     .background(Color.btnColor)
                                     .cornerRadius(10)
                                     .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                                    if(showSignInForm || showRequestName){
+                                        EmptyView().fullScreenCover(isPresented: $showSignInForm) {
+                                            SignInView(userViewModel: userVM, showThisView: $showSignInForm, userName: $userName)
+                                        }
+                                        EmptyView().fullScreenCover(isPresented: $showRequestName) {
+                                            RequestNameView(showThisView: $showRequestName, showSignIn: $showSignInForm, userName: $userName)
+                                        }
+                                    }
                                     //                            .fullScreenCover(isPresented: $showModal, content: {
                                     //                                HelpUI(showModal: $showModal)
                                     //                            })
@@ -166,7 +191,7 @@ struct CategoryView: View {
                 //.navigationBarTitle("", displayMode: .inline)
                 .navigationBarTitle("")
                 .navigationBarHidden(true)
-                .overlay(HelpUI(showModal: $showModal, completed: $completed).opacity(showModal ? 1 : 0).frame(width: geometry.size.width, height: geometry.size.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).animation(.easeInOut(duration: 0.3)))
+                .overlay(HelpUI(showModal: $showModal, completed: $completed, category: category.title).opacity(showModal ? 1 : 0).frame(width: geometry.size.width, height: geometry.size.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).animation(.easeInOut(duration: 0.3)))
                 .overlay(DoubtSentUI(completed: $completed).opacity(completed ? 1 : 0).frame(width: geometry.size.width, height: geometry.size.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).animation(.easeInOut(duration: 0.3)))
                 //.navigationBarBackButtonHidden(true)
                 
@@ -196,11 +221,11 @@ struct CategoryView: View {
 //        }
 //    }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        CategoryView(categoryIndex: 0)
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CategoryView(categoryIndex: 0)
+//    }
+//}
 
 // MARK: - arrendondar bordas especificas
 extension View {

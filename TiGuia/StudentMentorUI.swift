@@ -21,17 +21,38 @@ import Firebase
 //    }
 //}
 
+// verifica se o usuario ta logado
+class UserAuth: ObservableObject {
+    
+    @Published var isSigned = Auth.auth().currentUser?.isEmailVerified ?? false
+    
+}
+
 // MARK: - Tela de estudante e mentor
 struct StudentMentorUI: View {
+    
+    @EnvironmentObject var userAuth: UserAuth
     
     // @State var didTap = false
     @State var presented = false
     @State var presented2 = false
     //@State var selection: Int? = nil
     
+    @State private var showSignInForm = false
+    @ObservedObject var userViewModel = UserViewModel()
+    
+    @State var showSignIn = false
+    @State var showResquestName = false
+    @State var showMentorArea = false
+    @State var userName = Auth.auth().currentUser!.displayName ?? ""
+    
     var image = ["person", "person.2"]
     var title = ["Aluno", "Mentor"]
     var descrip = ["Se você quer explorar a área da tecnologia e ainda tirar suas dúvidas com um mentor.", "Se você quer ajudar pessoas que têm interesse na sua área."]
+    
+    init(){
+        userViewModel.fetchData(isSigned: Auth.auth().currentUser!.isEmailVerified)
+    }
     
     var body: some View {
         
@@ -53,8 +74,8 @@ struct StudentMentorUI: View {
                 Button(action: {
                     self.presented.toggle()
                     Analytics.setUserProperty("Aluno", forName: "aluno_ou_mentor")
-                    UserDefaults.standard.set("aluno", forKey: "perfil")
-
+                    UserDefaults.standard.set("true", forKey: "eAluno")
+                    
                 }, label: {
                     HStack {
                         Image(systemName: "\(image[0])")
@@ -73,7 +94,7 @@ struct StudentMentorUI: View {
                                 .padding([.leading, .bottom, .trailing], 5.0)
                                 .foregroundColor(.lightColor)
                                 .fixedSize(horizontal: false, vertical: true)
-
+                            
                             
                             Text(descrip[0])
                                 .font(.custom("Raleway", size: 14))
@@ -81,7 +102,7 @@ struct StudentMentorUI: View {
                                 .foregroundColor(.lightColor)
                                 .fixedSize(horizontal: false, vertical: true)
                                 .lineSpacing(1)
-
+                            
                             
                         }
                         Spacer()
@@ -99,10 +120,14 @@ struct StudentMentorUI: View {
                 
                 // botao 2 - mentor
                 Button(action: {
-                    self.presented2.toggle()
-                    Analytics.setUserProperty("Mentor", forName: "aluno_ou_mentor")
-                    UserDefaults.standard.set("mentor", forKey: "perfil")
-                
+                    if (userViewModel.user[0].isSigned == false) {
+                        showResquestName.toggle()
+                    } else {
+                        Analytics.setUserProperty("Mentor", forName: "aluno_ou_mentor")
+                        UserDefaults.standard.set(true, forKey: "eMentor")
+                        showMentorArea.toggle()
+                    }
+                    print("Name: \(Auth.auth().currentUser!.displayName)")
                 }, label: {
                     HStack {
                         Image(systemName: "\(image[1])")
@@ -128,7 +153,7 @@ struct StudentMentorUI: View {
                                 .foregroundColor(.lightColor)
                                 .fixedSize(horizontal: false, vertical: true)
                                 .lineSpacing(1)
-
+                            
                             
                         }
                         Spacer()
@@ -138,60 +163,73 @@ struct StudentMentorUI: View {
                     .background(Color.btnColor)
                     .cornerRadius(10)
                 }).padding(.bottom, 20.0)
-                .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                .fullScreenCover(isPresented: $presented2, content: {
-                    //choices(selection: index)
-                    MacroAreaMentorUIView()
-                })
+                .shadow(radius: 10)
+//                .fullScreenCover(isPresented: $showSignInForm) {
+//                    SignInMentorView(userVM: userViewModel)
+//                }
+//                .fullScreenCover(isPresented: $presented2, content: {
+//                    //choices(selection: index)
+//                    MacroAreaMentorUIView()
+//                })
                 
-                
+                if(showSignIn || showResquestName || showMentorArea){
+                    EmptyView().fullScreenCover(isPresented: $showSignIn) {
+                        SignInMentorView(userVM: userViewModel, showThisView: $showSignIn, userName: $userName, showMentorArea: $showMentorArea)
+                    }
+                    EmptyView().fullScreenCover(isPresented: $showResquestName) {
+                        RequestNameView(showThisView: $showResquestName, showSignIn: $showSignIn, userName: $userName)
+                    }
+                    EmptyView().fullScreenCover(isPresented: $showMentorArea) {
+                        MacroAreaMentorUIView()
+                    }
+                }
             }.padding()
             
             // botoes de escolha entre aluno ou mentor
-//            LazyVStack {
-//                ForEach((0..<title.count)) { index in
-//                    Button(action: {
-//                        self.presented.toggle()
-//
-//                    }, label: {
-//                        HStack {
-//                            Image(systemName: "\(image[index])")
-//                                .resizable()
-//                                .padding(.all, 30.0)
-//                                .scaledToFit()
-//                                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-//                                .clipShape(Rectangle(), style: /*@START_MENU_TOKEN@*/FillStyle()/*@END_MENU_TOKEN@*/)
-//                                .background(Color.lightColor)
-//                                .cornerRadius(10)
-//                                .foregroundColor(.orangeColor)
-//                                .shadow(radius: 8)
-//                            VStack(alignment: .leading) {
-//                                Text(title[index])
-//                                    .font(.custom("Raleway-Bold", size: 24))
-//                                    .padding([.leading, .bottom, .trailing], 5.0)
-//                                    .foregroundColor(.lightColor)
-//
-//                                Text(descrip[index])
-//                                    .font(.custom("Raleway", size: 14))
-//                                    .padding([.leading, .bottom, .trailing], 5.0)
-//                                    .foregroundColor(.lightColor)
-//
-//                            }
-//                            Spacer()
-//                        }
-//                        .padding()
-//                        .clipped()
-//                        .background(Color.btnColor)
-//                        .cornerRadius(10)
-//                    }).padding(.bottom, 20.0)
-//                    .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-//                    .fullScreenCover(isPresented: $presented, content: {
-//                        //choices(selection: index)
-//                        //MacroAreaUI()
-//                    })
-//                }
-//            }
-//            .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            //            LazyVStack {
+            //                ForEach((0..<title.count)) { index in
+            //                    Button(action: {
+            //                        self.presented.toggle()
+            //
+            //                    }, label: {
+            //                        HStack {
+            //                            Image(systemName: "\(image[index])")
+            //                                .resizable()
+            //                                .padding(.all, 30.0)
+            //                                .scaledToFit()
+            //                                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            //                                .clipShape(Rectangle(), style: /*@START_MENU_TOKEN@*/FillStyle()/*@END_MENU_TOKEN@*/)
+            //                                .background(Color.lightColor)
+            //                                .cornerRadius(10)
+            //                                .foregroundColor(.orangeColor)
+            //                                .shadow(radius: 8)
+            //                            VStack(alignment: .leading) {
+            //                                Text(title[index])
+            //                                    .font(.custom("Raleway-Bold", size: 24))
+            //                                    .padding([.leading, .bottom, .trailing], 5.0)
+            //                                    .foregroundColor(.lightColor)
+            //
+            //                                Text(descrip[index])
+            //                                    .font(.custom("Raleway", size: 14))
+            //                                    .padding([.leading, .bottom, .trailing], 5.0)
+            //                                    .foregroundColor(.lightColor)
+            //
+            //                            }
+            //                            Spacer()
+            //                        }
+            //                        .padding()
+            //                        .clipped()
+            //                        .background(Color.btnColor)
+            //                        .cornerRadius(10)
+            //                    }).padding(.bottom, 20.0)
+            //                    .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+            //                    .fullScreenCover(isPresented: $presented, content: {
+            //                        //choices(selection: index)
+            //                        //MacroAreaUI()
+            //                    })
+            //                }
+            //            }
+            //            .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             Spacer()
         }//.background(Color.backgroundColor)
     }

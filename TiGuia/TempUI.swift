@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SwiftUI
+import Firebase
 
 struct TempUI: View {
     
@@ -17,7 +18,7 @@ struct TempUI: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 200, height: 290, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            Text("vai com calma!")
+            Text("vai com calma,\(Auth.auth().currentUser!.displayName!)!")
                 .foregroundColor(.titleColor)
                 .font(.custom("Raleway-Bold", size: 30))
                 .multilineTextAlignment(.leading)
