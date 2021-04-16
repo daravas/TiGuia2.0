@@ -60,7 +60,7 @@ struct SignInMentorView: View {
                         coordinator.startSignInWithAppleFlow {
                             print("You successfully signed in")
                             userVM.sendData(isSigned: true)
-                            self.presentationMode.wrappedValue.dismiss()
+                            //self.presentationMode.wrappedValue.dismiss()
                             SignInWithAppleCoordinator().changeName(displayName: userName)
                             showMentorArea.toggle()
                             showThisView.toggle()
@@ -72,16 +72,16 @@ struct SignInMentorView: View {
                 .shadow(radius: 10)
                 
             Spacer()
-            if (showNameView || showMacroMentorView) {
-
-                  EmptyView().fullScreenCover(isPresented: $showNameView)
-                  { //RequestNameView()
-                    
-                  }
-
-                  EmptyView().fullScreenCover(isPresented: $showMacroMentorView)
-                  { MacroAreaMentorUIView() }
-                }
+//            if (showNameView || showMacroMentorView) {
+//
+//                  EmptyView().fullScreenCover(isPresented: $showNameView)
+//                  { //RequestNameView()
+//                    
+//                  }
+//
+//                  EmptyView().fullScreenCover(isPresented: $showMacroMentorView)
+//                  { MacroAreaMentorUIView() }
+//                }
         }
     }
 }
