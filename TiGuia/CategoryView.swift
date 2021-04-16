@@ -15,7 +15,9 @@ struct CategoryView: View {
     @State var showModal: Bool = false
     @State var completed: Bool = false
     @State var limit: Int = 10
-    
+    @State var showRequestName: Bool = false
+    @State private var showSignInForm = false
+    @State var userName = Auth.auth().currentUser!.displayName ?? ""
     var categoryIndex: Int = 0 //tirar o =0 depois 
     //let category = Data.categories[categoryIndex]
     // VARIAVEL QUE INICIALIZA TODOS OS DADOS - MOVER E APAGAR DEPOIS
@@ -123,8 +125,16 @@ struct CategoryView: View {
                                 //
                                 VStack {
                                     Button(action: {
-                                        // self.presented.toggle()
-                                        self.showModal.toggle()
+                                        if (userVM.user[0].isSigned == false || userName == "") {
+                                            if (userName == ""){
+                                                showRequestName.toggle()
+                                            }
+                                            else{
+                                                showSignInForm.toggle()
+                                            }
+                                        } else {
+                                            self.showModal.toggle()
+                                        }
                                     }, label: {
                                         Spacer()
                                         Image(systemName: "ellipses.bubble")
@@ -142,6 +152,14 @@ struct CategoryView: View {
                                     .background(Color.btnColor)
                                     .cornerRadius(10)
                                     .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                                    if(showSignInForm || showRequestName){
+                                        EmptyView().fullScreenCover(isPresented: $showSignInForm) {
+                                            SignInView(userViewModel: userVM, showThisView: $showSignInForm, userName: $userName)
+                                        }
+                                        EmptyView().fullScreenCover(isPresented: $showRequestName) {
+                                            RequestNameView(showThisView: $showRequestName, showSignIn: $showSignInForm, userName: $userName)
+                                        }
+                                    }
                                     //                            .fullScreenCover(isPresented: $showModal, content: {
                                     //                                HelpUI(showModal: $showModal)
                                     //                            })
