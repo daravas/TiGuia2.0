@@ -17,7 +17,7 @@ struct EmailSignIn: View {
     @State var error: String = ""
     let buttonColor = Color(red: 28/255, green: 118/255, blue: 144/255, opacity: 1.0)
     @EnvironmentObject var session: SessionStore
-    @State var textao: String = ""
+    @Binding var textao: String
     @Binding var showThisView: Bool
     @State var showSignUpForm = false
     
