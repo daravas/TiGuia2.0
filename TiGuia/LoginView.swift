@@ -10,6 +10,8 @@ import SwiftUI
 struct LoginView: View {
     @State private var username: String = ""
     @State private var isEditing = false
+    @Binding var showSignIn: Bool
+    @Binding var userName: String
     
     var body: some View {
         VStack {
@@ -83,6 +85,22 @@ struct LoginView: View {
                     .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
                     .padding(.top,30)
                     .padding()
+                    
+                    Button(action: {
+                    }, label: {
+                        Spacer()
+                        Text("Cadastrar")
+                            .font(.custom("Raleway-Bold", size: 18))
+                            .foregroundColor(.lightColor)
+                        Spacer()
+                        
+                    }).padding()
+                    .clipped()
+                    .background(Color.btnColor) // aqui precisou usar o Color.
+                    .cornerRadius(10)
+                    .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                    .padding(.top,30)
+                    .padding()
 
                Spacer()
                     
@@ -94,8 +112,8 @@ struct LoginView: View {
 }
 }
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
-}
+//struct LoginView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LoginView()
+//    }
+//}

@@ -15,10 +15,12 @@ struct ConfigView: View {
     @ObservedObject var userViewModel = UserViewModel()
     
 //    @State var condition = Auth.auth().currentUser?.isEmailVerified
+    @EnvironmentObject var session: SessionStore
     
     init(){
         userViewModel.fetchData(isSigned: Auth.auth().currentUser!.isEmailVerified)
     }
+    
     
     var body: some View {
         VStack {
@@ -95,8 +97,10 @@ struct ConfigView: View {
             }
             .padding()
         }
-        
-        .environmentObject(userAuth)
+        .onAppear(perform: {
+            
+        })
+        .environmentObject(SessionStore())
     }
     
     struct ToggleModel {
@@ -154,9 +158,13 @@ struct ConfigView: View {
                 EmptyView().fullScreenCover(isPresented: $showSignInForm) {
                     SignInView(userViewModel: userVM, showThisView: $showSignInForm, userName: $userName)
                 }
+//                EmptyView().fullScreenCover(isPresented: $showResquestName) {
+//                    RequestNameView(showThisView: $showResquestName, showSignIn: $showSignInForm, userName: $userName)
+//                }
                 EmptyView().fullScreenCover(isPresented: $showResquestName) {
-                    RequestNameView(showThisView: $showResquestName, showSignIn: $showSignInForm, userName: $userName)
+                    EmailSignIn( showThisView: $showResquestName).environmentObject(SessionStore())
                 }
+                
             }
             
         }

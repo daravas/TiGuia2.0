@@ -64,6 +64,9 @@
 		47FBE9EB25EC5433005E9AD1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBE9EA25EC5433005E9AD1 /* LoginView.swift */; };
 		570DBE2B261E277A00E4E713 /* MentorSubcategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570DBE2A261E277A00E4E713 /* MentorSubcategory.swift */; };
 		571E2C9E2616888C00126BF7 /* SignTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571E2C9D2616888C00126BF7 /* SignTestView.swift */; };
+		576B8DD5262F53D700123EB1 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576B8DD4262F53D700123EB1 /* SessionStore.swift */; };
+		576B8DDD262F65A800123EB1 /* EmailSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576B8DDC262F65A800123EB1 /* EmailSignIn.swift */; };
+		576B8DE1262F6E9800123EB1 /* CadastroSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576B8DE0262F6E9800123EB1 /* CadastroSignUpView.swift */; };
 		577018FE26124CE200792067 /* ChatListMentorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577018FD26124CE200792067 /* ChatListMentorView.swift */; };
 		57714738260BBFDA002AEB42 /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57714737260BBFDA002AEB42 /* Chatroom.swift */; };
 		5771473B260BC328002AEB42 /* ChatroomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771473A260BC328002AEB42 /* ChatroomViewModel.swift */; };
@@ -173,6 +176,9 @@
 		47FBE9EA25EC5433005E9AD1 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		570DBE2A261E277A00E4E713 /* MentorSubcategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorSubcategory.swift; sourceTree = "<group>"; };
 		571E2C9D2616888C00126BF7 /* SignTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignTestView.swift; sourceTree = "<group>"; };
+		576B8DD4262F53D700123EB1 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
+		576B8DDC262F65A800123EB1 /* EmailSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignIn.swift; sourceTree = "<group>"; };
+		576B8DE0262F6E9800123EB1 /* CadastroSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadastroSignUpView.swift; sourceTree = "<group>"; };
 		577018FD26124CE200792067 /* ChatListMentorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListMentorView.swift; sourceTree = "<group>"; };
 		57714737260BBFDA002AEB42 /* Chatroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatroom.swift; sourceTree = "<group>"; };
 		5771473A260BC328002AEB42 /* ChatroomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomViewModel.swift; sourceTree = "<group>"; };
@@ -358,6 +364,8 @@
 				8B82528825FAB68C0060C653 /* FavoriteView.swift */,
 				57CA1B56260D0B1400EBD60E /* ChatList.swift */,
 				577018FD26124CE200792067 /* ChatListMentorView.swift */,
+				576B8DDC262F65A800123EB1 /* EmailSignIn.swift */,
+				576B8DE0262F6E9800123EB1 /* CadastroSignUpView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -443,6 +451,7 @@
 				5771473A260BC328002AEB42 /* ChatroomViewModel.swift */,
 				57CA1B59260D1EE200EBD60E /* MessagesViewModel.swift */,
 				477E4A1D2612C97100D1F58E /* MentorCategoryViewModel.swift */,
+				576B8DD4262F53D700123EB1 /* SessionStore.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -631,6 +640,7 @@
 				8B2FA23125759D3D00EACCA0 /* MacroAreaMentorViewController.swift in Sources */,
 				8B2FA2352575A43D00EACCA0 /* MacroAreaMentorView.swift in Sources */,
 				8B6140B625796E61009BAC19 /* PaginaConteudoView.swift in Sources */,
+				576B8DE1262F6E9800123EB1 /* CadastroSignUpView.swift in Sources */,
 				577018FE26124CE200792067 /* ChatListMentorView.swift in Sources */,
 				0890F06A257EB3AB009A7C90 /* ChatMentorHostingController.swift in Sources */,
 				477E4A1B2612A72300D1F58E /* MentorCategoryRepository.swift in Sources */,
@@ -654,6 +664,8 @@
 				08FB145A256306DE0045919B /* StudentMentorUI.swift in Sources */,
 				47A2FC852565BBBC00A5013E /* Student.swift in Sources */,
 				47FBE9EB25EC5433005E9AD1 /* LoginView.swift in Sources */,
+				576B8DDD262F65A800123EB1 /* EmailSignIn.swift in Sources */,
+				576B8DD5262F53D700123EB1 /* SessionStore.swift in Sources */,
 				0890AF64256DCB9E00525E41 /* OnboardingViewController.swift in Sources */,
 				8B54BAD12620F445006C4AB0 /* NoInternet.swift in Sources */,
 				8BA5807925770A90007FE7B5 /* AreaMentor.swift in Sources */,
