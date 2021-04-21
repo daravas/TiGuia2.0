@@ -122,7 +122,7 @@ struct ConfigMentorView: View {
         @State var showNothing: Bool = false
         
         @ObservedObject var userVM: UserViewModel
-        @State var textao = "Ao entrar você terá acesso aos mentores que \n fazem parte da comunidade do TiGuia! \nUma conversa com profissionais e alunos da área \n pode te ajudar a entender melhor sobre o assunto\n e a tomar decisões."
+        @State var textao = "Ao entrar você receberá as perguntas dos alunos que se interessam sobre a área de Computação!\n Faça parte da comunidade do TiGuia, você ajudará pessoas a encontrarem um caminho a seguir, fazendo-as compreender as áreas em que você atua."
         @State var showSignIn = false
         @State var showResquestName = false
         @State var showMentorArea = false

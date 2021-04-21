@@ -56,7 +56,7 @@ struct EmailSignIn: View {
                 .foregroundColor(.titleColor)
                 .padding(.top, 25)
             
-            /*Text("Ao entrar você terá acesso aos mentores que \n fazem parte da comunidade do TiGuia! \nUma conversa com profissionais e alunos da área \n pode te ajudar a entender melhor sobre o assunto\n e a tomar decisões.")
+            /*Text(textao)
                 .font(.custom("Raleway", size: 14))
                 .foregroundColor(.darkColor)
                 .multilineTextAlignment(.center)

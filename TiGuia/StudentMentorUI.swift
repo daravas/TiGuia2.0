@@ -49,7 +49,7 @@ struct StudentMentorUI: View {
     var image = ["person", "person.2"]
     var title = ["Aluno", "Mentor"]
     var descrip = ["Se você quer explorar a área da tecnologia e ainda tirar suas dúvidas com um mentor.", "Se você quer ajudar pessoas que têm interesse na sua área."]
-    @State var textao = "Ao entrar você terá acesso aos mentores que \n fazem parte da comunidade do TiGuia! \nUma conversa com profissionais e alunos da área \n pode te ajudar a entender melhor sobre o assunto\n e a tomar decisões."
+    @State var textao = "Ao entrar você receberá as perguntas dos alunos que se interessam sobre a área de Computação!\n Faça parte da comunidade do TiGuia, você ajudará pessoas a encontrarem um caminho a seguir, fazendo-as compreender as áreas em que você atua."
     init(){
         userViewModel.fetchData(isSigned: Auth.auth().currentUser!.isEmailVerified)
     }
