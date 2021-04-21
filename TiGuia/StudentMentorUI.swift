@@ -49,7 +49,7 @@ struct StudentMentorUI: View {
     var image = ["person", "person.2"]
     var title = ["Aluno", "Mentor"]
     var descrip = ["Se você quer explorar a área da tecnologia e ainda tirar suas dúvidas com um mentor.", "Se você quer ajudar pessoas que têm interesse na sua área."]
-    
+    @State var textao = "Ao entrar você receberá as perguntas \ndos alunos que se interessam sobre a área de Computação! Faça parte da comunidade do TiGuia, você ajudará pessoas a encontrarem um caminho a seguir, fazendo-as compreender as áreas em que você atua."
     init(){
         userViewModel.fetchData(isSigned: Auth.auth().currentUser!.isEmailVerified)
     }
@@ -173,11 +173,11 @@ struct StudentMentorUI: View {
 //                })
                 
                 if(showSignIn || showResquestName || showMentorArea){
-                    EmptyView().fullScreenCover(isPresented: $showSignIn) {
-                        SignInMentorView(userVM: userViewModel, showThisView: $showSignIn, userName: $userName, showMentorArea: $showMentorArea)
-                    }
+//                    EmptyView().fullScreenCover(isPresented: $showSignIn) {
+//                        SignInMentorView(userVM: userViewModel, showThisView: $showSignIn, userName: $userName, showMentorArea: $showMentorArea)
+//                    }
                     EmptyView().fullScreenCover(isPresented: $showResquestName) {
-                        RequestNameView(showThisView: $showResquestName, showSignIn: $showSignIn, userName: $userName)
+                        EmailSignIn(textao: $textao, showThisView: $showResquestName, userVM: userViewModel, showMacroView: $showMentorArea).environmentObject(SessionStore())
                     }
                     EmptyView().fullScreenCover(isPresented: $showMentorArea) {
                         MacroAreaMentorUIView()

@@ -16,6 +16,8 @@ struct RequestNameView: View {
     @Binding var showThisView: Bool
     @Binding var showSignIn: Bool
     @Binding var userName: String
+//    @Binding var userEmail: String = ""
+//    @Binding var userPassword: String = ""
     var body: some View {
         
         

@@ -15,10 +15,12 @@ struct ConfigView: View {
     @ObservedObject var userViewModel = UserViewModel()
     
 //    @State var condition = Auth.auth().currentUser?.isEmailVerified
+    @EnvironmentObject var session: SessionStore
     
     init(){
         userViewModel.fetchData(isSigned: Auth.auth().currentUser!.isEmailVerified)
     }
+    
     
     var body: some View {
         VStack {
@@ -95,8 +97,10 @@ struct ConfigView: View {
             }
             .padding()
         }
-        
-        .environmentObject(userAuth)
+        .onAppear(perform: {
+            
+        })
+        .environmentObject(SessionStore())
     }
     
     struct ToggleModel {
@@ -126,12 +130,13 @@ struct ConfigView: View {
     }
     
     struct AccountView: View {
-        
+        @State var showNothing: Bool = false
         @StateObject var userAuth: UserAuth
         @ObservedObject var userVM: UserViewModel
         @State var showSignInForm = false
         @State var showResquestName = false
         @State var userName = Auth.auth().currentUser!.displayName ?? ""
+        @State var textao = "Ao entrar você terá acesso aos mentores que fazem parte da comunidade do TiGuia! Uma conversa com profissionais e alunos da área pode te ajudar a entender melhor sobre o assunto e a tomar decisões."
         var body: some View {
             
             Button(action: {
@@ -154,9 +159,13 @@ struct ConfigView: View {
                 EmptyView().fullScreenCover(isPresented: $showSignInForm) {
                     SignInView(userViewModel: userVM, showThisView: $showSignInForm, userName: $userName)
                 }
+//                EmptyView().fullScreenCover(isPresented: $showResquestName) {
+//                    RequestNameView(showThisView: $showResquestName, showSignIn: $showSignInForm, userName: $userName)
+//                }
                 EmptyView().fullScreenCover(isPresented: $showResquestName) {
-                    RequestNameView(showThisView: $showResquestName, showSignIn: $showSignInForm, userName: $userName)
+                    EmailSignIn( textao: $textao, showThisView: $showResquestName, userVM: userVM, showMacroView: $showNothing).environmentObject(SessionStore())
                 }
+                
             }
             
         }
