@@ -22,6 +22,8 @@ struct CadastroSignUpView: View {
     @State var emailField = "  aluno123@gmail.com"
     @State var nameField = " Nome"
     @State var senhaField = " Senha"
+    @ObservedObject var userVM: UserViewModel
+    @Binding var showMacroView: Bool
     
     func signUp(){
         session.signUp(email: userEmail, password: userPassword, handler: {(result, error) in
@@ -29,10 +31,12 @@ struct CadastroSignUpView: View {
                 self.error = error.localizedDescription
                 print(error.localizedDescription)
             } else{
+                userVM.sendData(isSigned: true)
                 SignInWithAppleCoordinator().changeName(displayName: userName)
                 self.userEmail = ""
                 self.userName = ""
                 self.userPassword = ""
+                showMacroView.toggle()
                 showBackView.toggle()
                 showThisView.toggle()
             }
@@ -50,10 +54,10 @@ struct CadastroSignUpView: View {
             .foregroundColor(buttonColor)
             .padding(.trailing, 370.0)
     }
-    Image("logotiguia")
-        .resizable()
-        .frame(width: 96, height: 149)
-        .padding(.top, 80)
+//    Image("logotiguia")
+//        .resizable()
+//        .frame(width: 96, height: 149)
+//        .padding(.top, 80)
     
     Text("Cadastro")
         .font(.custom("Raleway-Bold", size: 30))
@@ -127,6 +131,12 @@ struct CadastroSignUpView: View {
     .cornerRadius(10)
     .padding()
             
+            if(error != ""){
+                Text(error)
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundColor(.red)
+//                            .padding()
+            }
             
             Button(action: signUp, label: {
                 Spacer()

@@ -20,14 +20,18 @@ struct EmailSignIn: View {
     @Binding var textao: String
     @Binding var showThisView: Bool
     @State var showSignUpForm = false
+    @ObservedObject var userVM: UserViewModel
+    @Binding var showMacroView: Bool
     
     func signIn() {
         session.signIn(email: userEmail, password: userPassword, handler: {(result, error) in
             if let error = error {
                 self.error = error.localizedDescription
             } else {
+                userVM.sendData(isSigned: true)
                 self.userEmail = ""
                 self.userPassword = ""
+                showMacroView.toggle()
                 showThisView.toggle()
             }
         })
@@ -148,7 +152,7 @@ struct EmailSignIn: View {
 
             //Spacer()
                 }.fullScreenCover(isPresented: $showSignUpForm, content: {
-                    CadastroSignUpView(showThisView: $showSignUpForm, showBackView: $showThisView)
+                    CadastroSignUpView(showThisView: $showSignUpForm, showBackView: $showThisView, userVM: userVM, showMacroView: $showMacroView)
                 })
         
     }

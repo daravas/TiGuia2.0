@@ -24,7 +24,8 @@ public struct SubcategoryView: View {
     //var category = Data().returnCategory()
     @State var userName = Auth.auth().currentUser!.displayName ?? ""
     //var index:Int
-    
+    @State var textao = "Ao entrar você terá acesso aos mentores que \n fazem parte da comunidade do TiGuia! \nUma conversa com profissionais e alunos da área \n pode te ajudar a entender melhor sobre o assunto\n e a tomar decisões."
+    @State var showNothing: Bool = false
     var category:Subcategory
     
     //static var favorite = Favorites()
@@ -220,13 +221,10 @@ public struct SubcategoryView: View {
                         
                         VStack {
                             Button(action: {
-                                if (userVM.user[0].isSigned == false || userName == "") {
-                                    if (userName == ""){
-                                        showRequestName.toggle()
-                                    }
-                                    else{
-                                        showSignInForm.toggle()
-                                    }
+                                if (userVM.user[0].isSigned == false) {
+                                    
+                                    showSignInForm.toggle()
+                                    
                                 } else {
                                     self.showModal.toggle()
                                 }
@@ -249,7 +247,8 @@ public struct SubcategoryView: View {
                             .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
                             if(showSignInForm || showRequestName){
                                 EmptyView().fullScreenCover(isPresented: $showSignInForm) {
-                                    SignInView(userViewModel: userVM, showThisView: $showSignInForm, userName: $userName)
+//                                    SignInView(userViewModel: userVM, showThisView: $showSignInForm, userName: $userName)
+                                    EmailSignIn(textao: $textao, showThisView: $showSignInForm, userVM: userVM, showMacroView: $showNothing).environmentObject(SessionStore())
                                 }
                                 EmptyView().fullScreenCover(isPresented: $showRequestName) {
                                     RequestNameView(showThisView: $showRequestName, showSignIn: $showSignInForm, userName: $userName)

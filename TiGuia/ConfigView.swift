@@ -130,7 +130,7 @@ struct ConfigView: View {
     }
     
     struct AccountView: View {
-        
+        @State var showNothing: Bool = false
         @StateObject var userAuth: UserAuth
         @ObservedObject var userVM: UserViewModel
         @State var showSignInForm = false
@@ -163,7 +163,7 @@ struct ConfigView: View {
 //                    RequestNameView(showThisView: $showResquestName, showSignIn: $showSignInForm, userName: $userName)
 //                }
                 EmptyView().fullScreenCover(isPresented: $showResquestName) {
-                    EmailSignIn( textao: $textao, showThisView: $showResquestName).environmentObject(SessionStore())
+                    EmailSignIn( textao: $textao, showThisView: $showResquestName, userVM: userVM, showMacroView: $showNothing).environmentObject(SessionStore())
                 }
                 
             }

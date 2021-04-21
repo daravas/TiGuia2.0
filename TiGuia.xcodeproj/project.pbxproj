@@ -448,8 +448,8 @@
 				8B82528225FAB5720060C653 /* TaskFavoriteViewModel.swift */,
 				8B82528525FAB5980060C653 /* TaskFavoriteListViewModel.swift */,
 				8B640D92261679D400B4B35A /* UserViewModel.swift */,
-				5771473A260BC328002AEB42 /* ChatroomViewModel.swift */,
 				57CA1B59260D1EE200EBD60E /* MessagesViewModel.swift */,
+				5771473A260BC328002AEB42 /* ChatroomViewModel.swift */,
 				477E4A1D2612C97100D1F58E /* MentorCategoryViewModel.swift */,
 				576B8DD4262F53D700123EB1 /* SessionStore.swift */,
 			);

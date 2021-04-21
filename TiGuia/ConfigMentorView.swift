@@ -13,7 +13,9 @@ import Firebase
 struct ConfigMentorView: View {
     @ObservedObject var userViewModel = UserViewModel()
     init(){
-        userViewModel.fetchData(isSigned: Auth.auth().currentUser!.isEmailVerified)
+        print("\n\n\(Auth.auth().currentUser!.email != nil)\n\n")
+        userViewModel.fetchData(isSigned: Auth.auth().currentUser!.email != nil)
+        userViewModel.sendData(isSigned: Auth.auth().currentUser!.email != nil)
     }
     var body: some View {
         VStack {
@@ -117,10 +119,10 @@ struct ConfigMentorView: View {
     }
     
     struct AccountView: View {
-        
+        @State var showNothing: Bool = false
         
         @ObservedObject var userVM: UserViewModel
-        
+        @State var textao = "Ao entrar você terá acesso aos mentores que \n fazem parte da comunidade do TiGuia! \nUma conversa com profissionais e alunos da área \n pode te ajudar a entender melhor sobre o assunto\n e a tomar decisões."
         @State var showSignIn = false
         @State var showResquestName = false
         @State var showMentorArea = false
@@ -144,11 +146,11 @@ struct ConfigMentorView: View {
             .foregroundColor(.darkColor)
             .padding([.top, .bottom])
             if(showSignIn || showResquestName || showMentorArea){
-                EmptyView().fullScreenCover(isPresented: $showSignIn) {
-                    SignInMentorView(userVM: userVM, showThisView: $showSignIn, userName: $userName, showMentorArea: $showMentorArea)
-                }
+//                EmptyView().fullScreenCover(isPresented: $showSignIn) {
+//                    SignInMentorView(userVM: userVM, showThisView: $showSignIn, userName: $userName, showMentorArea: $showMentorArea)
+//                }
                 EmptyView().fullScreenCover(isPresented: $showResquestName) {
-                    RequestNameView(showThisView: $showResquestName, showSignIn: $showSignIn, userName: $userName)
+                    EmailSignIn( textao: $textao, showThisView: $showResquestName, userVM: userVM, showMacroView: $showNothing).environmentObject(SessionStore())
                 }
 //                EmptyView().fullScreenCover(isPresented: $showMentorArea) {
 //                    MacroAreaMentorUIView()

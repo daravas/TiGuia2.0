@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SwiftUI
+import Firebase
 
 // MARK: - Area Mentor
 struct MacroAreaMentorUIView: View {
@@ -16,7 +17,12 @@ struct MacroAreaMentorUIView: View {
     // @State var didTap = false
     @State private var presented = false
     var teste = Data() //acho que vai precisar apagar essa linha aqui. é que precisa iniciar a classe Data pra poder pegar o arrey de categorias
-    
+    init(){
+        if (!UserDefaults.standard.bool(forKey: "eMentor")){
+            Analytics.setUserProperty("Mentor", forName: "aluno_ou_mentor")
+            UserDefaults.standard.set(true, forKey: "eMentor")
+        }
+    }
     var body: some View {
         VStack(alignment: .leading) {
 //            HStack{
