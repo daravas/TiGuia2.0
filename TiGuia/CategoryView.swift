@@ -32,7 +32,7 @@ struct CategoryView: View {
             userVM.fetchData(isSigned: false)
         }
     }
-    @State var textao = "Ao entrar você terá acesso aos mentores que \n fazem parte da comunidade do TiGuia! \nUma conversa com profissionais e alunos da área \n pode te ajudar a entender melhor sobre o assunto\n e a tomar decisões."
+    @State var textao = "Ao entrar você terá acesso aos mentores que fazem parte da comunidade do TiGuia! Uma conversa com profissionais e alunos da área pode te ajudar a entender melhor sobre o assunto e a tomar decisões."
     @State var showNothing: Bool = false
     
     var body: some View {

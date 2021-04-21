@@ -19,7 +19,7 @@ struct CadastroSignUpView: View {
     @State var error: String = ""
     @Binding var showThisView: Bool
     @Binding var showBackView: Bool
-    @State var emailField = "  aluno123@gmail.com"
+    @State var emailField = " nome@gmail.com"
     @State var nameField = " Nome"
     @State var senhaField = " Senha"
     @ObservedObject var userVM: UserViewModel
@@ -70,70 +70,72 @@ struct CadastroSignUpView: View {
         .multilineTextAlignment(.center)
         .padding([.top, .leading, .trailing,.bottom])
         .lineSpacing(2)*/
-            Text("Nome")
-                .font(.custom("Raleway-Regular", size: 18))
-                .padding(.horizontal)
-                .padding(.top)
-            TextField(
+            
+            VStack(alignment: .leading) {
+                Text("Nome")
+                    .font(.custom("Raleway-Regular", size: 14))
+                    .padding(.horizontal)
+                    .padding(.top)
+                TextField(
                     nameField,
-                     text: $userName
-                        
+                    text: $userName
+                    
                 ) { isEditing in
                     self.isEditing = isEditing
-                self.nameField = ""
+                    self.nameField = ""
                 } onCommit: {
-                   // validate(name: username)
+                    // validate(name: username)
                 }
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
-            .frame(height: 32)
-
-            .border(Color(UIColor(.titleColor)), width: 2)
-            .cornerRadius(10)
-            .padding([.leading, .bottom, .trailing])
-    Text("Email")
-        .font(.custom("Raleway-Regular", size: 18))
-        .padding(.horizontal)
-        .padding(.top)
-        
-    TextField(
-            emailField,
-             text: $userEmail
+                .frame(height: 32)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.titleColor, lineWidth: 2))
+                .padding([.leading, .bottom, .trailing])
+                Text("Email")
+                    .font(.custom("Raleway-Regular", size: 14))
+                    .padding(.horizontal)
+                    .padding(.top)
                 
-        ) { isEditing in
-            self.isEditing = isEditing
-        emailField = ""
-        } onCommit: {
-           // validate(name: username)
-        }
-        .autocapitalization(.none)
-        .disableAutocorrection(true)
-    .frame(height: 32)
-
-    .border(Color(UIColor(.titleColor)), width: 2)
-    .cornerRadius(10)
-    .padding([.leading, .bottom, .trailing])
-    
-    Text("Senha")
-        .font(.custom("Raleway-Regular", size: 18))
-        .padding(.horizontal)
- 
-    SecureField(
-           senhaField,
-           text: $userPassword
-       ) { 
-        //senhaField = ""
-          // handleLogin(username: username, password: password)
-       }
-    .frame(height: 32)
-
-    .border(Color(UIColor(.titleColor)), width: 2)
-    .cornerRadius(10)
-    .padding()
+                TextField(
+                    emailField,
+                    text: $userEmail
+                    
+                ) { isEditing in
+                    self.isEditing = isEditing
+                    emailField = ""
+                } onCommit: {
+                    // validate(name: username)
+                }
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
+                .frame(height: 32)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.titleColor, lineWidth: 2))
+                .padding([.leading, .bottom, .trailing])
+                .padding(.bottom)
+                
+                Text("Senha")
+                    .font(.custom("Raleway-Regular", size: 14))
+                    .padding(.horizontal)
+                
+                SecureField(
+                    senhaField,
+                    text: $userPassword
+                ) {
+                    //senhaField = ""
+                    // handleLogin(username: username, password: password)
+                }
+                .frame(height: 32)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.titleColor, lineWidth: 2))
+                .padding([.leading, .bottom, .trailing])
+                
+            }
             
             if(error != ""){
                 Text(error)
-                    .font(.system(size: 16, weight: .semibold))
+                    .font(.custom("Raleway-Bold", size: 16))
                     .foregroundColor(.red)
 //                            .padding()
             }
@@ -141,7 +143,7 @@ struct CadastroSignUpView: View {
             Button(action: signUp, label: {
                 Spacer()
                 Text("Cadastrar")
-                    .font(.custom("Raleway-Bold", size: 18))
+                    .font(.custom("Raleway-Semibold", size: 18))
                     .foregroundColor(.lightColor)
                 Spacer()
                 
